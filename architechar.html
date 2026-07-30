@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Featured Projects - QA System Using LlamaIndex & Google Gemini (RAG)</title>
+  <!-- FontAwesome for Social Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* CSS VARIABLES / BASE SETUP */
+    :root {
+      --ink: #0A192F;
+      --paper: #E6F1FF;
+      --brass: #F59E0B;
+      --signal: #38BDF8;
+      --mono: 'Courier New', Courier, monospace;
+      --body: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--ink);
+      font-family: var(--body);
+      color: var(--paper);
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+    }
+
+    .back-link {
+      font-family: var(--mono);
+      font-size: 12.5px;
+      color: var(--paper);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      letter-spacing: .03em;
+    }
+
+    .back-link:hover {
+      color: var(--signal);
+    }
+
+    /* PROJECTS - dossier style (signature element) */
+    #projects {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    #projects .eyebrow {
+      color: var(--brass);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #projects .eyebrow::before {
+      content: '';
+      background: var(--signal);
+      width: 16px;
+      height: 1px;
+      display: inline-block;
+    }
+
+    #projects h2 {
+      color: var(--paper);
+      font-size: 32px;
+      margin: 12px 0;
+    }
+
+    #projects .lede {
+      color: #AEBCC9;
+      font-size: 16px;
+      margin-bottom: 40px;
+    }
+
+    .dossier {
+      margin-top: 56px;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      background: rgba(255, 255, 255, .14);
+    }
+
+    .file {
+      background: #12314B;
+      padding: 36px 36px;
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .file {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .file-index {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--brass);
+      padding-top: 4px;
+    }
+
+    .file-body h3 {
+      color: var(--paper);
+      font-size: 23px;
+      margin-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .file-body p {
+      color: #B7C4D0;
+      font-size: 14.5px;
+      max-width: 560px;
+      line-height: 1.5;
+    }
+
+    .file-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .file-tags span {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #CFE0DC;
+      border: 1px solid rgba(255, 255, 255, .25);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    .architecture-explanation {
+      margin-top: 32px;
+      padding: 28px;
+      background: #E6F1FF;
+      border: 1px solid rgba(10, 25, 47, 0.15);
+      border-radius: 8px;
+      color: #0A192F;
+    }
+
+    .architecture-explanation h4 {
+      margin-top: 0;
+      color: #0A192F;
+      font-size: 18px;
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+      border-bottom: 1px solid rgba(10, 25, 47, 0.15);
+      padding-bottom: 10px;
+    }
+
+    .architecture-explanation h5 {
+      color: #B45309;
+      font-family: var(--mono);
+      font-size: 14px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .architecture-explanation ol {
+      color: #1E293B;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    .architecture-explanation li {
+      margin-bottom: 14px;
+    }
+
+    .architecture-explanation li strong {
+      color: #0A192F;
+    }
+
+    /* CONTACT */
+    #contact {
+      background: var(--ink);
+      color: var(--paper);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    #contact .eyebrow {
+      color: var(--brass);
+      font-family: var(--mono);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #contact .eyebrow::before {
+      content: '';
+      background: var(--signal);
+      width: 16px;
+      height: 1px;
+      display: inline-block;
+    }
+
+    #contact h2 {
+      color: var(--paper);
+      font-size: 32px;
+      margin: 12px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 860px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    .field label {
+      font-family: var(--mono);
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #9FB0BE;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgba(255, 255, 255, .28);
+      color: var(--paper);
+      font-family: var(--body);
+      font-size: 15px;
+      padding: 10px 2px;
+      box-sizing: border-box;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-bottom-color: var(--signal);
+    }
+
+    .send-btn {
+      font-family: var(--mono);
+      font-size: 13px;
+      background: var(--signal);
+      color: var(--ink);
+      border: none;
+      padding: 14px 28px;
+      margin-top: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+
+    .send-btn:hover {
+      background: var(--brass);
+    }
+
+    .direct-links {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      justify-content: center;
+    }
+
+    .direct-links a {
+      font-family: var(--mono);
+      font-size: 14.5px;
+      color: #D8E2E9;
+      border-bottom: 1px solid rgba(255, 255, 255, .16);
+      padding-bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .direct-links a span {
+      color: black var(--signal);
+    }
+
+    .direct-links a:hover {
+      color: var(--brass);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ink);
+      color: #8DA0AF;
+      border-top: 1px solid rgba(255, 255, 255, .12);
+      padding: 0px 0;
+      font-family: var(--mono);
+      font-size: 12.5px;
+    }
+
+    .foot-wrap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px 20px;
+    }
+
+    .social-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      color: #dddbdb;
+      background: rgba(255, 255, 255, .1);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-links a:hover {
+      background: var(--signal);
+      color: var(--ink);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PROJECTS SECTION -->
+  <section id="projects">
+    <div class="wrap">
+      <a href="index.html#projects" class="back-link" data-aos="fade-up">
+        <i class="bi bi-arrow-left"></i> Back to portfolio
+      </a>
+      <div class="eyebrow">Selected Work</div>
+      <h2>Featured Projects</h2>
+      <p class="lede">Selected builds spanning agentic AI, retrieval systems, and business intelligence dashboards.</p>
+
+      <div class="dossier">
+        <div class="file">
+          <div class="file-index">FILE/01</div>
+          <div class="file-body">
+            <h3>QA System Using LlamaIndex &amp; Google Gemini (RAG)</h3>
+            <p>Built and documented a production-grade RAG system with dense vector embeddings and semantic search, reducing hallucinations and delivering accurate, context-grounded answers across multi-format text corpora.</p>
+            <div class="file-tags">
+              <span>Python</span>
+              <span>LlamaIndex</span>
+              <span>Google Gemini</span>
+              <span>Vector Embeddings</span>
+            </div>
+
+            <div style="margin-top:28px;">
+              <div class="eyebrow" style="color:var(--brass);">Architecture</div>
+              <svg width="100%" viewBox="0 0 640 770" role="img" style="margin-top:14px;display:block;max-width:640px;">
+                <title>RAG QA system architecture using LlamaIndex and Google Gemini</title>
+                <desc>Offline ingestion pipeline chunks documents, generates embeddings, and builds a vector index. Online query pipeline embeds the user question, retrieves matching chunks, assembles context, and passes it to Gemini for grounded answer generation.</desc>
+                <defs>
+                  <marker id="rag-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M2 1L8 5L2 9" fill="none" stroke="rgba(255,255,255,.45)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </marker>
+                </defs>
+
+                <text x="30" y="12" font-family="var(--mono)" font-size="11" letter-spacing=".05em" fill="var(--signal)">OFFLINE INGESTION</text>
+
+                <rect x="30" y="20" width="380" height="56" rx="8" fill="#12314B" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+                <text x="220" y="40" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">Document corpus</text>
+                <text x="220" y="58" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="12" fill="#B7C4D0">PDFs and multi-format text</text>
+                <line x1="220" y1="76" x2="220" y2="116" stroke="rgba(255,255,255,.35)" stroke-width="1.5" marker-end="url(#rag-arrow)"/>
+
+                <rect x="30" y="116" width="380" height="56" rx="8" fill="#12314B" stroke="var(--signal)" stroke-opacity="0.5" stroke-width="1"/>
+                <text x="220" y="136" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">Chunking &amp; parsing</text>
+                <text x="220" y="154" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="12" fill="#B7C4D0">LlamaIndex node parsing</text>
+                <line x1="220" y1="172" x2="220" y2="212" stroke="rgba(255,255,255,.35)" stroke-width="1.5" marker-end="url(#rag-arrow)"/>
+
+                <rect x="30" y="212" width="380" height="56" rx="8" fill="#12314B" stroke="var(--signal)" stroke-opacity="0.5" stroke-width="1"/>
+                <text x="220" y="232" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">Embedding generation</text>
+                <text x="220" y="250" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="12" fill="#B7C4D0">Google Gemini embeddings</text>
+                <line x1="220" y1="268" x2="220" y2="308" stroke="rgba(255,255,255,.35)" stroke-width="1.5" marker-end="url(#rag-arrow)"/>
+
+                <rect x="30" y="308" width="380" height="56" rx="8" fill="#12314B" stroke="var(--signal)" stroke-opacity="0.5" stroke-width="1"/>
+                <text x="220" y="328" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">Vector index</text>
+                <text x="220" y="346" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="12" fill="#B7C4D0">LlamaIndex vector store</text>
+                <line x1="220" y1="364" x2="220" y2="404" stroke="rgba(255,255,255,.35)" stroke-width="1.5" marker-end="url(#rag-arrow)"/>
+
+                <text x="30" y="396" font-family="var(--mono)" font-size="11" letter-spacing=".05em" fill="var(--brass)">ONLINE QUERY</text>
+
+                <rect x="460" y="410" width="140" height="44" rx="8" fill="#12314B" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+                <text x="530" y="432" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">User query</text>
+                <line x1="460" y1="432" x2="410" y2="432" stroke="rgba(255,255,255,.35)" stroke-width="1.5" marker-end="url(#rag-arrow)"/>
+
+                <rect x="30" y="404" width="380" height="56" rx="8" fill="#12314B" stroke="var(--brass)" stroke-opacity="0.55" stroke-width="1"/>
+                <text x="220" y="424" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">Semantic retrieval</text>
+                <text x="220" y="442" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="12" fill="#B7C4D0">Top-k relevant chunks</text>
+                <line x1="220" y1="460" x2="220" y2="500" stroke="rgba(255,255,255,.35)" stroke-width="1.5" marker-end="url(#rag-arrow)"/>
+
+                <rect x="30" y="500" width="380" height="56" rx="8" fill="#12314B" stroke="var(--brass)" stroke-opacity="0.55" stroke-width="1"/>
+                <text x="220" y="520" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">Context assembly</text>
+                <text x="220" y="538" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="12" fill="#B7C4D0">Query + retrieved chunks</text>
+                <line x1="220" y1="556" x2="220" y2="596" stroke="rgba(255,255,255,.35)" stroke-width="1.5" marker-end="url(#rag-arrow)"/>
+
+                <rect x="30" y="596" width="380" height="56" rx="8" fill="#12314B" stroke="var(--brass)" stroke-opacity="0.55" stroke-width="1"/>
+                <text x="220" y="616" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">Gemini LLM generation</text>
+                <text x="220" y="634" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="12" fill="#B7C4D0">Grounded response synthesis</text>
+                <line x1="220" y1="652" x2="220" y2="692" stroke="rgba(255,255,255,.35)" stroke-width="1.5" marker-end="url(#rag-arrow)"/>
+
+                <rect x="30" y="692" width="380" height="44" rx="8" fill="#12314B" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+                <text x="220" y="714" text-anchor="middle" dominant-baseline="central" font-family="var(--body)" font-size="14" font-weight="500" fill="var(--paper)">Grounded answer</text>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="architecture-explanation">
+        <h4>System Architecture Breakdown</h4>
+        
+        <h5>Part 1: Offline Ingestion Pipeline (Preparation Phase)</h5>
+        <ol>
+          <li><strong>Document Corpus:</strong> The raw foundation of the knowledge base, comprising unstructured or semi-structured data such as PDFs and multi-format text files. Serves as the single source of truth that the QA system will reference to ground its answers.</li>
+          <li><strong>Chunking &amp; Parsing:</strong> Powered by <em>LlamaIndex node parsing</em>. Raw documents are split into smaller, manageable text segments (nodes or chunks), cleanly preserving structural elements (like headings, paragraphs, and tables) so context isn't broken mid-sentence.</li>
+          <li><strong>Embedding Generation:</strong> Powered by <em>Google Gemini embeddings</em>. Each parsed text chunk is transformed into a high-dimensional dense vector, capturing semantic meaning to enable conceptual matching over exact keyword strings.</li>
+          <li><strong>Vector Index:</strong> Managed via <em>LlamaIndex vector store</em>. Generated vectors and their associated text chunks are organized and stored in an index optimized for high-speed similarity searches (such as cosine similarity or Euclidean distance).</li>
+        </ol>
+
+        <h5>Part 2: Online Query Pipeline (Execution Phase)</h5>
+        <ol start="5">
+          <li><strong>Semantic Retrieval:</strong> Triggered when a user query enters the system. The query is converted into an embedding and matched against the vector index via similarity metrics to retrieve the top-$k$ most relevant context chunks.</li>
+          <li><strong>Context Assembly:</strong> Combines the raw user query and the retrieved top-$k$ chunks into a structured prompt package, bridging retrieval and generation for seamless consumption by the Large Language Model.</li>
+          <li><strong>Gemini LLM Generation:</strong> Powered by the <em>Gemini LLM</em>. The assembled context and query are evaluated to perform grounded response synthesis, relying strictly on retrieved documentation rather than parametric hallucination.</li>
+          <li><strong>Grounded Answer:</strong> The final system output delivered to the user, providing a precise, verifiable, and context-backed response.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+    
+  <!-- CONTACT SECTION -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="eyebrow">Get in touch</div>
+      <h2>Contact</h2>
+      <p class="lede" style="color:#AEBCC9;">Have a role, a project, or a question? Fill out the form or reach out directly.</p>
+
+      <div class="contact-grid">
+        <form action="https://api.web3forms.com/submit" method="POST">
+          <input type="hidden" name="access_key" value="ddea5aa6-f3c6-49ec-afe2-19cf0f72207a">
+
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
+          </div>
+
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button type="submit" class="send-btn">Send Message</button>
+        </form>
+
+        <div class="direct-links">
+          <a href="mailto:akbarhusainc29@gmail.com">Email <span>akbarhusainc29@gmail.com</span></a>
+          <a href="https://www.linkedin.com/in/akbarhusain429" target="_blank" rel="noopener">LinkedIn <span>akbarhusain429</span></a>
+          <a href="https://www.github.com/Akbarhusain429" target="_blank" rel="noopener">GitHub <span>Akbarhusain429</span></a>
+          <a href="https://x.com/Akbarhusai429" target="_blank" rel="noopener">Twitter / X <span>Akbarhusai429</span></a>
+        </div>
+      </div>
+
+      <!-- Map Container -->
+      <div class="map-container" style="margin-top: 40px;">
+        <iframe
+          src="https://maps.google.com/maps?q=4,+Mudalier+Ln,+Basavanagudi,+Bengaluru,+Karnataka+560004&output=embed"
+          width="100%" height="550" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER SECTION -->
+  <footer>
+    <div class="wrap foot-wrap">
+      <span>&copy; <span id="year"></span> Akbarhusain. All rights reserved. Designed by Akbarhusain</span>
+      <div class="social-links">
+        <a href="https://github.com/Akbarhusain429" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.linkedin.com/in/akbarhusain429" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+        <a href="https://public.tableau.com/app/profile/akbarhusain.chaudhary/vizzes" target="_blank" rel="noopener" aria-label="Tableau"> 
+        <img src="TB.png" alt="Tableau" style="width: 20px; height: 20px; object-fit: cover; position: absolute; inset: 2;"> </a>
+        <a href="https://www.instagram.com/akbarhusain_429" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+       
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Automatically populate the current year in the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
