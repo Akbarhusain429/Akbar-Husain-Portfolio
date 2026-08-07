@@ -997,13 +997,13 @@
   <text x="171" y="112" class="tag">AI ENGINEER</text>
 </svg>
       <ul class="navlinks" id="navlinks">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#expertise">AI Expertise</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#stack">Tech Stack</a></li>
-        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#home" class="nav-link" data-section="home">Home</a></li>
+        <li><a href="#about"class="nav-link" data-section="about">About</a></li>
+        <li><a href="#expertise" class="nav-link" data-section="expertise">Expertise</a></li>
+        <li><a href="#projects" class="nav-link" data-section="project">Project</a></li>
+        <li><a href="#skills"class="nav-link" data-section="skills">Skills</a></li>
+        <li><a href="#stack"class="nav-link" data-section="stack">Tech-Stack</a></li>
+        <li><a href="#certifications"class="nav-link" data-section="certifications">Certifications</a></li>
         <!-- <li><a href="#blogs">Blogs</a></li> -->
       </ul>
       <a href="#contact" class="nav-cta">Contact →</a>
@@ -1430,14 +1430,36 @@
   </footer>
 
 
-  <script>
+  <!-- <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     const toggle = document.getElementById('navtoggle');
     const links = document.getElementById('navlinks');
     toggle.addEventListener('click', () => links.classList.toggle('open'));
     links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-  </script>
+  </script> -->
 
+  <script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.getElementById('navtoggle');
+    const links = document.getElementById('navlinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // ---- # ko URL se hide karna ----
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href').slice(1); // '#' hatao
+        const targetEl = document.getElementById(targetId);
+        if (!targetEl) return; // agar target section nahi mila to normal behavior chalne do
+
+        e.preventDefault();
+        targetEl.scrollIntoView({ behavior: 'smooth' });
+
+        // URL se hash hata do
+        history.pushState(null, '', window.location.pathname + window.location.search);
+      });
+    });
+  </script>
 </body>
 
 </html>
