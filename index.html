@@ -961,6 +961,277 @@
         transition: none !important;
       }
     }
+  
+    /* AGI POSTER BANNER COMPONENT (BETWEEN CAPABILITIES & SELECTED WORK) */
+    .agi-banner-poster-container:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 65px rgba(9, 43, 43, 0.45) !important;
+    }
+    .agi-poster-hero {
+      min-height: 520px;
+      background: #092b2b;
+      display: grid;
+      grid-template-columns: 50% 50%;
+      color: #f7f8ef;
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .agi-poster-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 38px 30px 34px 44px;
+      position: relative;
+      z-index: 3;
+    }
+    .agi-poster-eyebrow {
+      color: #a4c3b9;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .13em;
+      font-weight: 700;
+    }
+    .agi-poster-eyebrow-line {
+      width: 25px;
+      height: 1px;
+      background: #a8cbbb;
+    }
+    .agi-poster-main {
+      padding-block: 24px 30px;
+    }
+    .agi-poster-kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #c5dd9c;
+      margin-bottom: 18px;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: .12em;
+      font-weight: 700;
+    }
+    .agi-poster-live-dot {
+      width: 7px;
+      height: 7px;
+      background: #d0ec91;
+      border-radius: 50%;
+      box-shadow: 0 0 12px #d0ec91;
+    }
+    .agi-poster-main h1 {
+      font-size: clamp(38px, 4.4vw, 58px);
+      line-height: 1.02;
+      font-weight: 500;
+      letter-spacing: -.065em;
+      margin: 0;
+      color: #f7f8ef;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .agi-poster-main h1 em {
+      font-family: 'Instrument Serif', Georgia, serif;
+      font-style: italic;
+      color: #d6e9a6;
+      letter-spacing: -.03em;
+    }
+    .agi-poster-main p {
+      margin: 20px 0 24px;
+      max-width: 400px;
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: #b5cbc3;
+    }
+    .agi-poster-cta {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: #d8efa8;
+      color: #152e29;
+      border-radius: 40px;
+      padding: 6px 6px 6px 18px;
+      font-size: 11.5px;
+      font-weight: 700;
+      font-family: var(--mono);
+      transition: transform .2s, background .2s;
+    }
+    .agi-poster-cta span {
+      width: 28px;
+      height: 28px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #173b35;
+      color: white;
+    }
+    .agi-poster-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      color: #85a89f;
+      font-size: 9px;
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      white-space: nowrap;
+    }
+    .agi-poster-visual {
+      position: relative;
+      min-width: 0;
+      min-height: 520px;
+      background: radial-gradient(circle at 49% 50%, #2c625b 0%, #16413f 38%, #0b3030 70%, #092b2b 100%);
+      overflow: hidden;
+    }
+    .agi-poster-grid {
+      position: absolute;
+      inset: 0;
+      opacity: .18;
+      background-image: linear-gradient(#8db5ac 1px, transparent 1px), linear-gradient(90deg, #8db5ac 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(circle at center, black, transparent 72%);
+    }
+    .agi-poster-visual:after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      box-shadow: inset 60px 0 60px #092b2b, inset 0 0 50px #092b2b;
+      pointer-events: none;
+    }
+    .agi-poster-orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid rgba(200, 235, 214, .27);
+      border-radius: 50%;
+      transform: translate(-50%, -50%) rotate(-25deg);
+    }
+    .agi-orbit-one { width: 440px; height: 440px; }
+    .agi-orbit-two { width: 550px; height: 350px; transform: translate(-50%, -50%) rotate(35deg); }
+    .agi-orbit-three { width: 640px; height: 480px; border-color: rgba(200, 235, 214, .12); transform: translate(-50%, -50%) rotate(-13deg); }
+    .agi-poster-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 380px;
+      height: 380px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background: #b1e7b6;
+      filter: blur(70px);
+      opacity: .22;
+    }
+    .agi-poster-orb {
+      width: 290px;
+      aspect-ratio: 1;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 20%, #d6edc4 0%, #92c4ae 20%, #4a8a7f 47%, #245c58 72%, #163b3e 100%);
+      box-shadow: inset -20px -28px 45px #092d35, inset 14px 14px 28px rgba(237, 255, 218, .5), 0 0 60px rgba(151, 238, 186, .28), 0 0 0 1px rgba(232, 255, 223, .44);
+    }
+    .agi-poster-texture {
+      position: absolute;
+      inset: 0;
+      background: repeating-radial-gradient(circle at 47% 48%, transparent 0 8px, rgba(255,255,255,.045) 9px 10px);
+      mix-blend-mode: overlay;
+    }
+    .agi-poster-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+    .agi-poster-center {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: rgba(241, 255, 228, .96);
+      font-size: 52px;
+      font-weight: 500;
+      letter-spacing: -.08em;
+      text-shadow: 0 2px 25px #236258;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .agi-poster-center span {
+      font-size: .65em;
+      font-weight: 400;
+    }
+    .agi-poster-dot {
+      position: absolute;
+      z-index: 2;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #e7fac1;
+      box-shadow: 0 0 14px #dff5bd;
+    }
+    .agi-dot-one { top: 16%; left: 44%; }
+    .agi-dot-two { top: 70%; right: 12%; }
+    .agi-dot-three { bottom: 15%; left: 22%; }
+    .agi-poster-label {
+      position: absolute;
+      z-index: 2;
+      color: #edf9da;
+      border: 1px solid rgba(221, 251, 213, .36);
+      background: rgba(18, 64, 61, .73);
+      backdrop-filter: blur(8px);
+      border-radius: 4px;
+      padding: 9px 13px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 8.5px;
+      font-family: var(--mono);
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    .agi-poster-label span {
+      color: #d5eea7;
+      font-size: 15px;
+      line-height: .7;
+    }
+    .agi-label-reason { top: 18%; left: 5%; transform: rotate(-8deg); }
+    .agi-label-create { top: 32%; right: 4%; transform: rotate(7deg); }
+    .agi-label-adapt { bottom: 18%; left: 10%; transform: rotate(5deg); }
+    .agi-poster-coord {
+      position: absolute;
+      z-index: 2;
+      color: #86aaa0;
+      font-size: 8px;
+      font-family: var(--mono);
+      letter-spacing: .1em;
+    }
+    .agi-coord-top { top: 28px; right: 28px; }
+    .agi-coord-bottom { bottom: 26px; right: 28px; display: flex; gap: 10px; align-items: center; }
+    .agi-coord-bottom span { font-size: 13px; color: #d7eead; }
+
+    @media (max-width: 900px) {
+      .agi-poster-hero {
+        grid-template-columns: 1fr;
+      }
+      .agi-poster-visual {
+        min-height: 380px;
+      }
+      .agi-poster-copy {
+        padding: 30px 24px 20px;
+      }
+      .agi-poster-orb {
+        width: 220px;
+      }
+      .agi-orbit-one { width: 320px; height: 320px; }
+      .agi-orbit-two { width: 420px; height: 270px; }
+      .agi-orbit-three { width: 500px; height: 380px; }
+    }
+
   </style>
 </head>
 
@@ -1021,6 +1292,7 @@
         <li><a href="#skills"class="nav-link" data-section="skills">Skills</a></li>
         <li><a href="#stack"class="nav-link" data-section="stack">Tech-Stack</a></li>
         <li><a href="#certifications"class="nav-link" data-section="certifications">Certifications</a></li>
+        
         <!-- <li><a href="#blogs">Blogs</a></li> -->
       </ul>
       <a href="#contact" class="nav-cta">Contact →</a>
@@ -1032,12 +1304,13 @@
   <section id="home">
     <div class="wrap hero-grid">
       <div class="hero">
-        <div class="eyebrow">BUILDER · ARCHITECT · SPECIALIST</div>
-        <h1> Build Agents, <br> Automate Workflows &<em>Scale Data</em>.</h1>
+        <div class="eyebrow">AI Engineer · Applied ML</div>
+        <h1> AI Engineering, <br> Data Scientist &<em>Data Analyst</em>.</h1>
         <p class="lede">I'm Akbarhusain — I build production-grade RAG pipelines, agentic automations, and BI
           dashboards, turning messy datasets and unstructured documents into reliable systems and decision-ready
           insight.</p>
         <div class="hero-actions">
+          <a href="agi.html" target="_blank" class="btn btn-solid" style="background: var(--signal); border-color: var(--signal);">Explore AGI Design ↗</a>
           <a href="#projects" class="btn btn-solid">View Featured Work</a>
           <a href="#contact" class="btn btn-ghost">Get in Touch</a>
         </div>
@@ -1048,7 +1321,7 @@
           <div class="lbl">Months Internship Exp.</div>
         </div>
         <div class="cred-item">
-          <div class="num">7</div>
+          <div class="num">5</div>
           <div class="lbl">Projects Completed</div>
         </div>
         <div class="cred-item">
@@ -1074,7 +1347,7 @@
           Power BI.</p>
         <ul class="about-facts">
           <li><span>Based in</span> <b>Bengaluru, Karnataka</b></li>
-          <li><span>Focus</span> <b>AI Engineer, AI Automation &amp; Generative AI</b></li>
+          <li><span>Focus</span> <b>GenAI, RAG &amp; Data Analytics</b></li>
           <li><span>Open to</span> <b> Full-time </b></li>
           <li><span>Availability</span> <b> Immediate </b></li>
         </ul>
@@ -1092,9 +1365,14 @@
       <div class="expertise-grid">
         <div class="expertise-card">
           <div class="ecard-lbl">01</div>
-          <h3><a href="Aiagent.html">AI Agent</a></h3>
+          <h3><a href="Aiagent.html">AI Agent</a> &amp; <a href="agi.html" target="_blank" style="color: var(--signal);">AGI</a></h3>
           <p class="ecard-desc">Develop intelligent AI agents using LangChain,
                   Gemini API, and multi-agent architectures.</p>
+          <div style="margin-top: 14px; display: flex; gap: 10px; font-family: var(--mono); font-size: 12px;">
+            <a href="agi.html" target="_blank" style="color: var(--brass); font-weight: 600; text-decoration: underline;">Open AGI Banner ↗</a>
+            <span style="color: var(--line);">|</span>
+            <a href="javascript:void(0)" onclick="openAgiModal()" style="color: var(--signal);">Quick Preview</a>
+          </div>
         </div>
         <div class="expertise-card">
           <div class="ecard-lbl">02</div>
@@ -1127,6 +1405,7 @@
       </div>
     </div>
   </section>
+
 
   <!-- ============ AGI BANNER DESIGN SHOWCASE (BETWEEN CAPABILITIES & SELECTED WORK) ============ -->
   <section id="agi-showcase" style="padding: 60px 0 80px; background: var(--paper);">
@@ -1207,6 +1486,7 @@
     </div>
   </section>
 
+
   <!-- FEATURED PROJECTS -->
   <section id="projects">
     <div class="wrap">
@@ -1215,6 +1495,19 @@
       <p class="lede">Selected builds spanning agentic AI, retrieval systems, and business intelligence dashboards.</p>
 
       <div class="dossier">
+        <div class="file">
+          <div class="file-index">FILE/00</div>
+          <div class="file-body">
+            <h3>AGI Systems — A Field Guide to Future Intelligence</h3>
+            <p>Designed and built an interactive exploration platform for Artificial General Intelligence (AGI) featuring cosmic orbital visual mechanics, multi-agent concept breakdowns, and a curated discovery suite for foundation models.</p>
+            <div class="file-tags"><span>AGI Architecture</span><span>Autonomous Systems</span><span>Interactive UI</span><span>LLM Research</span></div>
+          </div>
+          <div class="file-links">
+            <a href="agi.html" target="_blank" class="active">Open Full Design</a>
+            <a href="javascript:void(0)" onclick="openAgiModal()">Interactive Modal</a>
+            <a href="Aiagent.html">AI Agent Architecture</a>
+          </div>
+        </div>
         <div class="file">
           <div class="file-index">FILE/01</div>
           <div class="file-body">
@@ -1249,10 +1542,10 @@
         <div class="file">
           <div class="file-index">FILE/03</div>
           <div class="file-body">
-            <h3>Autonomous Deep Research &amp; Multi-Agent PDF Publishing Pipeline(n8n)</h3>
+            <h3>Deep Research — Research Anything &amp; Get PDF (n8n)</h3>
             <p>Designed and deployed an AI agent-driven automation workflow in n8n, orchestrating multi-step
               triggers and integrations to handle tasks end-to-end with minimal manual intervention.</p>
-            <div class="file-tags"><span>n8n</span><span>AI Agents</span><span>Tavily Search API</span><span>LangChain Agents</span><span>Claude 3.5 Sonnet</span><span>APITemplate.io</span></div>
+            <div class="file-tags"><span>n8n</span><span>AI Agents</span><span>Automation</span><span>Workflow Design</span></div>
           </div>
           <div class="file-links">
             <a href="Research_Get_PDF.html">Architecture</a>
@@ -1576,6 +1869,38 @@
         // URL se hash hata do
         history.pushState(null, '', window.location.pathname + window.location.search);
       });
+    });
+  </script>
+
+
+  <!-- AGI FULL DESIGN MODAL POPUP -->
+  <div id="agiModal" style="display: none; position: fixed; inset: 0; background: rgba(10, 25, 47, 0.92); backdrop-filter: blur(8px); z-index: 99999; justify-content: center; align-items: center; padding: 20px;">
+    <div style="position: relative; width: 96%; max-width: 1400px; height: 92vh; background: #f7f6f1; border-radius: 12px; overflow: hidden; box-shadow: 0 25px 70px rgba(0,0,0,0.6); display: flex; flex-direction: column;">
+      <div style="background: #092b2b; color: #d6e9a6; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1);">
+        <span style="font-family: var(--mono); font-size: 13px; font-weight: 600; letter-spacing: 0.05em;">✦ AGI BANNER DESIGN — LIVE INTERACTIVE PREVIEW</span>
+        <div style="display: flex; gap: 12px; align-items: center;">
+          <a href="agi.html" target="_blank" style="background: #d8efa8; color: #152e29; padding: 5px 14px; border-radius: 20px; font-size: 12px; font-weight: 700; text-decoration: none; font-family: var(--mono);">Open in New Tab ↗</a>
+          <button onclick="closeAgiModal()" style="background: #ef4444; color: white; border: none; border-radius: 6px; padding: 6px 14px; cursor: pointer; font-size: 13px; font-weight: bold; font-family: var(--mono);">Close ✕</button>
+        </div>
+      </div>
+      <iframe src="agi.html" style="width: 100%; height: 100%; border: none;"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function openAgiModal() {
+      const modal = document.getElementById('agiModal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeAgiModal() {
+      const modal = document.getElementById('agiModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    // Close on escape key
+    window.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeAgiModal();
     });
   </script>
 
