@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Future, a field guide to intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
+    
+    /* Tailwind Reset / Helpers */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+
+    :root { font-family: 'DM Sans', sans-serif; color: #172724; background: #f7f6f1; font-synthesis: none; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; }
+    a { text-decoration: none; color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a:focus-visible { outline: 3px solid #90aef4; outline-offset: 4px; }
+    .site-shell { overflow: hidden; }
+    .container { width: min(100% - 96px, 1440px); margin-inline: auto; }
+    em { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+
+    .site-header { height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .brand { display: inline-flex; align-items: center; gap: 12px; font-size: 27px; font-weight: 700; letter-spacing: -1.8px; line-height: 1; }
+    .brand-period, .footer-brand span { color: #879d50; }
+    .brand-symbol { width: 26px; height: 26px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 3px; transform: rotate(-12deg); }
+    .brand-symbol span { background: #153d36; border-radius: 9px 2px 9px 2px; }
+    .brand-symbol span:nth-child(2), .brand-symbol span:nth-child(3) { border-radius: 2px 9px 2px 9px; }
+    .main-nav { display: flex; gap: clamp(24px, 3.3vw, 54px); margin-left: 70px; }
+    .main-nav a { color: #53615c; font-size: 13px; font-weight: 600; transition: color .2s; }
+    .main-nav a:hover { color: #172724; }
+    .header-link { border: 1px solid #c8d0c5; border-radius: 50px; padding: 12px 15px 12px 20px; display: flex; align-items: center; gap: 22px; font-size: 12px; font-weight: 700; transition: background .2s, color .2s; }
+    .header-link:hover { background: #163b34; color: white; }
+    .header-link svg { width: 16px; height: 16px; }
+
+    .hero { min-height: 664px; background: #092b2b; border-radius: 7px; display: grid; grid-template-columns: 49% 51%; color: #f7f8ef; position: relative; isolation: isolate; overflow: hidden; }
+    .hero-copy { display: flex; flex-direction: column; justify-content: space-between; padding: 36px 0 34px 58px; position: relative; z-index: 3; }
+    .eyebrow, .hero-kicker, .hero-bottom, .section-index, .section-end, .overline, .possibilities-top, .tool-card-top, .tools-footnote, .site-footer, .visual-label, .visual-coordinate { font-size: 10px; letter-spacing: .13em; font-weight: 700; }
+    .hero-eyebrow { color: #a4c3b9; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
+    .eyebrow-line { width: 25px; height: 1px; background: #a8cbbb; }
+    .eyebrow-index { color: #6b9891; }
+    .hero-main-copy { padding-block: 38px 55px; }
+    .hero-kicker { display: flex; align-items: center; gap: 10px; color: #c5dd9c; margin-bottom: 24px; }
+    .live-dot { width: 7px; height: 7px; background: #d0ec91; border-radius: 50%; box-shadow: 0 0 12px #d0ec91; }
+    .hero h1 { font-size: clamp(58px, 5.1vw, 88px); line-height: .985; font-weight: 500; letter-spacing: -.075em; margin: 0; white-space: nowrap; }
+    .hero h1 em { color: #d6e9a6; letter-spacing: -.05em; }
+    .hero-main-copy > p { margin: 30px 0 32px; max-width: 375px; font-size: 15px; line-height: 1.75; color: #b5cbc3; }
+    .hero-cta { width: max-content; display: flex; align-items: center; gap: 28px; background: #d8efa8; color: #152e29; border-radius: 40px; padding: 7px 7px 7px 21px; font-size: 12px; font-weight: 700; transition: transform .2s, background .2s; }
+    .hero-cta:hover { transform: translateY(-3px); background: #efffc9; }
+    .hero-cta span { width: 33px; height: 33px; display: grid; place-items: center; border-radius: 50%; background: #173b35; color: white; }
+    .hero-cta svg { width: 16px; height: 16px; }
+    .hero-bottom { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding-right: 12px; color: #85a89f; font-size: 9px; white-space: nowrap; }
+    .down-arrow { display: inline-block; margin-left: 8px; font-size: 17px; font-weight: 400; vertical-align: -2px; }
+
+    .intelligence-visual { position: relative; min-width: 0; min-height: 664px; background: radial-gradient(circle at 49% 50%, #2c625b 0%, #16413f 38%, #0b3030 70%, #092b2b 100%); overflow: hidden; }
+    .visual-grid { position: absolute; inset: 0; opacity: .18; background-image: linear-gradient(#8db5ac 1px, transparent 1px), linear-gradient(90deg, #8db5ac 1px, transparent 1px); background-size: 62px 62px; mask-image: radial-gradient(circle at center, black, transparent 72%); }
+    .intelligence-visual:after { content: ''; position: absolute; inset: 0; box-shadow: inset 80px 0 80px #092b2b, inset 0 0 60px #092b2b; pointer-events: none; }
+    .orbit { position: absolute; top: 50%; left: 50%; border: 1px solid rgba(200, 235, 214, .27); border-radius: 50%; transform: translate(-50%, -50%) rotate(-25deg); }
+    .orbit-one { width: 530px; height: 530px; }
+    .orbit-two { width: 660px; height: 420px; transform: translate(-50%, -50%) rotate(35deg); }
+    .orbit-three { width: 770px; height: 585px; border-color: rgba(200, 235, 214, .12); transform: translate(-50%, -50%) rotate(-13deg); }
+    .orb-glow { position: absolute; top: 50%; left: 50%; width: 480px; height: 480px; transform: translate(-50%, -50%); border-radius: 50%; background: #b1e7b6; filter: blur(80px); opacity: .22; }
+    .orb { width: min(62%, 390px); aspect-ratio: 1; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); border-radius: 50%; overflow: hidden; background: radial-gradient(circle at 30% 20%, #d6edc4 0%, #92c4ae 20%, #4a8a7f 47%, #245c58 72%, #163b3e 100%); box-shadow: inset -26px -35px 55px #092d35, inset 17px 17px 35px rgba(237, 255, 218, .5), 0 0 70px rgba(151, 238, 186, .28), 0 0 0 1px rgba(232, 255, 223, .44); }
+    .orb-texture { position: absolute; inset: 0; background: repeating-radial-gradient(circle at 47% 48%, transparent 0 8px, rgba(255,255,255,.045) 9px 10px); mix-blend-mode: overlay; }
+    .orb-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .orb-center { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; gap: 12px; color: rgba(241, 255, 228, .96); font-size: clamp(42px, 5vw, 70px); font-weight: 500; letter-spacing: -.08em; text-shadow: 0 2px 30px #236258; }
+    .orb-center span { font-size: .68em; font-weight: 400; }
+    .orbit-dot { position: absolute; z-index: 2; width: 7px; height: 7px; border-radius: 50%; background: #e7fac1; box-shadow: 0 0 16px #dff5bd; }
+    .dot-one { top: 16%; left: 44%; }.dot-two { top: 70%; right: 12%; }.dot-three { bottom: 15%; left: 22%; }
+    .visual-label { position: absolute; z-index: 2; color: #edf9da; border: 1px solid rgba(221, 251, 213, .36); background: rgba(18, 64, 61, .73); backdrop-filter: blur(8px); border-radius: 4px; padding: 12px 16px; display: flex; align-items: center; gap: 11px; box-shadow: 0 8px 28px rgba(0,0,0,.12); }
+    .label-spark { color: #d5eea7; font-size: 18px; line-height: .7; font-weight: 400; }
+    .label-reason { top: 19%; left: 6%; transform: rotate(-8deg); }.label-create { top: 31%; right: 3%; transform: rotate(7deg); }.label-adapt { bottom: 18%; left: 11%; transform: rotate(5deg); }
+    .visual-coordinate { position: absolute; z-index: 2; color: #86aaa0; font-size: 9px; }.coordinate-top { top: 42px; right: 35px; }.coordinate-bottom { bottom: 39px; right: 35px; display: flex; gap: 14px; align-items: center; }.coordinate-bottom span { font-size: 16px; font-weight: 400; color: #d7eead; }
+
+    .section-heading-row { display: flex; align-items: center; gap: 22px; color: #64726d; }.section-index { color: #254b40; white-space: nowrap; }.section-rule { flex: 1; height: 1px; background: #d5dcd2; }.section-end { white-space: nowrap; color: #89958b; }
+    .intro-section { padding-top: 114px; padding-bottom: 134px; scroll-margin-top: 20px; }
+    .intro-grid { display: grid; grid-template-columns: 49% 51%; padding-top: 80px; }
+    .intro-title-wrap { position: relative; }.asterisk-mark { position: absolute; left: 0; top: -44px; color: #7b9a6c; font-size: 27px; font-weight: 400; }
+    .intro-grid h2, .tools-heading h2, .possibilities-heading h2, .closing-inner h2 { font-size: clamp(68px, 6.6vw, 108px); line-height: .98; letter-spacing: -.075em; font-weight: 500; margin: 0; }
+    .intro-grid h2 em, .tools-heading h2 em, .possibilities-heading h2 em, .closing-inner h2 em { color: #6a8767; letter-spacing: -.055em; }
+    .intro-content { padding: 3px 7% 0 0; }.intro-lead { font-size: clamp(27px, 2.6vw, 40px); line-height: 1.22; letter-spacing: -.05em; font-weight: 500; margin: 0 0 29px; }.intro-lead em { color: #6a8767; font-size: 1.14em; }
+    .intro-content > p:not(.intro-lead) { max-width: 590px; font-size: 15px; line-height: 1.85; color: #66716a; margin: 0; }
+    .reality-note { margin-top: 30px; max-width: 585px; border-top: 1px solid #d4dbd1; padding-top: 22px; display: flex; align-items: flex-start; gap: 15px; }.note-icon { flex: none; width: 22px; height: 22px; border: 1px solid #829a80; color: #537256; border-radius: 50%; display: grid; place-items: center; font-family: Georgia, serif; font-size: 15px; font-style: italic; }.reality-note p { margin: 0; color: #69756e; font-size: 12px; line-height: 1.65; }.reality-note strong { color: #284039; }
+
+    .possibilities-section { background: #e8ede2; padding: 69px 0 87px; scroll-margin-top: 20px; }.possibilities-top { display: flex; justify-content: space-between; color: #7b8d7d; }.possibilities-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding: 60px 0 57px; }.possibilities-heading h2 { max-width: 800px; font-size: clamp(53px, 5.5vw, 84px); }.possibilities-heading p { max-width: 255px; margin: 0 0 7px; color: #65776c; font-size: 13px; line-height: 1.7; }
+    .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }.capability { background: #f6f7f0; min-height: 325px; padding: 27px 30px 30px; display: flex; flex-direction: column; position: relative; overflow: hidden; }.capability:first-child { border-radius: 6px 0 0 6px; }.capability:last-child { border-radius: 0 6px 6px 0; }.capability-number { font-size: 11px; font-weight: 700; color: #829787; }.capability h3 { margin: auto 0 7px; font-size: 26px; letter-spacing: -.06em; font-weight: 500; }.capability p { margin: 0; max-width: 270px; font-size: 12px; line-height: 1.65; color: #718077; }
+    .capability-graphic { position: absolute; top: 56px; right: 43px; width: 135px; height: 145px; }.graphic-learn span { position: absolute; border: 1.5px solid #769784; border-radius: 50%; width: 75px; height: 75px; }.graphic-learn span:nth-child(1) { top: 0; left: 30px; }.graphic-learn span:nth-child(2) { top: 48px; left: 0; }.graphic-learn span:nth-child(3) { top: 48px; left: 60px; background: rgba(161, 202, 151, .2); }.graphic-reason span { position: absolute; width: 42px; height: 42px; border: 1.5px solid #779e8b; transform: rotate(45deg); }.graphic-reason span:nth-child(1) { top: 11px; left: 48px; }.graphic-reason span:nth-child(2) { top: 58px; left: 2px; }.graphic-reason span:nth-child(3) { top: 58px; left: 94px; }.graphic-reason span:nth-child(4) { top: 105px; left: 48px; background: #dcebd5; }.graphic-adapt span { position: absolute; width: 98px; height: 98px; border: 1.5px solid #729781; border-radius: 50% 50% 10% 50%; transform: rotate(-45deg); }.graphic-adapt span:nth-child(1) { top: 0; left: 18px; }.graphic-adapt span:nth-child(2) { top: 17px; left: 18px; }.graphic-adapt span:nth-child(3) { top: 34px; left: 18px; background: rgba(167, 204, 161, .17); }
+
+    .tools-section { padding-top: 114px; padding-bottom: 112px; scroll-margin-top: 20px; }.tools-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin: 62px 0 50px; }.overline { color: #78917c; }.tools-heading h2 { font-size: clamp(56px, 5.5vw, 85px); margin-top: 16px; }.tools-heading > p { max-width: 340px; font-size: 14px; line-height: 1.75; color: #6b766e; margin: 0 0 4px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; align-items: start; }.tool-card { min-height: 326px; padding: 23px 25px 26px; border-radius: 5px; display: flex; flex-direction: column; position: relative; transition: transform .25s, box-shadow .25s; }.tool-card:hover { transform: translateY(-7px) rotate(0deg) !important; box-shadow: 0 18px 35px rgba(38, 64, 45, .1); }.tool-card:nth-child(2) { margin-top: 36px; transform: rotate(1.4deg); }.tool-card:nth-child(3) { margin-top: 9px; transform: rotate(-1.3deg); }.tool-card:nth-child(4) { margin-top: -23px; transform: rotate(-1deg); }.tool-card:nth-child(5) { margin-top: 15px; transform: rotate(1deg); }.tool-card:nth-child(6) { margin-top: -24px; transform: rotate(-.8deg); }.tone-mint { background: #e1eee6; }.tone-peach { background: #f1e6dd; }.tone-blue { background: #e1eaf0; }.tone-lavender { background: #e9e5f1; }.tone-yellow { background: #f1edda; }.tone-pink { background: #f0e2e3; }
+    .tool-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #65766a; font-size: 9px; }.tool-arrow { width: 29px; height: 29px; border: 1px solid rgba(33, 58, 45, .25); border-radius: 50%; display: grid; place-items: center; transition: background .2s, color .2s; }.tool-arrow svg { width: 14px; height: 14px; }.tool-card:hover .tool-arrow { background: #1c3a31; color: #fff; }.tool-icon { width: 83px; height: 83px; margin: 34px auto 25px; border: 1px solid rgba(33, 58, 45, .19); border-radius: 24px; display: grid; place-items: center; transform: rotate(-7deg); color: #254a3a; background: rgba(255,255,255,.28); }.tool-icon svg { width: 49px; height: 49px; }.tool-card:nth-child(even) .tool-icon { transform: rotate(7deg); }.tool-card-bottom { margin-top: auto; }.tool-card h3 { font-weight: 500; font-size: 27px; line-height: 1; letter-spacing: -.055em; margin: 0 0 10px; }.tool-card p { font-size: 12px; line-height: 1.6; color: #65736a; margin: 0; max-width: 260px; }.tools-footnote { margin: 48px 0 0; color: #839184; font-size: 10px; letter-spacing: .035em; }.tools-footnote span { color: #6f916b; font-size: 17px; vertical-align: -2px; margin-right: 8px; }
+
+    .closing-section { padding-bottom: 30px; }.closing-inner { min-height: 350px; border-radius: 6px; background: #173d35; color: #f7f8ef; padding: 55px 65px; display: flex; justify-content: space-between; align-items: end; position: relative; overflow: hidden; }.closing-inner:after { content: '*'; font-family: Georgia, serif; font-size: 620px; line-height: 1; position: absolute; top: -150px; right: 5%; color: rgba(190, 226, 171, .09); pointer-events: none; }.closing-inner .overline { color: #b4d499; }.closing-inner h2 { font-size: clamp(62px, 6vw, 92px); margin-top: 30px; position: relative; z-index: 1; }.closing-inner h2 em { color: #cfe6aa; }.back-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 22px; border-bottom: 1px solid #a8c8b9; padding-bottom: 9px; font-size: 12px; font-weight: 600; white-space: nowrap; }.back-top svg { width: 17px; height: 17px; }
+    .site-footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #869389; font-size: 9px; }.footer-brand { color: #233c33; font-size: 24px; letter-spacing: -.08em; font-weight: 700; text-transform: none; }
+
+    .agi-search-card { width: 100%; min-height: 235px; margin-bottom: 23px; padding: 34px 39px; border: 0; border-radius: 5px; background: radial-gradient(circle at 76% 35%, #315f53 0%, #1e493e 34%, #173d35 69%); color: #f6f8ec; display: flex; align-items: end; justify-content: space-between; gap: 35px; text-align: left; font: inherit; cursor: pointer; overflow: hidden; position: relative; transition: transform .25s, box-shadow .25s; }
+    .agi-search-card:hover { transform: translateY(-4px); box-shadow: 0 18px 35px rgba(38,64,45,.14); }
+    .agi-search-card:focus-visible, .agi-dialog button:focus-visible, .agi-dialog input:focus-visible { outline: 3px solid #a9cc9b; outline-offset: 3px; }
+    .agi-search-card:after { content: ''; position: absolute; width: 410px; height: 410px; right: 18%; top: -138px; border: 1px solid rgba(214,236,188,.2); border-radius: 50%; box-shadow: 0 0 0 48px rgba(214,236,188,.04), 0 0 0 100px rgba(214,236,188,.04); pointer-events: none; }
+    .agi-search-copy, .agi-search-action { position: relative; z-index: 1; }.agi-search-copy { display: flex; flex-direction: column; align-items: start; max-width: 570px; }.agi-search-eyebrow { color: #b9d69e; font-size: 10px; letter-spacing: .14em; font-weight: 700; margin-bottom: 19px; }.agi-search-copy strong { font-size: clamp(28px, 3.1vw, 45px); line-height: 1.1; font-weight: 500; letter-spacing: -.055em; }.agi-search-copy strong em { color: #d2e8aa; }.agi-search-copy > span:last-child { margin-top: 15px; color: #b8cec1; font-size: 13px; line-height: 1.5; }.agi-search-action { flex: none; }.agi-search-prompt { min-width: 245px; display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 16px; border-radius: 40px; background: #eef4df; color: #254438; font-size: 12px; font-weight: 700; }.agi-search-prompt > svg { width: 23px; height: 23px; }.agi-search-prompt span { width: 35px; height: 35px; margin-left: auto; border-radius: 50%; display: grid; place-items: center; background: #254438; color: #fff; }.agi-search-prompt span svg { width: 16px; height: 16px; }
+
+    .agi-dialog { width: min(900px, calc(100% - 32px)); max-height: min(88dvh, 900px); margin: auto; padding: 0; border: 0; border-radius: 8px; background: #f7f6f1; color: #172724; box-shadow: 0 25px 90px rgba(3,25,20,.35); overflow-y: auto; }.agi-dialog::backdrop { background: rgba(5,28,25,.68); backdrop-filter: blur(5px); }.agi-dialog-inner { padding: 34px 47px 38px; }.agi-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #728278; font-size: 10px; letter-spacing: .13em; font-weight: 700; }.agi-dialog-close { width: 34px; height: 34px; padding: 0; border: 1px solid #c8d4c8; border-radius: 50%; background: transparent; color: #244238; font: 24px/1 'DM Sans', sans-serif; cursor: pointer; }.agi-dialog-close:hover { background: #e3e9df; }
+    .agi-dialog-intro { padding: 31px 0 27px; }.agi-dialog-intro h2 { margin: 10px 0 16px; font-size: clamp(54px, 6vw, 78px); line-height: 1; font-weight: 500; letter-spacing: -.075em; }.agi-dialog-intro h2 em { color: #6a8767; }.agi-dialog-intro p { max-width: 720px; margin: 0; color: #5f7067; font-size: 14px; line-height: 1.8; }.agi-dialog-search { display: flex; align-items: center; gap: 13px; padding: 0 18px; border: 1px solid #bacbb8; border-radius: 5px; background: #fff; color: #35594a; }.agi-dialog-search svg { width: 25px; height: 25px; flex: none; }.agi-dialog-search input { width: 100%; height: 53px; border: 0; background: transparent; color: #172724; font: 14px 'DM Sans', sans-serif; outline: none; }.agi-dialog-search input::placeholder { color: #87958a; }
+    .agi-dialog-results { margin-top: 16px; }.agi-topic { display: grid; grid-template-columns: 175px 1fr; gap: 28px; padding: 23px 0 25px; border-top: 1px solid #d8dfd5; }.agi-topic-meta { padding-top: 5px; color: #76907b; font-size: 10px; letter-spacing: .1em; font-weight: 700; }.agi-topic h3, .agi-no-results h3 { margin: 0 0 9px; font-size: 23px; line-height: 1.2; font-weight: 500; letter-spacing: -.045em; }.agi-topic p, .agi-no-results p { margin: 0; color: #617168; font-size: 13px; line-height: 1.8; }.agi-no-results { padding: 28px 0; border-top: 1px solid #d8dfd5; }.agi-no-results button { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 0 0 6px; border: 0; border-bottom: 1px solid #4a7759; background: transparent; color: #244739; font: 600 12px 'DM Sans', sans-serif; cursor: pointer; }.agi-no-results button svg { width: 16px; height: 16px; }.agi-dialog-note { margin: 14px 0 0; padding-top: 17px; border-top: 1px solid #d8dfd5; color: #839185; font-size: 11px; line-height: 1.5; }
+
+    @media (max-width: 1050px) {
+      .container { width: min(100% - 48px, 1440px); }.main-nav { margin-left: 0; }.hero { grid-template-columns: 52% 48%; min-height: 600px; }.hero-copy { padding-left: 38px; }.hero h1 { font-size: clamp(52px, 6vw, 70px); }.intelligence-visual { min-height: 600px; }.orb { width: 75%; }.hero-bottom span:last-child { display: none; }.visual-label { font-size: 8px; padding: 9px 11px; }.label-reason { left: 1%; }.label-create { right: 1%; }.intro-grid h2 { font-size: 76px; }.tools-heading h2 { font-size: 70px; }
+    }
+    @media (max-width: 700px) {
+      .container { width: calc(100% - 32px); }.site-header { height: 72px; }.brand { font-size: 23px; }.brand-symbol { width: 22px; height: 22px; }.main-nav { display: none; }.header-link { padding: 9px 10px 9px 14px; gap: 10px; font-size: 11px; }
+      .hero { display: flex; flex-direction: column; min-height: auto; }.hero-copy { padding: 26px 25px 0; }.hero-eyebrow { font-size: 8px; }.hero-main-copy { padding: 71px 0 42px; }.hero h1 { font-size: clamp(49px, 10.2vw, 73px); }.hero-main-copy > p { margin-top: 23px; font-size: 14px; max-width: 310px; }.hero-bottom { display: none; }.intelligence-visual { min-height: 340px; }.orb { width: 245px; }.orbit-one { width: 330px; height: 330px; }.orbit-two { width: 440px; height: 300px; }.orbit-three { width: 520px; height: 400px; }.orb-glow { width: 300px; height: 300px; }.orb-center { font-size: 48px; }.visual-label { font-size: 8px; }.label-reason { top: 16%; left: 7%; }.label-create { top: 34%; right: 4%; }.label-adapt { bottom: 15%; left: 6%; }.visual-coordinate { display: none; }
+      .section-end { display: none; }.intro-section { padding-top: 75px; padding-bottom: 85px; }.intro-grid { display: block; padding-top: 70px; }.intro-grid h2 { font-size: clamp(68px, 14vw, 92px); }.asterisk-mark { top: -39px; }.intro-content { padding: 48px 0 0; }.intro-lead { font-size: 32px; }.intro-content > p:not(.intro-lead) { font-size: 14px; }.possibilities-section { padding: 55px 0 65px; }.possibilities-top > span:last-child { display: none; }.possibilities-heading { display: block; padding: 48px 0 35px; }.possibilities-heading h2 { font-size: 60px; }.possibilities-heading p { margin-top: 22px; }.capability-grid { grid-template-columns: 1fr; gap: 10px; }.capability, .capability:first-child, .capability:last-child { min-height: 240px; border-radius: 5px; }.capability-graphic { transform: scale(.8); transform-origin: top right; top: 40px; right: 26px; }
+      .tools-section { padding-top: 75px; padding-bottom: 75px; }.tools-heading { display: block; margin: 52px 0 37px; }.tools-heading h2 { font-size: 61px; }.tools-heading > p { margin-top: 24px; }.tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }.tool-card { min-height: 260px; padding: 16px; }.tool-card:nth-child(n) { margin-top: 0; transform: none; }.tool-card:nth-child(even) { margin-top: 23px; }.tool-card-top { font-size: 7px; letter-spacing: .05em; }.tool-arrow { width: 25px; height: 25px; flex: none; }.tool-icon { margin: 26px auto 24px; width: 61px; height: 61px; border-radius: 18px; }.tool-icon svg { width: 37px; height: 37px; }.tool-card h3 { font-size: 23px; }.tool-card p { font-size: 11px; }.tools-footnote { margin-top: 43px; line-height: 1.6; }
+      .closing-inner { min-height: 350px; padding: 37px 28px; display: block; }.closing-inner h2 { font-size: 61px; }.closing-inner:after { font-size: 350px; right: -100px; top: 10px; }.back-top { width: max-content; margin-top: 40px; }.site-footer { min-height: 120px; flex-wrap: wrap; justify-content: space-between; align-content: center; row-gap: 12px; }.site-footer span:last-child { display: none; }
+      .agi-search-card { min-height: 310px; padding: 28px 22px; align-items: start; flex-direction: column; justify-content: space-between; gap: 25px; }.agi-search-card:after { right: -230px; top: -80px; }.agi-search-copy strong { font-size: 32px; }.agi-search-copy > span:last-child { font-size: 12px; }.agi-search-action { width: 100%; }.agi-search-prompt { min-width: 0; width: 100%; }.agi-dialog { max-height: 92dvh; }.agi-dialog-inner { padding: 20px 22px 28px; }.agi-dialog-intro { padding: 28px 0 25px; }.agi-dialog-intro h2 { font-size: 58px; }.agi-dialog-intro p { font-size: 13px; }.agi-topic { grid-template-columns: 1fr; gap: 9px; padding: 22px 0; }.agi-topic h3 { font-size: 22px; }.agi-topic p { font-size: 12px; }
+    }
+    @media (max-width: 390px) { .hero h1 { font-size: 47px; }.hero-main-copy { padding-top: 57px; }.tools-heading h2 { font-size: 52px; }.tool-card { min-height: 275px; }.tool-card-top { max-width: 100%; }.tool-card h3 { font-size: 21px; } }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="site-shell" id="top">
+    <!-- Header -->
+    <header class="site-header container">
+      <a href="#top" class="brand" aria-label="Future, a field guide to intelligence — home">
+        <span class="brand-symbol"><span></span><span></span><span></span><span></span></span>
+        <span>future<span class="brand-period">.</span></span>
+      </a>
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="#about">About AGI</a>
+        <a href="#possibilities">The idea</a>
+        <a href="#tools">Explore tools</a>
+      </nav>
+      <a class="header-link" href="#tools">
+        Discover AI 
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 19 19 5M8 5h11v11" />
+        </svg>
+      </a>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero container" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <div class="eyebrow hero-eyebrow">
+            <span class="eyebrow-line"></span> A FIELD GUIDE TO THE FUTURE <span class="eyebrow-index">/ 001</span>
+          </div>
+          <div class="hero-main-copy">
+            <div class="hero-kicker"><span class="live-dot"></span> ARTIFICIAL GENERAL INTELLIGENCE</div>
+            <h1 id="hero-title">Meet AGI.<br />The future of<br /><em>intelligence.</em></h1>
+            <p>What if a machine could learn, reason, and adapt across almost anything? Explore the idea behind AGI and the AI tools shaping today.</p>
+            <a class="hero-cta" href="#about">
+              Understand AGI 
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 19 19 5M8 5h11v11" />
+                </svg>
+              </span>
+            </a>
+          </div>
+          <div class="hero-bottom">
+            <span>ARTIFICIAL GENERAL INTELLIGENCE</span>
+            <span>SCROLL TO EXPLORE <span class="down-arrow">↓</span></span>
+          </div>
+        </div>
+
+        <!-- Intelligence Visual -->
+        <div class="intelligence-visual" aria-hidden="true">
+          <div class="visual-grid"></div>
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-three"></div>
+          <div class="orb-glow"></div>
+          <div class="orb">
+            <div class="orb-texture"></div>
+            <svg class="orb-lines" viewBox="0 0 400 400" fill="none">
+              <ellipse cx="200" cy="200" rx="72" ry="191" stroke="white" stroke-opacity=".25" />
+              <ellipse cx="200" cy="200" rx="147" ry="191" stroke="white" stroke-opacity=".18" />
+              <path d="M10 200h380M37 126c98 42 228 42 326 0M37 274c98-42 228-42 326 0M88 45c61 56 163 56 224 0M88 355c61-56 163-56 224 0" stroke="white" stroke-opacity=".18" />
+              <circle cx="200" cy="200" r="190" stroke="white" stroke-opacity=".16" />
+            </svg>
+            <span class="orb-center">A<span>*</span>I</span>
+          </div>
+          <span class="orbit-dot dot-one"></span>
+          <span class="orbit-dot dot-two"></span>
+          <span class="orbit-dot dot-three"></span>
+          <div class="visual-label label-reason"><span class="label-spark">*</span> REASON</div>
+          <div class="visual-label label-create"><span class="label-spark">*</span> CREATE</div>
+          <div class="visual-label label-adapt"><span class="label-spark">*</span> ADAPT</div>
+          <div class="visual-coordinate coordinate-top">40° 43′ 55.3″ N</div>
+          <div class="visual-coordinate coordinate-bottom">BEYOND THE KNOWN <span>↗</span></div>
+        </div>
+      </section>
+
+      <!-- Intro Section -->
+      <section class="intro-section container" id="about" aria-labelledby="about-title">
+        <div class="section-heading-row">
+          <span class="section-index">01 / THE BIG IDEA</span>
+          <span class="section-rule"></span>
+          <span class="section-end">A NEW KIND OF POSSIBILITY</span>
+        </div>
+        <div class="intro-grid">
+          <div class="intro-title-wrap">
+            <div class="asterisk-mark" aria-hidden="true">*</div>
+            <h2 id="about-title">So, what<br /><em>is AGI?</em></h2>
+          </div>
+          <div class="intro-content">
+            <p class="intro-lead">Imagine an intelligence that doesn’t just do <em>one thing</em> well — it can learn to do many things.</p>
+            <p>Artificial General Intelligence, or AGI, is the idea of an AI system that could understand, learn, and apply knowledge across a wide range of tasks at a human-like level. Rather than being trained for only one job, it could use what it learns in one area to solve problems in another.</p>
+            <div class="reality-note">
+              <span class="note-icon">i</span>
+              <p><strong>A useful distinction:</strong> AGI is still a goal and an active area of research. The AI tools we use today are impressive, but they are not AGI.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Possibilities Section -->
+      <section class="possibilities-section" id="possibilities" aria-labelledby="possibilities-title">
+        <div class="container">
+          <div class="possibilities-top">
+            <span class="section-index">02 / THINK BIGGER</span>
+            <span>NOT JUST AN ANSWER MACHINE</span>
+          </div>
+          <div class="possibilities-heading">
+            <h2 id="possibilities-title">One mind. <em>Many possibilities.</em></h2>
+            <p>The idea of general intelligence goes beyond mastering a single task. It’s about connecting the dots.</p>
+          </div>
+          <div class="capability-grid">
+            <article class="capability">
+              <span class="capability-number">01 /</span>
+              <div class="capability-graphic graphic-learn"><span></span><span></span><span></span></div>
+              <h3>Learn</h3>
+              <p>Pick up new skills and concepts without starting from scratch every time.</p>
+            </article>
+            <article class="capability">
+              <span class="capability-number">02 /</span>
+              <div class="capability-graphic graphic-reason"><span></span><span></span><span></span><span></span></div>
+              <h3>Reason</h3>
+              <p>Make connections, work through unfamiliar problems, and find a way forward.</p>
+            </article>
+            <article class="capability">
+              <span class="capability-number">03 /</span>
+              <div class="capability-graphic graphic-adapt"><span></span><span></span><span></span></div>
+              <h3>Adapt</h3>
+              <p>Apply what it knows to new situations, contexts, and challenges.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Tools Section -->
+      <section class="tools-section container" id="tools" aria-labelledby="tools-title">
+        <div class="section-heading-row">
+          <span class="section-index">03 / START EXPLORING</span>
+          <span class="section-rule"></span>
+          <span class="section-end">THE TOOLS OF TODAY</span>
+        </div>
+        <div class="tools-heading">
+          <div>
+            <span class="overline">A CURATED STARTING POINT</span>
+            <h2 id="tools-title">Curious? <em>Start here.</em></h2>
+          </div>
+          <p>AGI may be the horizon, but today’s AI tools are already changing how we think, make, and discover. Pick a direction and explore.</p>
+        </div>
+
+        <!-- Interactive AGI Search Trigger Card -->
+        <button type="button" class="agi-search-card" id="openSearchBtn" aria-haspopup="dialog">
+          <span class="agi-search-copy">
+            <span class="agi-search-eyebrow">FEATURED / AN INTERACTIVE GUIDE</span>
+            <strong>Want to understand AGI <em>more deeply?</em></strong>
+            <span>Open the guide and search topics, from the basics to the big questions.</span>
+          </span>
+          <span class="agi-search-action">
+            <span class="agi-search-prompt">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="21" cy="21" r="10" /><path d="m29 29 9 9M16 21h10M21 16v10" />
+              </svg>
+              Search the AGI guide 
+              <span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 19 19 5M8 5h11v11" />
+                </svg>
+              </span>
+            </span>
+          </span>
+        </button>
+
+        <!-- Tools Grid -->
+        <div class="tools-grid">
+          <!-- Tool 01 -->
+          <a class="tool-card tone-mint" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore ChatGPT (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>01 / CONVERSATION</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M10 12.5h28v20H24l-8 6v-6h-6z" /><path d="M17 21h14M17 26h9" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>ChatGPT</h3>
+              <p>Think out loud, learn something new, and get ideas moving.</p>
+            </div>
+          </a>
+
+          <!-- Tool 02 -->
+          <a class="tool-card tone-peach" href="https://claude.ai/" target="_blank" rel="noopener noreferrer" aria-label="Explore Claude (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>02 / WRITING &amp; REASONING</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M11 35h26M15 12h18v16H15zM20 19h8M20 24h5" /><path d="m30 28 5 5" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>Claude</h3>
+              <p>A thoughtful partner for writing, analysis, and complex tasks.</p>
+            </div>
+          </a>
+
+          <!-- Tool 03 -->
+          <a class="tool-card tone-blue" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer" aria-label="Explore Perplexity (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>03 / DISCOVERY</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="21" cy="21" r="10" /><path d="m29 29 9 9M16 21h10M21 16v10" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>Perplexity</h3>
+              <p>Explore questions with answers grounded in sources.</p>
+            </div>
+          </a>
+
+          <!-- Tool 04 -->
+          <a class="tool-card tone-lavender" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Gemini (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>04 / EVERYDAY ASSISTANCE</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M24 6c1.7 10.3 5.7 14.3 16 16-10.3 1.7-14.3 5.7-16 16-1.7-10.3-5.7-14.3-16-16 10.3-1.7 14.3-5.7 16-16Z" /><path d="M35 7v7M31.5 10.5h7" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>Gemini</h3>
+              <p>Create, plan, and get help across different kinds of work.</p>
+            </div>
+          </a>
+
+          <!-- Tool 05 -->
+          <a class="tool-card tone-yellow" href="https://www.midjourney.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Midjourney (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>05 / IMAGE MAKING</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="8" y="10" width="32" height="28" rx="2" /><circle cx="18" cy="19" r="3" /><path d="m9 33 10-9 7 6 5-5 9 9" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>Midjourney</h3>
+              <p>Turn a creative prompt into expressive visual worlds.</p>
+            </div>
+          </a>
+
+          <!-- Tool 06 -->
+          <a class="tool-card tone-pink" href="https://runwayml.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Runway (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>06 / VIDEO MAKING</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="7" y="12" width="34" height="24" rx="3" /><path d="m21 19 9 5-9 5zM12 12v24M36 12v24" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>Runway</h3>
+              <p>Experiment with AI-powered filmmaking and motion.</p>
+            </div>
+          </a>
+        </div>
+
+        <p class="tools-footnote"><span>*</span> A collection of current AI tools to explore — not examples of AGI.</p>
+      </section>
+
+      <!-- Closing Section -->
+      <section class="closing-section container">
+        <div class="closing-inner">
+          <div>
+            <span class="overline">THE FUTURE IS A QUESTION WORTH ASKING</span>
+            <h2>Stay curious.<br /><em>Think beyond.</em></h2>
+          </div>
+          <a href="#top" class="back-top">
+            Back to top 
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 19 19 5M8 5h11v11" />
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer container">
+      <a href="#top" class="footer-brand">future<span>.</span></a>
+      <span>AN EXPLORATION OF INTELLIGENCE &amp; POSSIBILITY</span>
+      <span>MADE FOR THE CURIOUS MINDS</span>
+    </footer>
+
+    <!-- Interactive Search Dialog -->
+    <dialog id="agiDialog" class="agi-dialog" aria-labelledby="agi-dialog-title">
+      <div class="agi-dialog-inner">
+        <div class="agi-dialog-header">
+          <span>FUTURE. / FIELD GUIDE 001</span>
+          <button type="button" class="agi-dialog-close" id="closeSearchBtn" aria-label="Close AGI guide">×</button>
+        </div>
+        <div class="agi-dialog-intro">
+          <span class="overline">A DEEPER LOOK AT THE BIG IDEA</span>
+          <h2 id="agi-dialog-title">Explore <em>AGI.</em></h2>
+          <p>AGI is the idea of a machine with broad, adaptable intelligence: one that could learn and reason across different subjects and unfamiliar situations. It has not been established as a reality today. Explore the questions below to understand what it might mean — and what remains uncertain.</p>
+        </div>
+        <label class="agi-dialog-search">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="21" cy="21" r="10" /><path d="m29 29 9 9M16 21h10M21 16v10" />
+          </svg>
+          <span class="sr-only">Search AGI topics</span>
+          <input id="agiSearchInput" type="search" placeholder="Search AGI topics, risks, timeline..." />
+        </label>
+        <div class="agi-dialog-results" id="agiResults" aria-live="polite"></div>
+        <p class="agi-dialog-note">This guide explains a research concept. It is not a live AI chatbot or a claim that AGI already exists.</p>
+      </div>
+    </dialog>
+  </div>
+
+  <script>
+    const agiTopics = [
+      {
+        title: "What exactly is AGI?",
+        label: "THE DEFINITION",
+        keywords: "meaning definition kya hai artificial general intelligence",
+        text: "Artificial General Intelligence is a proposed kind of AI that could learn and apply knowledge across many different kinds of tasks, rather than being built mainly for a narrow set of jobs. The key idea is flexibility: it could face a new problem, understand the context, and use what it already knows to work toward a solution. Researchers do not agree on a single test or definition for when a system would count as AGI.",
+      },
+      {
+        title: "How is it different from today's AI?",
+        label: "THE DIFFERENCE",
+        keywords: "chatgpt claude gemini current ai narrow ai vs agi difference farq",
+        text: "Today's AI can write, generate images, analyze information, and help with many tasks. But its abilities can be uneven: doing well on one task does not guarantee reliable understanding or performance on an unfamiliar one. AGI would mean broad, adaptable competence across domains. Current tools are powerful AI systems, not established examples of AGI.",
+      },
+      {
+        title: "What could it be able to do?",
+        label: "THE POSSIBILITIES",
+        keywords: "capabilities learn reason adapt solve science education medicine use benefits",
+        text: "A general-purpose system might learn unfamiliar skills, combine ideas from different fields, reason through new problems, and adapt when circumstances change. In principle, that could help with scientific discovery, education, healthcare, and creative work. These are possibilities, not promises: what AGI could actually do would depend on how it is built and evaluated.",
+      },
+      {
+        title: "Why does safety matter?",
+        label: "THE CHALLENGES",
+        keywords: "risk safety ethics bias misuse control jobs impact challenges",
+        text: "More capable AI could also bring larger risks. Important questions include whether systems are reliable, whose goals they follow, how they handle bias and privacy, who is accountable for their actions, and how benefits are shared. Testing, human oversight, and careful governance matter as much as raw capability.",
+      },
+      {
+        title: "When will AGI arrive?",
+        label: "THE OPEN QUESTION",
+        keywords: "when future timeline date arrive prediction kab aayega",
+        text: "Nobody knows. Experts disagree about the path to AGI, the milestones that would prove it exists, and whether today's approaches are enough to get there. It is best understood as an active research goal rather than a finished product or a date on a calendar.",
+      },
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const dialog = document.getElementById("agiDialog");
+      const openSearchBtn = document.getElementById("openSearchBtn");
+      const closeSearchBtn = document.getElementById("closeSearchBtn");
+      const searchInput = document.getElementById("agiSearchInput");
+      const resultsContainer = document.getElementById("agiResults");
+
+      function renderTopics(filterQuery = "") {
+        const q = filterQuery.trim().toLowerCase();
+        const matching = agiTopics.filter((topic) => {
+          const fullText = `${topic.title} ${topic.label} ${topic.keywords} ${topic.text}`.toLowerCase();
+          return !q || q.split(/\s+/).every((word) => fullText.includes(word));
+        });
+
+        if (!matching.length) {
+          resultsContainer.innerHTML = `
+            <div class="agi-no-results">
+              <h3>No topic found.</h3>
+              <p>Try searching for “safety”, “today’s AI”, “learn”, or “timeline”.</p>
+              <button type="button" id="resetTopicsBtn">
+                Show all topics 
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
+                  <path d="M4 12h16m-6-6 6 6-6 6" />
+                </svg>
+              </button>
+            </div>
+          `;
+          document.getElementById("resetTopicsBtn")?.addEventListener("click", () => {
+            searchInput.value = "";
+            renderTopics("");
+            searchInput.focus();
+          });
+          return;
+        }
+
+        resultsContainer.innerHTML = matching.map((topic, index) => `
+          <article class="agi-topic">
+            <span class="agi-topic-meta">${String(index + 1).padStart(2, "0")} / ${topic.label}</span>
+            <div>
+              <h3>${topic.title}</h3>
+              <p>${topic.text}</p>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      openSearchBtn?.addEventListener("click", () => {
+        searchInput.value = "";
+        renderTopics("");
+        dialog.showModal();
+        searchInput.focus();
+      });
+
+      closeSearchBtn?.addEventListener("click", () => {
+        dialog.close();
+      });
+
+      dialog?.addEventListener("click", (e) => {
+        if (e.target === dialog) {
+          dialog.close();
+        }
+      });
+
+      searchInput?.addEventListener("input", (e) => {
+        renderTopics(e.target.value);
+      });
+
+      renderTopics("");
+    });
+  </script>
+</body>
+</html>
