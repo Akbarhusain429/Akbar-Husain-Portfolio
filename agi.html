@@ -10,7 +10,6 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
     
-    /* Tailwind Reset / Helpers */
     .sr-only {
       position: absolute;
       width: 1px;
@@ -34,23 +33,55 @@
     .container { width: min(100% - 96px, 1440px); margin-inline: auto; }
     em { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
 
+    /* Header & Portfolio Logo */
     .site-header { height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
     
-    /* Updated Brand Logo Styling */
-    .brand-logo { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; }
-    .brand-logo svg { flex: none; width: 44px; height: 32px; }
-    .brand-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
-    .brand-name { font-size: 19px; font-weight: 700; letter-spacing: -0.5px; color: #172724; }
-    .brand-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.14em; color: #537265; margin-top: 3px; }
+    .portfolio-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      line-height: 1;
+    }
+    .portfolio-brand .logo-img {
+      width: 48px;
+      height: 48px;
+      object-fit: contain;
+      display: block;
+    }
+    .portfolio-brand .brand-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+    }
+    .portfolio-brand .brand-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 21px;
+      font-weight: 700;
+      color: #172724;
+      letter-spacing: -0.5px;
+      margin: 0;
+    }
+    .portfolio-brand .brand-role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      color: #2f6f6f;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin: 0;
+    }
 
     .main-nav { display: flex; gap: clamp(24px, 3.3vw, 54px); margin-left: 70px; }
     .main-nav a { color: #53615c; font-size: 13px; font-weight: 600; transition: color .2s; }
     .main-nav a:hover { color: #172724; }
-    .header-link { border: 1px solid #c8d0c5; border-radius: 50px; padding: 12px 15px 12px 20px; display: flex; align-items: center; gap: 22px; font-size: 12px; font-weight: 700; transition: background .2s, color .2s, border-color .2s; }
-    .header-link:hover { background: #163b34; color: white; border-color: #163b34; }
+    .header-link { border: 1px solid #c8d0c5; border-radius: 50px; padding: 12px 15px 12px 20px; display: flex; align-items: center; gap: 22px; font-size: 12px; font-weight: 700; transition: background .2s, color .2s; }
+    .header-link:hover { background: #163b34; color: white; }
     .header-link svg { width: 16px; height: 16px; }
 
-    .hero { min-height: 664px; background: #092b2b; border-radius: 12px; display: grid; grid-template-columns: 49% 51%; color: #f7f8ef; position: relative; isolation: isolate; overflow: hidden; box-shadow: 0 20px 40px rgba(9, 43, 43, 0.15); }
+    /* Hero */
+    .hero { min-height: 664px; background: #092b2b; border-radius: 7px; display: grid; grid-template-columns: 49% 51%; color: #f7f8ef; position: relative; isolation: isolate; overflow: hidden; }
     .hero-copy { display: flex; flex-direction: column; justify-content: space-between; padding: 36px 0 34px 58px; position: relative; z-index: 3; }
     .eyebrow, .hero-kicker, .hero-bottom, .section-index, .section-end, .overline, .possibilities-top, .tool-card-top, .tools-footnote, .site-footer, .visual-label, .visual-coordinate { font-size: 10px; letter-spacing: .13em; font-weight: 700; }
     .hero-eyebrow { color: #a4c3b9; display: flex; align-items: center; gap: 12px; white-space: nowrap; }
@@ -62,7 +93,7 @@
     .hero h1 { font-size: clamp(58px, 5.1vw, 88px); line-height: .985; font-weight: 500; letter-spacing: -.075em; margin: 0; white-space: nowrap; }
     .hero h1 em { color: #d6e9a6; letter-spacing: -.05em; }
     .hero-main-copy > p { margin: 30px 0 32px; max-width: 375px; font-size: 15px; line-height: 1.75; color: #b5cbc3; }
-    .hero-cta { width: max-content; display: flex; align-items: center; gap: 28px; background: #d8efa8; color: #152e29; border-radius: 40px; padding: 7px 7px 7px 21px; font-size: 12px; font-weight: 700; transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1), background .2s; }
+    .hero-cta { width: max-content; display: flex; align-items: center; gap: 28px; background: #d8efa8; color: #152e29; border-radius: 40px; padding: 7px 7px 7px 21px; font-size: 12px; font-weight: 700; transition: transform .2s, background .2s; }
     .hero-cta:hover { transform: translateY(-3px); background: #efffc9; }
     .hero-cta span { width: 33px; height: 33px; display: grid; place-items: center; border-radius: 50%; background: #173b35; color: white; }
     .hero-cta svg { width: 16px; height: 16px; }
@@ -84,12 +115,12 @@
     .orb-center span { font-size: .68em; font-weight: 400; }
     .orbit-dot { position: absolute; z-index: 2; width: 7px; height: 7px; border-radius: 50%; background: #e7fac1; box-shadow: 0 0 16px #dff5bd; }
     .dot-one { top: 16%; left: 44%; }.dot-two { top: 70%; right: 12%; }.dot-three { bottom: 15%; left: 22%; }
-    .visual-label { position: absolute; z-index: 2; color: #edf9da; border: 1px solid rgba(221, 251, 213, .36); background: rgba(18, 64, 61, 0.85); backdrop-filter: blur(12px); border-radius: 6px; padding: 12px 16px; display: flex; align-items: center; gap: 11px; box-shadow: 0 8px 28px rgba(0,0,0,.15); transition: transform 0.3s ease; }
-    .visual-label:hover { transform: scale(1.05); }
+    .visual-label { position: absolute; z-index: 2; color: #edf9da; border: 1px solid rgba(221, 251, 213, .36); background: rgba(18, 64, 61, .73); backdrop-filter: blur(8px); border-radius: 4px; padding: 12px 16px; display: flex; align-items: center; gap: 11px; box-shadow: 0 8px 28px rgba(0,0,0,.12); }
     .label-spark { color: #d5eea7; font-size: 18px; line-height: .7; font-weight: 400; }
     .label-reason { top: 19%; left: 6%; transform: rotate(-8deg); }.label-create { top: 31%; right: 3%; transform: rotate(7deg); }.label-adapt { bottom: 18%; left: 11%; transform: rotate(5deg); }
     .visual-coordinate { position: absolute; z-index: 2; color: #86aaa0; font-size: 9px; }.coordinate-top { top: 42px; right: 35px; }.coordinate-bottom { bottom: 39px; right: 35px; display: flex; gap: 14px; align-items: center; }.coordinate-bottom span { font-size: 16px; font-weight: 400; color: #d7eead; }
 
+    /* Intro */
     .section-heading-row { display: flex; align-items: center; gap: 22px; color: #64726d; }.section-index { color: #254b40; white-space: nowrap; }.section-rule { flex: 1; height: 1px; background: #d5dcd2; }.section-end { white-space: nowrap; color: #89958b; }
     .intro-section { padding-top: 114px; padding-bottom: 134px; scroll-margin-top: 20px; }
     .intro-grid { display: grid; grid-template-columns: 49% 51%; padding-top: 80px; }
@@ -100,34 +131,134 @@
     .intro-content > p:not(.intro-lead) { max-width: 590px; font-size: 15px; line-height: 1.85; color: #66716a; margin: 0; }
     .reality-note { margin-top: 30px; max-width: 585px; border-top: 1px solid #d4dbd1; padding-top: 22px; display: flex; align-items: flex-start; gap: 15px; }.note-icon { flex: none; width: 22px; height: 22px; border: 1px solid #829a80; color: #537256; border-radius: 50%; display: grid; place-items: center; font-family: Georgia, serif; font-size: 15px; font-style: italic; }.reality-note p { margin: 0; color: #69756e; font-size: 12px; line-height: 1.65; }.reality-note strong { color: #284039; }
 
-    .possibilities-section { background: #e8ede2; padding: 69px 0 87px; border-radius: 16px; scroll-margin-top: 20px; }.possibilities-top { display: flex; justify-content: space-between; color: #7b8d7d; }.possibilities-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding: 60px 0 57px; }.possibilities-heading h2 { max-width: 800px; font-size: clamp(53px, 5.5vw, 84px); }.possibilities-heading p { max-width: 255px; margin: 0 0 7px; color: #65776c; font-size: 13px; line-height: 1.7; }
-    .capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }.capability { background: #f6f7f0; min-height: 325px; padding: 27px 30px 30px; display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease; }.capability:hover { transform: translateY(-5px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }.capability:first-child { border-radius: 8px 0 0 8px; }.capability:last-child { border-radius: 0 8px 8px 0; }.capability-number { font-size: 11px; font-weight: 700; color: #829787; }.capability h3 { margin: auto 0 7px; font-size: 26px; letter-spacing: -.06em; font-weight: 500; }.capability p { margin: 0; max-width: 270px; font-size: 12px; line-height: 1.65; color: #718077; }
-    .capability-graphic { position: absolute; top: 56px; right: 43px; width: 135px; height: 145px; }.graphic-learn span { position: absolute; border: 1.5px solid #769784; border-radius: 50%; width: 75px; height: 75px; }.graphic-learn span:nth-child(1) { top: 0; left: 30px; }.graphic-learn span:nth-child(2) { top: 48px; left: 0; }.graphic-learn span:nth-child(3) { top: 48px; left: 60px; background: rgba(161, 202, 151, .2); }.graphic-reason span { position: absolute; width: 42px; height: 42px; border: 1.5px solid #779e8b; transform: rotate(45deg); }.graphic-reason span:nth-child(1) { top: 11px; left: 48px; }.graphic-reason span:nth-child(2) { top: 58px; left: 2px; }.graphic-reason span:nth-child(3) { top: 58px; left: 94px; }.graphic-reason span:nth-child(4) { top: 105px; left: 48px; background: #dcebd5; }.graphic-adapt span { position: absolute; width: 98px; height: 98px; border: 1.5px solid #729781; border-radius: 50% 50% 10% 50%; transform: rotate(-45deg); }.graphic-adapt span:nth-child(1) { top: 0; left: 18px; }.graphic-adapt span:nth-child(2) { top: 17px; left: 18px; }.graphic-adapt span:nth-child(3) { top: 34px; left: 18px; background: rgba(167, 204, 161, .17); }
+    /* 02 / THINK BIGGER - 12 PILLARS GRID */
+    .possibilities-section { background: #e8ede2; padding: 75px 0 95px; scroll-margin-top: 20px; }
+    .possibilities-top { display: flex; justify-content: space-between; color: #7b8d7d; }
+    .possibilities-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding: 55px 0 52px; }
+    .possibilities-heading h2 { max-width: 840px; font-size: clamp(52px, 5.4vw, 82px); }
+    .possibilities-heading p { max-width: 290px; margin: 0 0 7px; color: #65776c; font-size: 13px; line-height: 1.7; }
+    
+    .capability-grid { 
+      display: grid; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 15px; 
+    }
+    .capability { 
+      background: #f6f7f0; 
+      min-height: 310px; 
+      padding: 25px 26px 28px; 
+      display: flex; 
+      flex-direction: column; 
+      position: relative; 
+      overflow: hidden; 
+      border-radius: 6px !important;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .capability:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 32px rgba(35, 60, 45, 0.08);
+    }
+    .capability-number { font-size: 9.5px; font-weight: 700; color: #829787; letter-spacing: .08em; }
+    .capability h3 { margin: auto 0 8px; font-size: 21px; letter-spacing: -.05em; font-weight: 500; line-height: 1.2; }
+    .capability p { margin: 0; max-width: 260px; font-size: 11.5px; line-height: 1.65; color: #718077; }
+    .capability-graphic { position: absolute; top: 32px; right: 22px; width: 110px; height: 110px; pointer-events: none; }
 
+    /* 12 Distinct Geometric Visuals */
+    .graphic-learn span { position: absolute; border: 1.5px solid #769784; border-radius: 50%; width: 52px; height: 52px; }
+    .graphic-learn span:nth-child(1) { top: 0; left: 20px; }
+    .graphic-learn span:nth-child(2) { top: 32px; left: 0; }
+    .graphic-learn span:nth-child(3) { top: 32px; left: 40px; background: rgba(161, 202, 151, .2); }
+
+    .graphic-reason span { position: absolute; width: 28px; height: 28px; border: 1.5px solid #779e8b; transform: rotate(45deg); }
+    .graphic-reason span:nth-child(1) { top: 8px; left: 36px; }
+    .graphic-reason span:nth-child(2) { top: 38px; left: 6px; }
+    .graphic-reason span:nth-child(3) { top: 38px; left: 66px; }
+    .graphic-reason span:nth-child(4) { top: 68px; left: 36px; background: #dcebd5; }
+
+    .graphic-adapt span { position: absolute; width: 68px; height: 68px; border: 1.5px solid #729781; border-radius: 50% 50% 10% 50%; transform: rotate(-45deg); }
+    .graphic-adapt span:nth-child(1) { top: 0; left: 14px; }
+    .graphic-adapt span:nth-child(2) { top: 12px; left: 14px; }
+    .graphic-adapt span:nth-child(3) { top: 24px; left: 14px; background: rgba(167, 204, 161, .17); }
+
+    .graphic-memory span { position: absolute; width: 68px; height: 18px; border: 1.5px solid #729683; border-radius: 20px; }
+    .graphic-memory span:nth-child(1) { top: 10px; right: 8px; }
+    .graphic-memory span:nth-child(2) { top: 34px; right: 16px; background: rgba(161, 202, 151, .2); }
+    .graphic-memory span:nth-child(3) { top: 58px; right: 24px; }
+
+    .graphic-perceive span { position: absolute; border: 1.5px solid #769986; border-radius: 50%; }
+    .graphic-perceive span:nth-child(1) { width: 72px; height: 72px; top: 10px; right: 10px; }
+    .graphic-perceive span:nth-child(2) { width: 38px; height: 38px; top: 27px; right: 27px; background: #dcebd5; }
+    .graphic-perceive span:nth-child(3) { width: 10px; height: 10px; top: 41px; right: 41px; background: #264a3e; border: none; }
+
+    .graphic-autonomy span { position: absolute; border-radius: 50%; }
+    .graphic-autonomy span:nth-child(1) { width: 58px; height: 58px; top: 10px; right: 16px; border: 1.5px dashed #739883; transform: rotate(18deg); }
+    .graphic-autonomy span:nth-child(2) { width: 36px; height: 36px; top: 32px; right: 38px; border: 1.5px solid #739883; background: rgba(167, 204, 161, .22); }
+
+    .graphic-world span { position: absolute; border: 1.5px solid #759a85; }
+    .graphic-world span:nth-child(1) { width: 62px; height: 62px; top: 10px; right: 14px; border-radius: 50%; }
+    .graphic-world span:nth-child(2) { width: 62px; height: 24px; top: 29px; right: 14px; border-radius: 50%; }
+    .graphic-world span:nth-child(3) { width: 24px; height: 62px; top: 10px; right: 33px; border-radius: 50%; background: rgba(175, 212, 169, .15); }
+
+    .graphic-critic span { position: absolute; width: 44px; height: 44px; border: 1.5px solid #719582; }
+    .graphic-critic span:nth-child(1) { top: 12px; right: 18px; border-radius: 8px; transform: rotate(8deg); }
+    .graphic-critic span:nth-child(2) { top: 24px; right: 32px; border-radius: 8px; border-style: dashed; background: rgba(161, 202, 151, .25); transform: rotate(-12deg); }
+
+    .graphic-swarm span { position: absolute; border-radius: 50%; background: #294c41; }
+    .graphic-swarm span:nth-child(1) { width: 12px; height: 12px; top: 16px; right: 48px; }
+    .graphic-swarm span:nth-child(2) { width: 16px; height: 16px; top: 42px; right: 18px; background: #719582; }
+    .graphic-swarm span:nth-child(3) { width: 10px; height: 10px; top: 52px; right: 68px; background: #a2ca97; }
+    .graphic-swarm span:nth-child(4) { width: 72px; height: 64px; top: 14px; right: 14px; border: 1.5px dashed #759a85; background: transparent; }
+
+    .graphic-causal span { position: absolute; border-radius: 50%; }
+    .graphic-causal span:nth-child(1) { width: 24px; height: 24px; top: 10px; right: 60px; border: 1.5px solid #6b9480; }
+    .graphic-causal span:nth-child(2) { width: 34px; height: 34px; top: 40px; right: 15px; border: 1.5px solid #6b9480; background: #d7ebd1; }
+    .graphic-causal span:nth-child(3) { width: 48px; height: 2px; top: 32px; right: 30px; background: #719582; transform: rotate(-35deg); border-radius: 0; }
+
+    .graphic-recursive span { position: absolute; border: 1.5px solid #729683; }
+    .graphic-recursive span:nth-child(1) { width: 64px; height: 64px; top: 10px; right: 15px; border-radius: 50%; border-top-color: transparent; transform: rotate(45deg); }
+    .graphic-recursive span:nth-child(2) { width: 42px; height: 42px; top: 21px; right: 26px; border-radius: 50%; border-bottom-color: transparent; transform: rotate(-30deg); background: rgba(161, 202, 151, .2); }
+
+    .graphic-align span { position: absolute; border-radius: 4px; }
+    .graphic-align span:nth-child(1) { width: 55px; height: 55px; top: 15px; right: 20px; border: 1.5px solid #234b3e; transform: rotate(45deg); }
+    .graphic-align span:nth-child(2) { width: 32px; height: 32px; top: 26.5px; right: 31.5px; background: #cce7c5; transform: rotate(45deg); border: 1.5px dashed #234b3e; }
+
+    /* Tools Section */
     .tools-section { padding-top: 114px; padding-bottom: 112px; scroll-margin-top: 20px; }.tools-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin: 62px 0 50px; }.overline { color: #78917c; }.tools-heading h2 { font-size: clamp(56px, 5.5vw, 85px); margin-top: 16px; }.tools-heading > p { max-width: 340px; font-size: 14px; line-height: 1.75; color: #6b766e; margin: 0 0 4px; }
-    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; align-items: start; }.tool-card { min-height: 326px; padding: 23px 25px 26px; border-radius: 8px; display: flex; flex-direction: column; position: relative; transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s cubic-bezier(0.16, 1, 0.3, 1); }.tool-card:hover { transform: translateY(-7px) rotate(0deg) !important; box-shadow: 0 20px 40px rgba(38, 64, 45, .12); }.tool-card:nth-child(2) { margin-top: 36px; transform: rotate(1.4deg); }.tool-card:nth-child(3) { margin-top: 9px; transform: rotate(-1.3deg); }.tool-card:nth-child(4) { margin-top: -23px; transform: rotate(-1deg); }.tool-card:nth-child(5) { margin-top: 15px; transform: rotate(1deg); }.tool-card:nth-child(6) { margin-top: -24px; transform: rotate(-.8deg); }.tone-mint { background: #e1eee6; }.tone-peach { background: #f1e6dd; }.tone-blue { background: #e1eaf0; }.tone-lavender { background: #e9e5f1; }.tone-yellow { background: #f1edda; }.tone-pink { background: #f0e2e3; }
-    .tool-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #65766a; font-size: 9px; }.tool-arrow { width: 29px; height: 29px; border: 1px solid rgba(33, 58, 45, .25); border-radius: 50%; display: grid; place-items: center; transition: background .2s, color .2s, border-color .2s; }.tool-arrow svg { width: 14px; height: 14px; }.tool-card:hover .tool-arrow { background: #1c3a31; color: #fff; border-color: #1c3a31; }.tool-icon { width: 83px; height: 83px; margin: 34px auto 25px; border: 1px solid rgba(33, 58, 45, .19); border-radius: 24px; display: grid; place-items: center; transform: rotate(-7deg); color: #254a3a; background: rgba(255,255,255,.28); transition: transform 0.3s ease; }.tool-card:hover .tool-icon { transform: rotate(0deg) scale(1.05); }.tool-icon svg { width: 49px; height: 49px; }.tool-card:nth-child(even) .tool-icon { transform: rotate(7deg); }.tool-card:nth-child(even):hover .tool-icon { transform: rotate(0deg) scale(1.05); }.tool-card-bottom { margin-top: auto; }.tool-card h3 { font-weight: 500; font-size: 27px; line-height: 1; letter-spacing: -.055em; margin: 0 0 10px; }.tool-card p { font-size: 12px; line-height: 1.6; color: #65736a; margin: 0; max-width: 260px; }.tools-footnote { margin: 48px 0 0; color: #839184; font-size: 10px; letter-spacing: .035em; }.tools-footnote span { color: #6f916b; font-size: 17px; vertical-align: -2px; margin-right: 8px; }
+    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; align-items: start; }.tool-card { min-height: 326px; padding: 23px 25px 26px; border-radius: 5px; display: flex; flex-direction: column; position: relative; transition: transform .25s, box-shadow .25s; }.tool-card:hover { transform: translateY(-7px) rotate(0deg) !important; box-shadow: 0 18px 35px rgba(38, 64, 45, .1); }.tool-card:nth-child(2) { margin-top: 36px; transform: rotate(1.4deg); }.tool-card:nth-child(3) { margin-top: 9px; transform: rotate(-1.3deg); }.tool-card:nth-child(4) { margin-top: -23px; transform: rotate(-1deg); }.tool-card:nth-child(5) { margin-top: 15px; transform: rotate(1deg); }.tool-card:nth-child(6) { margin-top: -24px; transform: rotate(-.8deg); }.tone-mint { background: #e1eee6; }.tone-peach { background: #f1e6dd; }.tone-blue { background: #e1eaf0; }.tone-lavender { background: #e9e5f1; }.tone-yellow { background: #f1edda; }.tone-pink { background: #f0e2e3; }
+    .tool-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #65766a; font-size: 9px; }.tool-arrow { width: 29px; height: 29px; border: 1px solid rgba(33, 58, 45, .25); border-radius: 50%; display: grid; place-items: center; transition: background .2s, color .2s; }.tool-arrow svg { width: 14px; height: 14px; }.tool-card:hover .tool-arrow { background: #1c3a31; color: #fff; }.tool-icon { width: 83px; height: 83px; margin: 34px auto 25px; border: 1px solid rgba(33, 58, 45, .19); border-radius: 24px; display: grid; place-items: center; transform: rotate(-7deg); color: #254a3a; background: rgba(255,255,255,.28); }.tool-icon svg { width: 49px; height: 49px; }.tool-card:nth-child(even) .tool-icon { transform: rotate(7deg); }.tool-card-bottom { margin-top: auto; }.tool-card h3 { font-weight: 500; font-size: 27px; line-height: 1; letter-spacing: -.055em; margin: 0 0 10px; }.tool-card p { font-size: 12px; line-height: 1.6; color: #65736a; margin: 0; max-width: 260px; }.tools-footnote { margin: 48px 0 0; color: #839184; font-size: 10px; letter-spacing: .035em; }.tools-footnote span { color: #6f916b; font-size: 17px; vertical-align: -2px; margin-right: 8px; }
 
-    .closing-section { padding-bottom: 30px; }.closing-inner { min-height: 350px; border-radius: 12px; background: #173d35; color: #f7f8ef; padding: 55px 65px; display: flex; justify-content: space-between; align-items: end; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(23, 61, 53, 0.2); }.closing-inner:after { content: '*'; font-family: Georgia, serif; font-size: 620px; line-height: 1; position: absolute; top: -150px; right: 5%; color: rgba(190, 226, 171, .07); pointer-events: none; }.closing-inner .overline { color: #b4d499; }.closing-inner h2 { font-size: clamp(62px, 6vw, 92px); margin-top: 30px; position: relative; z-index: 1; }.closing-inner h2 em { color: #cfe6aa; }.back-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 22px; border-bottom: 1px solid #a8c8b9; padding-bottom: 9px; font-size: 12px; font-weight: 600; white-space: nowrap; transition: opacity 0.2s; }.back-top:hover { opacity: 0.8; }.back-top svg { width: 17px; height: 17px; }
-    .site-footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #869389; font-size: 9px; }
+    /* Closing */
+    .closing-section { padding-bottom: 30px; }.closing-inner { min-height: 350px; border-radius: 6px; background: #173d35; color: #f7f8ef; padding: 55px 65px; display: flex; justify-content: space-between; align-items: end; position: relative; overflow: hidden; }.closing-inner:after { content: '*'; font-family: Georgia, serif; font-size: 620px; line-height: 1; position: absolute; top: -150px; right: 5%; color: rgba(190, 226, 171, .09); pointer-events: none; }.closing-inner .overline { color: #b4d499; }.closing-inner h2 { font-size: clamp(62px, 6vw, 92px); margin-top: 30px; position: relative; z-index: 1; }.closing-inner h2 em { color: #cfe6aa; }.back-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 22px; border-bottom: 1px solid #a8c8b9; padding-bottom: 9px; font-size: 12px; font-weight: 600; white-space: nowrap; }.back-top svg { width: 17px; height: 17px; }
+    .site-footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #869389; font-size: 9px; }.footer-brand { color: #233c33; font-size: 24px; letter-spacing: -.08em; font-weight: 700; text-transform: none; }
 
-    .agi-search-card { width: 100%; min-height: 235px; margin-bottom: 23px; padding: 34px 39px; border: 0; border-radius: 8px; background: radial-gradient(circle at 76% 35%, #315f53 0%, #1e493e 34%, #173d35 69%); color: #f6f8ec; display: flex; align-items: end; justify-content: space-between; gap: 35px; text-align: left; font: inherit; cursor: pointer; overflow: hidden; position: relative; transition: transform .3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow .3s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 30px rgba(23, 61, 53, 0.15); }
-    .agi-search-card:hover { transform: translateY(-4px); box-shadow: 0 20px 45px rgba(38,64,45,.2); }
+    /* Search Dialog */
+    .agi-search-card { width: 100%; min-height: 235px; margin-bottom: 23px; padding: 34px 39px; border: 0; border-radius: 5px; background: radial-gradient(circle at 76% 35%, #315f53 0%, #1e493e 34%, #173d35 69%); color: #f6f8ec; display: flex; align-items: end; justify-content: space-between; gap: 35px; text-align: left; font: inherit; cursor: pointer; overflow: hidden; position: relative; transition: transform .25s, box-shadow .25s; }
+    .agi-search-card:hover { transform: translateY(-4px); box-shadow: 0 18px 35px rgba(38,64,45,.14); }
     .agi-search-card:focus-visible, .agi-dialog button:focus-visible, .agi-dialog input:focus-visible { outline: 3px solid #a9cc9b; outline-offset: 3px; }
     .agi-search-card:after { content: ''; position: absolute; width: 410px; height: 410px; right: 18%; top: -138px; border: 1px solid rgba(214,236,188,.2); border-radius: 50%; box-shadow: 0 0 0 48px rgba(214,236,188,.04), 0 0 0 100px rgba(214,236,188,.04); pointer-events: none; }
-    .agi-search-copy, .agi-search-action { position: relative; z-index: 1; }.agi-search-copy { display: flex; flex-direction: column; align-items: start; max-width: 570px; }.agi-search-eyebrow { color: #b9d69e; font-size: 10px; letter-spacing: .14em; font-weight: 700; margin-bottom: 19px; }.agi-search-copy strong { font-size: clamp(28px, 3.1vw, 45px); line-height: 1.1; font-weight: 500; letter-spacing: -.055em; }.agi-search-copy strong em { color: #d2e8aa; }.agi-search-copy > span:last-child { margin-top: 15px; color: #b8cec1; font-size: 13px; line-height: 1.5; }.agi-search-action { flex: none; }.agi-search-prompt { min-width: 245px; display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 16px; border-radius: 40px; background: #eef4df; color: #254438; font-size: 12px; font-weight: 700; transition: background 0.2s; }.agi-search-prompt:hover { background: #ffffff; }.agi-search-prompt > svg { width: 23px; height: 23px; }.agi-search-prompt span { width: 35px; height: 35px; margin-left: auto; border-radius: 50%; display: grid; place-items: center; background: #254438; color: #fff; }
+    .agi-search-copy, .agi-search-action { position: relative; z-index: 1; }.agi-search-copy { display: flex; flex-direction: column; align-items: start; max-width: 570px; }.agi-search-eyebrow { color: #b9d69e; font-size: 10px; letter-spacing: .14em; font-weight: 700; margin-bottom: 19px; }.agi-search-copy strong { font-size: clamp(28px, 3.1vw, 45px); line-height: 1.1; font-weight: 500; letter-spacing: -.055em; }.agi-search-copy strong em { color: #d2e8aa; }.agi-search-copy > span:last-child { margin-top: 15px; color: #b8cec1; font-size: 13px; line-height: 1.5; }.agi-search-action { flex: none; }.agi-search-prompt { min-width: 245px; display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 16px; border-radius: 40px; background: #eef4df; color: #254438; font-size: 12px; font-weight: 700; }.agi-search-prompt > svg { width: 23px; height: 23px; }.agi-search-prompt span { width: 35px; height: 35px; margin-left: auto; border-radius: 50%; display: grid; place-items: center; background: #254438; color: #fff; }.agi-search-prompt span svg { width: 16px; height: 16px; }
 
-    .agi-dialog { width: min(900px, calc(100% - 32px)); max-height: min(88dvh, 900px); margin: auto; padding: 0; border: 0; border-radius: 12px; background: #f7f6f1; color: #172724; box-shadow: 0 25px 90px rgba(3,25,20,.35); overflow-y: auto; }.agi-dialog::backdrop { background: rgba(5,28,25,.68); backdrop-filter: blur(8px); }.agi-dialog-inner { padding: 34px 47px 38px; }.agi-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #728278; font-size: 10px; letter-spacing: .13em; font-weight: 700; }.agi-dialog-close { width: 34px; height: 34px; padding: 0; border: 1px solid #c8d4c8; border-radius: 50%; background: transparent; color: #244238; font: 24px/1 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s, border-color 0.2s; }.agi-dialog-close:hover { background: #e3e9df; border-color: #9fb09e; }
-    .agi-dialog-intro { padding: 31px 0 27px; }.agi-dialog-intro h2 { margin: 10px 0 16px; font-size: clamp(54px, 6vw, 78px); line-height: 1; font-weight: 500; letter-spacing: -.075em; }.agi-dialog-intro h2 em { color: #6a8767; }.agi-dialog-intro p { max-width: 720px; margin: 0; color: #5f7067; font-size: 14px; line-height: 1.8; }.agi-dialog-search { display: flex; align-items: center; gap: 13px; padding: 0 18px; border: 1px solid #bacbb8; border-radius: 8px; background: #fff; color: #35594a; box-shadow: 0 4px 12px rgba(0,0,0,0.03); transition: border-color 0.2s, box-shadow 0.2s; }.agi-dialog-search:focus-within { border-color: #53755c; box-shadow: 0 4px 16px rgba(83,117,92,0.15); }.agi-dialog-search svg { width: 25px; height: 25px; flex: none; }.agi-dialog-search input { width: 100%; height: 53px; border: 0; background: transparent; color: #172724; font: 14px 'DM Sans', sans-serif; outline: none; }.agi-dialog-search input::placeholder { color: #87958a; }
-    .agi-dialog-results { margin-top: 16px; }.agi-topic { display: grid; grid-template-columns: 175px 1fr; gap: 28px; padding: 23px 0 25px; border-top: 1px solid #d8dfd5; }.agi-topic-meta { padding-top: 5px; color: #76907b; font-size: 10px; letter-spacing: .1em; font-weight: 700; }.agi-topic h3, .agi-no-results h3 { margin: 0 0 9px; font-size: 23px; line-height: 1.2; font-weight: 500; letter-spacing: -.045em; }.agi-topic p, .agi-no-results p { margin: 0; color: #617168; font-size: 13px; line-height: 1.8; }.agi-no-results { padding: 28px 0; border-top: 1px solid #d8dfd5; }.agi-no-results button { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 0 0 6px; border: 0; border-bottom: 1px solid #4a7759; background: transparent; color: #244739; font: 600 12px 'DM Sans', sans-serif; cursor: pointer; }.agi-no-results button svg { width: 16px; height: 16px; }.agi-dialog-note { margin: 14px 0 0; padding-top: 17px; border-top: 1px solid #d8dfd5; color: #839185; font-size: 11px; line-height: 1.5; }
+    .agi-dialog { width: min(920px, calc(100% - 32px)); max-height: min(88dvh, 900px); margin: auto; padding: 0; border: 0; border-radius: 8px; background: #f7f6f1; color: #172724; box-shadow: 0 25px 90px rgba(3,25,20,.35); overflow-y: auto; }.agi-dialog::backdrop { background: rgba(5,28,25,.68); backdrop-filter: blur(5px); }.agi-dialog-inner { padding: 34px 47px 38px; }.agi-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #728278; font-size: 10px; letter-spacing: .13em; font-weight: 700; }.agi-dialog-close { width: 34px; height: 34px; padding: 0; border: 1px solid #c8d4c8; border-radius: 50%; background: transparent; color: #244238; font: 24px/1 'DM Sans', sans-serif; cursor: pointer; }.agi-dialog-close:hover { background: #e3e9df; }
+    .agi-dialog-intro { padding: 31px 0 27px; }.agi-dialog-intro h2 { margin: 10px 0 16px; font-size: clamp(54px, 6vw, 78px); line-height: 1; font-weight: 500; letter-spacing: -.075em; }.agi-dialog-intro h2 em { color: #6a8767; }.agi-dialog-intro p { max-width: 720px; margin: 0; color: #5f7067; font-size: 14px; line-height: 1.8; }.agi-dialog-search { display: flex; align-items: center; gap: 13px; padding: 0 18px; border: 1px solid #bacbb8; border-radius: 5px; background: #fff; color: #35594a; }.agi-dialog-search svg { width: 25px; height: 25px; flex: none; }.agi-dialog-search input { width: 100%; height: 53px; border: 0; background: transparent; color: #172724; font: 14px 'DM Sans', sans-serif; outline: none; }.agi-dialog-search input::placeholder { color: #87958a; }
+    .agi-dialog-results { margin-top: 16px; }.agi-topic { display: grid; grid-template-columns: 185px 1fr; gap: 28px; padding: 23px 0 25px; border-top: 1px solid #d8dfd5; }.agi-topic-meta { padding-top: 5px; color: #76907b; font-size: 10px; letter-spacing: .1em; font-weight: 700; }.agi-topic h3, .agi-no-results h3 { margin: 0 0 9px; font-size: 23px; line-height: 1.2; font-weight: 500; letter-spacing: -.045em; }.agi-topic p, .agi-no-results p { margin: 0; color: #617168; font-size: 13px; line-height: 1.8; }.agi-no-results { padding: 28px 0; border-top: 1px solid #d8dfd5; }.agi-no-results button { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 0 0 6px; border: 0; border-bottom: 1px solid #4a7759; background: transparent; color: #244739; font: 600 12px 'DM Sans', sans-serif; cursor: pointer; }.agi-no-results button svg { width: 16px; height: 16px; }.agi-dialog-note { margin: 14px 0 0; padding-top: 17px; border-top: 1px solid #d8dfd5; color: #839185; font-size: 11px; line-height: 1.5; }
 
-    @media (max-width: 1050px) {
+    @media (max-width: 1200px) {
+      .capability-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 950px) {
       .container { width: min(100% - 48px, 1440px); }.main-nav { margin-left: 0; }.hero { grid-template-columns: 52% 48%; min-height: 600px; }.hero-copy { padding-left: 38px; }.hero h1 { font-size: clamp(52px, 6vw, 70px); }.intelligence-visual { min-height: 600px; }.orb { width: 75%; }.hero-bottom span:last-child { display: none; }.visual-label { font-size: 8px; padding: 9px 11px; }.label-reason { left: 1%; }.label-create { right: 1%; }.intro-grid h2 { font-size: 76px; }.tools-heading h2 { font-size: 70px; }
+      .capability-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 700px) {
       .container { width: calc(100% - 32px); }.site-header { height: 72px; }.main-nav { display: none; }.header-link { padding: 9px 10px 9px 14px; gap: 10px; font-size: 11px; }
       .hero { display: flex; flex-direction: column; min-height: auto; }.hero-copy { padding: 26px 25px 0; }.hero-eyebrow { font-size: 8px; }.hero-main-copy { padding: 71px 0 42px; }.hero h1 { font-size: clamp(49px, 10.2vw, 73px); }.hero-main-copy > p { margin-top: 23px; font-size: 14px; max-width: 310px; }.hero-bottom { display: none; }.intelligence-visual { min-height: 340px; }.orb { width: 245px; }.orbit-one { width: 330px; height: 330px; }.orbit-two { width: 440px; height: 300px; }.orbit-three { width: 520px; height: 400px; }.orb-glow { width: 300px; height: 300px; }.orb-center { font-size: 48px; }.visual-label { font-size: 8px; }.label-reason { top: 16%; left: 7%; }.label-create { top: 34%; right: 4%; }.label-adapt { bottom: 15%; left: 6%; }.visual-coordinate { display: none; }
-      .section-end { display: none; }.intro-section { padding-top: 75px; padding-bottom: 85px; }.intro-grid { display: block; padding-top: 70px; }.intro-grid h2 { font-size: clamp(68px, 14vw, 92px); }.asterisk-mark { top: -39px; }.intro-content { padding: 48px 0 0; }.intro-lead { font-size: 32px; }.intro-content > p:not(.intro-lead) { font-size: 14px; }.possibilities-section { padding: 55px 0 65px; }.possibilities-top > span:last-child { display: none; }.possibilities-heading { display: block; padding: 48px 0 35px; }.possibilities-heading h2 { font-size: 60px; }.possibilities-heading p { margin-top: 22px; }.capability-grid { grid-template-columns: 1fr; gap: 10px; }.capability, .capability:first-child, .capability:last-child { min-height: 240px; border-radius: 8px; }.capability-graphic { transform: scale(.8); transform-origin: top right; top: 40px; right: 26px; }
+      .section-end { display: none; }.intro-section { padding-top: 75px; padding-bottom: 85px; }.intro-grid { display: block; padding-top: 70px; }.intro-grid h2 { font-size: clamp(68px, 14vw, 92px); }.asterisk-mark { top: -39px; }.intro-content { padding: 48px 0 0; }.intro-lead { font-size: 32px; }.intro-content > p:not(.intro-lead) { font-size: 14px; }
+      
+      .possibilities-section { padding: 55px 0 65px; }.possibilities-top > span:last-child { display: none; }.possibilities-heading { display: block; padding: 48px 0 35px; }.possibilities-heading h2 { font-size: 60px; }.possibilities-heading p { margin-top: 22px; }
+      .capability-grid { grid-template-columns: 1fr; gap: 12px; }
+      .capability { min-height: 240px; padding: 22px; }
+      .capability-graphic { transform: scale(.72); transform-origin: top right; top: 22px; right: 18px; }
+
       .tools-section { padding-top: 75px; padding-bottom: 75px; }.tools-heading { display: block; margin: 52px 0 37px; }.tools-heading h2 { font-size: 61px; }.tools-heading > p { margin-top: 24px; }.tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }.tool-card { min-height: 260px; padding: 16px; }.tool-card:nth-child(n) { margin-top: 0; transform: none; }.tool-card:nth-child(even) { margin-top: 23px; }.tool-card-top { font-size: 7px; letter-spacing: .05em; }.tool-arrow { width: 25px; height: 25px; flex: none; }.tool-icon { margin: 26px auto 24px; width: 61px; height: 61px; border-radius: 18px; }.tool-icon svg { width: 37px; height: 37px; }.tool-card h3 { font-size: 23px; }.tool-card p { font-size: 11px; }.tools-footnote { margin-top: 43px; line-height: 1.6; }
       .closing-inner { min-height: 350px; padding: 37px 28px; display: block; }.closing-inner h2 { font-size: 61px; }.closing-inner:after { font-size: 350px; right: -100px; top: 10px; }.back-top { width: max-content; margin-top: 40px; }.site-footer { min-height: 120px; flex-wrap: wrap; justify-content: space-between; align-content: center; row-gap: 12px; }.site-footer span:last-child { display: none; }
       .agi-search-card { min-height: 310px; padding: 28px 22px; align-items: start; flex-direction: column; justify-content: space-between; gap: 25px; }.agi-search-card:after { right: -230px; top: -80px; }.agi-search-copy strong { font-size: 32px; }.agi-search-copy > span:last-child { font-size: 12px; }.agi-search-action { width: 100%; }.agi-search-prompt { min-width: 0; width: 100%; }.agi-dialog { max-height: 92dvh; }.agi-dialog-inner { padding: 20px 22px 28px; }.agi-dialog-intro { padding: 28px 0 25px; }.agi-dialog-intro h2 { font-size: 58px; }.agi-dialog-intro p { font-size: 13px; }.agi-topic { grid-template-columns: 1fr; gap: 9px; padding: 22px 0; }.agi-topic h3 { font-size: 22px; }.agi-topic p { font-size: 12px; }
@@ -138,26 +269,31 @@
 </head>
 <body>
   <div class="site-shell" id="top">
-    <!-- Header -->
+    <!-- Header with Portfolio-styled Brand Logo -->
     <header class="site-header container">
-      <a href="index.html" class="brand-logo" onclick="location.reload(); return false;">
-        <svg viewBox="0 0 106.334746 72.098088" xmlns="http://www.w3.org/2000/svg">
+      <a href="index.html" class="portfolio-brand">
+        <img src="AE.png" alt="Akbarhusain Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('fallback-svg').style.display='block';" />
+        
+        <svg id="fallback-svg" style="display: none; width: 48px; height: 48px;" viewBox="0 0 106.334746 72.098088" xmlns="http://www.w3.org/2000/svg">
           <g transform="translate(-8.705710,81.000000) scale(0.100000,-0.100000)" fill="#2f6f6f" stroke="none">
             <path d="M309 473 c-106 -186 -199 -348 -207 -361 l-15 -23 68 3 69 3 171 298 c95 165 175 300 179 300 3 1 43 -63 89 -143 l83 -145 114 -3 115 -2 28 50 c15 27 27 52 27 55 0 2 -48 6 -107 7 l-108 3 -85 148 -84 147 -72 0 -72 0 -193 -337z" />
             <path d="M710 804 c0 -3 12 -28 28 -55 l27 -49 163 2 162 3 30 53 30 52 -220 0 c-121 0 -220 -3 -220 -6z" />
             <path d="M500 365 c-39 -69 -70 -130 -68 -137 2 -7 19 -41 38 -75 l35 -63 277 0 277 0 -32 55 -31 55 -223 0 -224 0 48 88 47 89 -29 56 c-17 31 -33 57 -36 57 -4 0 -39 -56 -79 -125z" />
           </g>
         </svg>
-        <div class="brand-text-wrap">
+
+        <div class="brand-text">
           <span class="brand-name">Akbarhusain</span>
-          <span class="brand-tag">AI ENGINEER</span>
+          <span class="brand-role">AI ENGINEER</span>
         </div>
       </a>
+
       <nav class="main-nav" aria-label="Main navigation">
         <a href="#about">About AGI</a>
         <a href="#possibilities">The idea</a>
         <a href="#tools">Explore tools</a>
       </nav>
+
       <a class="header-link" href="#tools">
         Discover AI 
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -176,7 +312,7 @@
           <div class="hero-main-copy">
             <div class="hero-kicker"><span class="live-dot"></span> ARTIFICIAL GENERAL INTELLIGENCE</div>
             <h1 id="hero-title">Meet AGI.<br />The future of<br /><em>intelligence.</em></h1>
-            <p>What if a machine could learn, reason, and adapt across almost anything? Explore the idea behind AGI and the AI tools shaping today.</p>
+            <p>What if a machine could learn, reason, and adapt across almost anything? Explore the architectural pillars behind AGI and the AI tools shaping today.</p>
             <a class="hero-cta" href="#about">
               Understand AGI 
               <span>
@@ -243,35 +379,125 @@
         </div>
       </section>
 
-      <!-- Possibilities Section -->
-      <section class="possibilities-section container" id="possibilities" aria-labelledby="possibilities-title" style="background: #e8ede2;">
-        <div class="container" style="width: 100%; margin: 0;">
+      <!-- Possibilities Section: 02 / THINK BIGGER (12 COGNITIVE PILLARS) -->
+      <section class="possibilities-section" id="possibilities" aria-labelledby="possibilities-title">
+        <div class="container">
           <div class="possibilities-top">
             <span class="section-index">02 / THINK BIGGER</span>
-            <span>NOT JUST AN ANSWER MACHINE</span>
+            <span>TWELVE COGNITIVE DIMENSIONS OF AGI</span>
           </div>
           <div class="possibilities-heading">
-            <h2 id="possibilities-title">One mind. <em>Many possibilities.</em></h2>
-            <p>The idea of general intelligence goes beyond mastering a single task. It’s about connecting the dots.</p>
+            <h2 id="possibilities-title">One architecture. <em>Total general intelligence.</em></h2>
+            <p>Beyond static token prediction. A full-spectrum cognitive ecosystem capable of causal discovery, continuous memory, internal simulation, and autonomous execution.</p>
           </div>
+          
           <div class="capability-grid">
+            <!-- 01 / Meta-Learning -->
             <article class="capability">
-              <span class="capability-number">01 /</span>
+              <span class="capability-number">01 / META-LEARNING</span>
               <div class="capability-graphic graphic-learn"><span></span><span></span><span></span></div>
-              <h3>Learn</h3>
-              <p>Pick up new skills and concepts without starting from scratch every time.</p>
+              <h3>Continuous Learning</h3>
+              <p>Acquires new skills dynamically in runtime without catastrophic forgetting or the need for expensive full retraining cycles.</p>
+              <span class="capability-footnote"><a href="pillars/Meta-Learning.html">View Architecture Blueprint →</a></span>
             </article>
+
+            <!-- 02 / Deep Reasoning -->
             <article class="capability">
-              <span class="capability-number">02 /</span>
+              <span class="capability-number">02 / REASONING</span>
               <div class="capability-graphic graphic-reason"><span></span><span></span><span></span><span></span></div>
-              <h3>Reason</h3>
-              <p>Make connections, work through unfamiliar problems, and find a way forward.</p>
+              <h3>Deep Reasoning</h3>
+              <p>Navigates complex problems via multi-step search, tree-of-thought exploration, and logic rather than guessing next tokens.</p>
+              <span class="capability-footnote"><a href="pillars/Reasoning.html">View Architecture Blueprint →</a></span>
             </article>
+
+            <!-- 03 / Cross-Domain Transfer -->
             <article class="capability">
-              <span class="capability-number">03 /</span>
+              <span class="capability-number">03 / GENERALIZATION</span>
               <div class="capability-graphic graphic-adapt"><span></span><span></span><span></span></div>
-              <h3>Adapt</h3>
-              <p>Apply what it knows to new situations, contexts, and challenges.</p>
+              <h3>Cross-Domain Transfer</h3>
+              <p>Transfers mental models and principles mastered in one field (e.g. physics or code) directly to solve novel real-world challenges.</p>
+              <span class="capability-footnote"><a href="pillars/Generalization.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 04 / Episodic & Semantic Memory -->
+            <article class="capability">
+              <span class="capability-number">04 / RETENTION</span>
+              <div class="capability-graphic graphic-memory"><span></span><span></span><span></span></div>
+              <h3>Dual Memory Systems</h3>
+              <p>Maintains persistent evolving knowledge graphs and episodic execution traces to learn from past outcomes indefinitely.</p>
+              <span class="capability-footnote"><a href="pillars/Retention.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 05 / Multimodal Grounding -->
+            <article class="capability">
+              <span class="capability-number">05 / GROUNDING</span>
+              <div class="capability-graphic graphic-perceive"><span></span><span></span><span></span></div>
+              <h3>Multimodal Perception</h3>
+              <p>Fuses vision, spatial physics, auditory cues, and tool interfaces into a unified, accurate internal representation of reality.</p>
+              <span class="capability-footnote"><a href="pillars/Grounding.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 06 / Autonomous Agency -->
+            <article class="capability">
+              <span class="capability-number">06 / AUTONOMY</span>
+              <div class="capability-graphic graphic-autonomy"><span></span><span></span></div>
+              <h3>Goal-Oriented Agency</h3>
+              <p>Deconstructs abstract high-level objectives into concrete execution steps, calling APIs, executing code, and orchestrating tools.</p>
+              <span class="capability-footnote"><a href="pillars/Autonomous.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 07 / World Modeling -->
+            <article class="capability">
+              <span class="capability-number">07 / SIMULATION</span>
+              <div class="capability-graphic graphic-world"><span></span><span></span><span></span></div>
+              <h3>Internal World Model</h3>
+              <p>Simulates possible futures, predicts side-effects, and tests hypothetical outcomes mentally before executing real actions.</p>
+              <span class="capability-footnote"><a href="pillars/Simulation.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 08 / Self-Correction & Metacognition -->
+            <article class="capability">
+              <span class="capability-number">08 / METACOGNITION</span>
+              <div class="capability-graphic graphic-critic"><span></span><span></span></div>
+              <h3>Self-Correction</h3>
+              <p>Critiques its own intermediate thoughts, identifies logical fallacies or biases, and backtracks to try alternative strategies.</p>
+              <span class="capability-footnote"><a href="pillars/Metacognition.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 09 / Multi-Agent Swarm Orchestration -->
+            <article class="capability">
+              <span class="capability-number">09 / CONSENSUS</span>
+              <div class="capability-graphic graphic-swarm"><span></span><span></span><span></span><span></span></div>
+              <h3>Multi-Agent Swarms</h3>
+              <p>Coordinates specialized agent clusters (planners, coders, critics) through state machines to achieve collaborative consensus.</p>
+              <span class="capability-footnote"><a href="pillars/Consensus.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 10 / Causal Discovery (NEW) -->
+            <article class="capability">
+              <span class="capability-number">10 / CAUSALITY</span>
+              <div class="capability-graphic graphic-causal"><span></span><span></span><span></span></div>
+              <h3>Causal Inference</h3>
+              <p>Distinguishes true cause-and-effect from mere statistical correlation, enabling scientifically sound hypotheses and discoveries.</p>
+              <span class="capability-footnote"><a href="pillars/Causality.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 11 / Recursive Self-Improvement (NEW) -->
+            <article class="capability">
+              <span class="capability-number">11 / EVOLUTION</span>
+              <div class="capability-graphic graphic-recursive"><span></span><span></span></div>
+              <h3>Recursive Improvement</h3>
+              <p>Optimizes its own software architecture, algorithmic logic, and prompts autonomously to reach higher cognitive efficiency.</p>
+              <span class="capability-footnote"><a href="pillars/Evolution.html">View Architecture Blueprint →</a></span>
+            </article>
+
+            <!-- 12 / Verifiable Safety & Alignment (NEW) -->
+            <article class="capability">
+              <span class="capability-number">12 / GOVERNANCE</span>
+              <div class="capability-graphic graphic-align"><span></span><span></span></div>
+              <h3>Verifiable Alignment</h3>
+              <p>Implements rigorous constitutional boundaries, verifiable execution proofs, and sandboxed kill-switches for guaranteed safety.</p>
+              <span class="capability-footnote"><a href="pillars/Governance.html">View Architecture Blueprint →</a></span>
             </article>
           </div>
         </div>
@@ -297,7 +523,7 @@
           <span class="agi-search-copy">
             <span class="agi-search-eyebrow">FEATURED / AN INTERACTIVE GUIDE</span>
             <strong>Want to understand AGI <em>more deeply?</em></strong>
-            <span>Open the guide and search topics, from the basics to the big questions.</span>
+            <span>Open the interactive field guide and search all 12 cognitive dimensions.</span>
           </span>
           <span class="agi-search-action">
             <span class="agi-search-prompt">
@@ -453,24 +679,12 @@
 
     <!-- Footer -->
     <footer class="site-footer container">
-      <a href="index.html" class="brand-logo" onclick="location.reload(); return false;">
-        <svg viewBox="0 0 106.334746 72.098088" xmlns="http://www.w3.org/2000/svg">
-          <g transform="translate(-8.705710,81.000000) scale(0.100000,-0.100000)" fill="#2f6f6f" stroke="none">
-            <path d="M309 473 c-106 -186 -199 -348 -207 -361 l-15 -23 68 3 69 3 171 298 c95 165 175 300 179 300 3 1 43 -63 89 -143 l83 -145 114 -3 115 -2 28 50 c15 27 27 52 27 55 0 2 -48 6 -107 7 l-108 3 -85 148 -84 147 -72 0 -72 0 -193 -337z" />
-            <path d="M710 804 c0 -3 12 -28 28 -55 l27 -49 163 2 162 3 30 53 30 52 -220 0 c-121 0 -220 -3 -220 -6z" />
-            <path d="M500 365 c-39 -69 -70 -130 -68 -137 2 -7 19 -41 38 -75 l35 -63 277 0 277 0 -32 55 -31 55 -223 0 -224 0 48 88 47 89 -29 56 c-17 31 -33 57 -36 57 -4 0 -39 -56 -79 -125z" />
-          </g>
-        </svg>
-        <div class="brand-text-wrap">
-          <span class="brand-name">Akbarhusain</span>
-          <span class="brand-tag">AI ENGINEER</span>
-        </div>
-      </a>
+      <a href="#top" class="footer-brand">future<span>.</span></a>
       <span>AN EXPLORATION OF INTELLIGENCE &amp; POSSIBILITY</span>
       <span>MADE FOR THE CURIOUS MINDS</span>
     </footer>
 
-    <!-- Interactive Search Dialog -->
+    <!-- Interactive Search Dialog (All 12 Pillars Indexed) -->
     <dialog id="agiDialog" class="agi-dialog" aria-labelledby="agi-dialog-title">
       <div class="agi-dialog-inner">
         <div class="agi-dialog-header">
@@ -480,14 +694,14 @@
         <div class="agi-dialog-intro">
           <span class="overline">A DEEPER LOOK AT THE BIG IDEA</span>
           <h2 id="agi-dialog-title">Explore <em>AGI.</em></h2>
-          <p>AGI is the idea of a machine with broad, adaptable intelligence: one that could learn and reason across different subjects and unfamiliar situations. It has not been established as a reality today. Explore the questions below to understand what it might mean — and what remains uncertain.</p>
+          <p>Search across the 12 architectural pillars of general intelligence—from continuous memory and causal reasoning to self-correction and recursive improvement.</p>
         </div>
         <label class="agi-dialog-search">
           <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="21" cy="21" r="10" /><path d="m29 29 9 9M16 21h10M21 16v10" />
           </svg>
           <span class="sr-only">Search AGI topics</span>
-          <input id="agiSearchInput" type="search" placeholder="Search AGI topics, risks, timeline..." />
+          <input id="agiSearchInput" type="search" placeholder="Search causality, memory, world models, agency, swarms, safety..." />
         </label>
         <div class="agi-dialog-results" id="agiResults" aria-live="polite"></div>
         <p class="agi-dialog-note">This guide explains a research concept. It is not a live AI chatbot or a claim that AGI already exists.</p>
@@ -498,35 +712,77 @@
   <script>
     const agiTopics = [
       {
-        title: "What exactly is AGI?",
+        title: "What is AGI and its ultimate definition?",
         label: "THE DEFINITION",
-        keywords: "meaning definition kya hai artificial general intelligence",
-        text: "Artificial General Intelligence is a proposed kind of AI that could learn and apply knowledge across many different kinds of tasks, rather than being built mainly for a narrow set of jobs. The key idea is flexibility: it could face a new problem, understand the context, and use what it already knows to work toward a solution. Researchers do not agree on a single test or definition for when a system would count as AGI.",
+        keywords: "meaning definition kya hai artificial general intelligence concept",
+        text: "Artificial General Intelligence (AGI) represents an autonomous cognitive architecture capable of understanding, learning, and executing any intellectual task at human or superhuman performance, generalizing across completely unseen domains without manual retraining.",
       },
       {
-        title: "How is it different from today's AI?",
-        label: "THE DIFFERENCE",
-        keywords: "chatgpt claude gemini current ai narrow ai vs agi difference farq",
-        text: "Today's AI can write, generate images, analyze information, and help with many tasks. But its abilities can be uneven: doing well on one task does not guarantee reliable understanding or performance on an unfamiliar one. AGI would mean broad, adaptable competence across domains. Current tools are powerful AI systems, not established examples of AGI.",
+        title: "Cognitive Memory: Episodic vs Semantic",
+        label: "MEMORY SYSTEMS",
+        keywords: "memory episodic semantic retention rag context graph vector",
+        text: "Rather than isolated context windows, an AGI maintains a dual-memory system: Episodic Memory (recording experiential traces, past execution logs, and mistakes) paired with Semantic Memory (hierarchical knowledge graphs and vector embeddings) for true long-term growth.",
       },
       {
-        title: "What could it be able to do?",
-        label: "THE POSSIBILITIES",
-        keywords: "capabilities learn reason adapt solve science education medicine use benefits",
-        text: "A general-purpose system might learn unfamiliar skills, combine ideas from different fields, reason through new problems, and adapt when circumstances change. In principle, that could help with scientific discovery, education, healthcare, and creative work. These are possibilities, not promises: what AGI could actually do would depend on how it is built and evaluated.",
+        title: "Autonomous Goal-Oriented Agency",
+        label: "AGENTIC WORKFLOWS",
+        keywords: "autonomous agency tools action sub-agents orchestration langgraph mcp",
+        text: "Moving past prompt-response chat, AGI acts as an autonomous agent: recursively breaking ambiguous objectives into DAGs (directed acyclic graphs), dynamically invoking external tools/APIs (via protocols like MCP), and executing code to impact environments.",
       },
       {
-        title: "Why does safety matter?",
-        label: "THE CHALLENGES",
-        keywords: "risk safety ethics bias misuse control jobs impact challenges",
-        text: "More capable AI could also bring larger risks. Important questions include whether systems are reliable, whose goals they follow, how they handle bias and privacy, who is accountable for their actions, and how benefits are shared. Testing, human oversight, and careful governance matter as much as raw capability.",
+        title: "Internal World Models & Counterfactuals",
+        label: "SIMULATION",
+        keywords: "world model simulation counterfactual physics predict foresight",
+        text: "A hallmark of general intelligence is an internal world simulator. Like a human playing chess mentally, AGI models consequences, runs counterfactual simulations ('What happens if I execute X?'), and optimizes choices before taking irreversible real-world actions.",
       },
       {
-        title: "When will AGI arrive?",
-        label: "THE OPEN QUESTION",
-        keywords: "when future timeline date arrive prediction kab aayega",
-        text: "Nobody knows. Experts disagree about the path to AGI, the milestones that would prove it exists, and whether today's approaches are enough to get there. It is best understood as an active research goal rather than a finished product or a date on a calendar.",
+        title: "Self-Correction & Metacognitive Loops",
+        label: "METACOGNITION",
+        keywords: "self-correction critic reflection backtrack tree-of-thought react",
+        text: "AGI integrates reflexive feedback loops (ReAct, Tree-of-Thought, Monte Carlo Tree Search). When an approach hits a roadblock, the system critiques its own rationale, prunes invalid paths, and autonomously backtracks to a viable solution.",
       },
+      {
+        title: "Multi-Agent Swarms & Consensus Mechanisms",
+        label: "ORCHESTRATION",
+        keywords: "multi-agent swarm consensus langgraph orchestration planner executor",
+        text: "Instead of a single monolithic model, general tasks are solved by swarms of specialized micro-agents (Planners, Domain Coders, Verifiers, and Critics) collaborating through state machines to achieve verifiable consensus.",
+      },
+      {
+        title: "Causal Inference vs Correlation",
+        label: "CAUSALITY",
+        keywords: "causal inference discovery cause effect correlation pearl",
+        text: "Current deep learning thrives on correlation. AGI requires causal modeling (do-calculus, interventions) to deduce 'why' things happen, allowing valid scientific discoveries and robust decision-making in previously unobserved conditions.",
+      },
+      {
+        title: "Recursive Self-Improvement",
+        label: "EVOLUTION",
+        keywords: "recursive self improvement code optimization prompt evolution",
+        text: "An AGI system can analyze its own source code, compilation traces, and reasoning trajectories, generating improved algorithms and automated optimizations without manual human engineering interventions.",
+      },
+      {
+        title: "Multimodal Grounding in Physical Reality",
+        label: "PERCEPTION",
+        keywords: "vision computer vision multimodal grounding environment sensory spatial",
+        text: "Language alone lacks grounding. AGI unifies computer vision, audio streams, robotics actuators, and spatial mechanics into an integrated sensory-motor loop, anchoring conceptual knowledge to actual physical phenomena.",
+      },
+      {
+        title: "Verifiable Alignment & Safety Governance",
+        label: "GOVERNANCE",
+        keywords: "risk safety ethics bias control alignment governance human-in-the-loop killswitch",
+        text: "As autonomy and tool access expand, aligning an agent's objective function with human ethics, ensuring strict sandboxing, and designing verifiable kill-switches become mission-critical engineering requirements.",
+      },
+      {
+        title: "Meta-Learning & Continuous Skill Acquisition",
+        label: "LEARNING",
+        keywords: "meta-learning few-shot zero-shot continual learning",
+        text: "AGI masters the art of 'learning how to learn'—extracting generalized optimization heuristics so that mastering a 10th programming language or novel science requires 99% less data than the first.",
+      },
+      {
+        title: "Cross-Domain Generalization",
+        label: "GENERALIZATION",
+        keywords: "generalization transfer learning cross-domain out of distribution",
+        text: "The true boundary of AGI is the ability to adapt out-of-distribution: taking principles from economics or fluid mechanics and creatively applying them to synthesize a novel software architecture.",
+      }
     ];
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -547,7 +803,7 @@
           resultsContainer.innerHTML = `
             <div class="agi-no-results">
               <h3>No topic found.</h3>
-              <p>Try searching for “safety”, “today’s AI”, “learn”, or “timeline”.</p>
+              <p>Try searching for “causality”, “memory”, “world model”, “swarms”, or “safety”.</p>
               <button type="button" id="resetTopicsBtn">
                 Show all topics 
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
