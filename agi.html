@@ -6,7 +6,7 @@
   <title>Future, a field guide to intelligence</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap');
     
@@ -32,6 +32,11 @@
     .site-shell { overflow: hidden; }
     .container { width: min(100% - 96px, 1440px); margin-inline: auto; }
     em { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
+
+    /* Fix: Smooth scroll target offsets taaki header ke pichhe content na chupe */
+    #about, #possibilities, #tools {
+      scroll-margin-top: 110px !important;
+    }
 
     /* Header & Portfolio Logo */
     .site-header { height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
@@ -122,7 +127,7 @@
 
     /* Intro */
     .section-heading-row { display: flex; align-items: center; gap: 22px; color: #64726d; }.section-index { color: #254b40; white-space: nowrap; }.section-rule { flex: 1; height: 1px; background: #d5dcd2; }.section-end { white-space: nowrap; color: #89958b; }
-    .intro-section { padding-top: 114px; padding-bottom: 134px; scroll-margin-top: 20px; }
+    .intro-section { padding-top: 114px; padding-bottom: 134px; }
     .intro-grid { display: grid; grid-template-columns: 49% 51%; padding-top: 80px; }
     .intro-title-wrap { position: relative; }.asterisk-mark { position: absolute; left: 0; top: -44px; color: #7b9a6c; font-size: 27px; font-weight: 400; }
     .intro-grid h2, .tools-heading h2, .possibilities-heading h2, .closing-inner h2 { font-size: clamp(68px, 6.6vw, 108px); line-height: .98; letter-spacing: -.075em; font-weight: 500; margin: 0; }
@@ -132,7 +137,7 @@
     .reality-note { margin-top: 30px; max-width: 585px; border-top: 1px solid #d4dbd1; padding-top: 22px; display: flex; align-items: flex-start; gap: 15px; }.note-icon { flex: none; width: 22px; height: 22px; border: 1px solid #829a80; color: #537256; border-radius: 50%; display: grid; place-items: center; font-family: Georgia, serif; font-size: 15px; font-style: italic; }.reality-note p { margin: 0; color: #69756e; font-size: 12px; line-height: 1.65; }.reality-note strong { color: #284039; }
 
     /* 02 / THINK BIGGER - 12 PILLARS GRID */
-    .possibilities-section { background: #e8ede2; padding: 75px 0 95px; scroll-margin-top: 20px; }
+    .possibilities-section { background: #e8ede2; padding: 75px 0 95px; }
     .possibilities-top { display: flex; justify-content: space-between; color: #7b8d7d; }
     .possibilities-heading { display: flex; align-items: end; justify-content: space-between; gap: 40px; padding: 55px 0 52px; }
     .possibilities-heading h2 { max-width: 840px; font-size: clamp(52px, 5.4vw, 82px); }
@@ -152,16 +157,20 @@
       position: relative; 
       overflow: hidden; 
       border-radius: 6px !important;
+      cursor: pointer;
       transition: transform .25s ease, box-shadow .25s ease;
+      border: 1px solid transparent;
     }
     .capability:hover {
       transform: translateY(-5px);
       box-shadow: 0 16px 32px rgba(35, 60, 45, 0.08);
+      border-color: #c9d5c4;
     }
     .capability-number { font-size: 9.5px; font-weight: 700; color: #829787; letter-spacing: .08em; }
     .capability h3 { margin: auto 0 8px; font-size: 21px; letter-spacing: -.05em; font-weight: 500; line-height: 1.2; }
     .capability p { margin: 0; max-width: 260px; font-size: 11.5px; line-height: 1.65; color: #718077; }
     .capability-graphic { position: absolute; top: 32px; right: 22px; width: 110px; height: 110px; pointer-events: none; }
+    .view-blueprint-tag { margin-top: 15px; font-size: 11px; font-weight: 700; color: #2e6656; display: flex; align-items: center; gap: 5px; }
 
     /* 12 Distinct Geometric Visuals */
     .graphic-learn span { position: absolute; border: 1.5px solid #769784; border-radius: 50%; width: 52px; height: 52px; }
@@ -222,49 +231,389 @@
     .graphic-align span:nth-child(1) { width: 55px; height: 55px; top: 15px; right: 20px; border: 1.5px solid #234b3e; transform: rotate(45deg); }
     .graphic-align span:nth-child(2) { width: 32px; height: 32px; top: 26.5px; right: 31.5px; background: #cce7c5; transform: rotate(45deg); border: 1.5px dashed #234b3e; }
 
-    /* Tools Section */
-    .tools-section { padding-top: 114px; padding-bottom: 112px; scroll-margin-top: 20px; }.tools-heading { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin: 62px 0 50px; }.overline { color: #78917c; }.tools-heading h2 { font-size: clamp(56px, 5.5vw, 85px); margin-top: 16px; }.tools-heading > p { max-width: 340px; font-size: 14px; line-height: 1.75; color: #6b766e; margin: 0 0 4px; }
-    .tools-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; align-items: start; }.tool-card { min-height: 326px; padding: 23px 25px 26px; border-radius: 5px; display: flex; flex-direction: column; position: relative; transition: transform .25s, box-shadow .25s; }.tool-card:hover { transform: translateY(-7px) rotate(0deg) !important; box-shadow: 0 18px 35px rgba(38, 64, 45, .1); }.tool-card:nth-child(2) { margin-top: 36px; transform: rotate(1.4deg); }.tool-card:nth-child(3) { margin-top: 9px; transform: rotate(-1.3deg); }.tool-card:nth-child(4) { margin-top: -23px; transform: rotate(-1deg); }.tool-card:nth-child(5) { margin-top: 15px; transform: rotate(1deg); }.tool-card:nth-child(6) { margin-top: -24px; transform: rotate(-.8deg); }.tone-mint { background: #e1eee6; }.tone-peach { background: #f1e6dd; }.tone-blue { background: #e1eaf0; }.tone-lavender { background: #e9e5f1; }.tone-yellow { background: #f1edda; }.tone-pink { background: #f0e2e3; }
-    .tool-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #65766a; font-size: 9px; }.tool-arrow { width: 29px; height: 29px; border: 1px solid rgba(33, 58, 45, .25); border-radius: 50%; display: grid; place-items: center; transition: background .2s, color .2s; }.tool-arrow svg { width: 14px; height: 14px; }.tool-card:hover .tool-arrow { background: #1c3a31; color: #fff; }.tool-icon { width: 83px; height: 83px; margin: 34px auto 25px; border: 1px solid rgba(33, 58, 45, .19); border-radius: 24px; display: grid; place-items: center; transform: rotate(-7deg); color: #254a3a; background: rgba(255,255,255,.28); }.tool-icon svg { width: 49px; height: 49px; }.tool-card:nth-child(even) .tool-icon { transform: rotate(7deg); }.tool-card-bottom { margin-top: auto; }.tool-card h3 { font-weight: 500; font-size: 27px; line-height: 1; letter-spacing: -.055em; margin: 0 0 10px; }.tool-card p { font-size: 12px; line-height: 1.6; color: #65736a; margin: 0; max-width: 260px; }.tools-footnote { margin: 48px 0 0; color: #839184; font-size: 10px; letter-spacing: .035em; }.tools-footnote span { color: #6f916b; font-size: 17px; vertical-align: -2px; margin-right: 8px; }
+    /* ========================================================
+       TOOLS SECTION (FIXED: Clean Uniform Grid, No Overlapping)
+       ======================================================== */
+    .tools-section { 
+      padding-top: 80px; 
+      padding-bottom: 110px; 
+    }
+    .tools-heading { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: end; 
+      gap: 30px; 
+      margin: 40px 0 50px; 
+    }
+    .overline { color: #78917c; }
+    .tools-heading h2 { font-size: clamp(56px, 5.5vw, 85px); margin-top: 16px; }
+    .tools-heading > p { max-width: 340px; font-size: 14px; line-height: 1.75; color: #6b766e; margin: 0 0 4px; }
+    
+    .tools-grid { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 24px; 
+      align-items: stretch; 
+    }
+    .tool-card { 
+      min-height: 310px; 
+      padding: 24px 26px 26px; 
+      border-radius: 8px; 
+      display: flex; 
+      flex-direction: column; 
+      position: relative; 
+      margin-top: 0 !important;       /* Overlapping margin removed */
+      transform: none !important;     /* Awkward rotation removed */
+      transition: transform .25s ease, box-shadow .25s ease; 
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .tool-card:hover { 
+      transform: translateY(-6px) !important; 
+      box-shadow: 0 16px 32px rgba(38, 64, 45, .12) !important; 
+    }
+
+    .tone-mint { background: #e1eee6; }
+    .tone-peach { background: #f1e6dd; }
+    .tone-blue { background: #e1eaf0; }
+    .tone-lavender { background: #e9e5f1; }
+    .tone-yellow { background: #f1edda; }
+    .tone-pink { background: #f0e2e3; }
+
+    .tool-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #65766a; font-size: 9px; }
+    .tool-arrow { width: 29px; height: 29px; border: 1px solid rgba(33, 58, 45, .25); border-radius: 50%; display: grid; place-items: center; transition: background .2s, color .2s; }
+    .tool-arrow svg { width: 14px; height: 14px; }
+    .tool-card:hover .tool-arrow { background: #1c3a31; color: #fff; }
+    .tool-icon { width: 76px; height: 76px; margin: 30px auto 25px; border: 1px solid rgba(33, 58, 45, .19); border-radius: 22px; display: grid; place-items: center; color: #254a3a; background: rgba(255,255,255,.35); }
+    .tool-icon svg { width: 44px; height: 44px; }
+    .tool-card-bottom { margin-top: auto; }
+    .tool-card h3 { font-weight: 500; font-size: 26px; line-height: 1; letter-spacing: -.055em; margin: 0 0 10px; }
+    .tool-card p { font-size: 12px; line-height: 1.6; color: #65736a; margin: 0; max-width: 260px; }
+    .tools-footnote { margin: 48px 0 0; color: #839184; font-size: 10px; letter-spacing: .035em; }
+    .tools-footnote span { color: #6f916b; font-size: 17px; vertical-align: -2px; margin-right: 8px; }
 
     /* Closing */
-    .closing-section { padding-bottom: 30px; }.closing-inner { min-height: 350px; border-radius: 6px; background: #173d35; color: #f7f8ef; padding: 55px 65px; display: flex; justify-content: space-between; align-items: end; position: relative; overflow: hidden; }.closing-inner:after { content: '*'; font-family: Georgia, serif; font-size: 620px; line-height: 1; position: absolute; top: -150px; right: 5%; color: rgba(190, 226, 171, .09); pointer-events: none; }.closing-inner .overline { color: #b4d499; }.closing-inner h2 { font-size: clamp(62px, 6vw, 92px); margin-top: 30px; position: relative; z-index: 1; }.closing-inner h2 em { color: #cfe6aa; }.back-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 22px; border-bottom: 1px solid #a8c8b9; padding-bottom: 9px; font-size: 12px; font-weight: 600; white-space: nowrap; }.back-top svg { width: 17px; height: 17px; }
-    .site-footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #869389; font-size: 9px; }.footer-brand { color: #233c33; font-size: 24px; letter-spacing: -.08em; font-weight: 700; text-transform: none; }
+    .closing-section { padding-bottom: 30px; }
+    .closing-inner { min-height: 350px; border-radius: 6px; background: #173d35; color: #f7f8ef; padding: 55px 65px; display: flex; justify-content: space-between; align-items: end; position: relative; overflow: hidden; }
+    .closing-inner:after { content: '*'; font-family: Georgia, serif; font-size: 620px; line-height: 1; position: absolute; top: -150px; right: 5%; color: rgba(190, 226, 171, .09); pointer-events: none; }
+    .closing-inner .overline { color: #b4d499; }
+    .closing-inner h2 { font-size: clamp(62px, 6vw, 92px); margin-top: 30px; position: relative; z-index: 1; }
+    .closing-inner h2 em { color: #cfe6aa; }
+    .back-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 22px; border-bottom: 1px solid #a8c8b9; padding-bottom: 9px; font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .back-top svg { width: 17px; height: 17px; }
+    .site-footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #869389; font-size: 9px; }
+    .footer-brand { color: #233c33; font-size: 24px; letter-spacing: -.08em; font-weight: 700; text-transform: none; }
 
     /* Search Dialog */
     .agi-search-card { width: 100%; min-height: 235px; margin-bottom: 23px; padding: 34px 39px; border: 0; border-radius: 5px; background: radial-gradient(circle at 76% 35%, #315f53 0%, #1e493e 34%, #173d35 69%); color: #f6f8ec; display: flex; align-items: end; justify-content: space-between; gap: 35px; text-align: left; font: inherit; cursor: pointer; overflow: hidden; position: relative; transition: transform .25s, box-shadow .25s; }
     .agi-search-card:hover { transform: translateY(-4px); box-shadow: 0 18px 35px rgba(38,64,45,.14); }
     .agi-search-card:focus-visible, .agi-dialog button:focus-visible, .agi-dialog input:focus-visible { outline: 3px solid #a9cc9b; outline-offset: 3px; }
     .agi-search-card:after { content: ''; position: absolute; width: 410px; height: 410px; right: 18%; top: -138px; border: 1px solid rgba(214,236,188,.2); border-radius: 50%; box-shadow: 0 0 0 48px rgba(214,236,188,.04), 0 0 0 100px rgba(214,236,188,.04); pointer-events: none; }
-    .agi-search-copy, .agi-search-action { position: relative; z-index: 1; }.agi-search-copy { display: flex; flex-direction: column; align-items: start; max-width: 570px; }.agi-search-eyebrow { color: #b9d69e; font-size: 10px; letter-spacing: .14em; font-weight: 700; margin-bottom: 19px; }.agi-search-copy strong { font-size: clamp(28px, 3.1vw, 45px); line-height: 1.1; font-weight: 500; letter-spacing: -.055em; }.agi-search-copy strong em { color: #d2e8aa; }.agi-search-copy > span:last-child { margin-top: 15px; color: #b8cec1; font-size: 13px; line-height: 1.5; }.agi-search-action { flex: none; }.agi-search-prompt { min-width: 245px; display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 16px; border-radius: 40px; background: #eef4df; color: #254438; font-size: 12px; font-weight: 700; }.agi-search-prompt > svg { width: 23px; height: 23px; }.agi-search-prompt span { width: 35px; height: 35px; margin-left: auto; border-radius: 50%; display: grid; place-items: center; background: #254438; color: #fff; }.agi-search-prompt span svg { width: 16px; height: 16px; }
+    .agi-search-copy, .agi-search-action { position: relative; z-index: 1; }
+    .agi-search-copy { display: flex; flex-direction: column; align-items: start; max-width: 570px; }
+    .agi-search-eyebrow { color: #b9d69e; font-size: 10px; letter-spacing: .14em; font-weight: 700; margin-bottom: 19px; }
+    .agi-search-copy strong { font-size: clamp(28px, 3.1vw, 45px); line-height: 1.1; font-weight: 500; letter-spacing: -.055em; }
+    .agi-search-copy strong em { color: #d2e8aa; }
+    .agi-search-copy > span:last-child { margin-top: 15px; color: #b8cec1; font-size: 13px; line-height: 1.5; }
+    .agi-search-action { flex: none; }
+    .agi-search-prompt { min-width: 245px; display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 16px; border-radius: 40px; background: #eef4df; color: #254438; font-size: 12px; font-weight: 700; }
+    .agi-search-prompt > svg { width: 23px; height: 23px; }
+    .agi-search-prompt span { width: 35px; height: 35px; margin-left: auto; border-radius: 50%; display: grid; place-items: center; background: #254438; color: #fff; }
+    .agi-search-prompt span svg { width: 16px; height: 16px; }
 
-    .agi-dialog { width: min(920px, calc(100% - 32px)); max-height: min(88dvh, 900px); margin: auto; padding: 0; border: 0; border-radius: 8px; background: #f7f6f1; color: #172724; box-shadow: 0 25px 90px rgba(3,25,20,.35); overflow-y: auto; }.agi-dialog::backdrop { background: rgba(5,28,25,.68); backdrop-filter: blur(5px); }.agi-dialog-inner { padding: 34px 47px 38px; }.agi-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #728278; font-size: 10px; letter-spacing: .13em; font-weight: 700; }.agi-dialog-close { width: 34px; height: 34px; padding: 0; border: 1px solid #c8d4c8; border-radius: 50%; background: transparent; color: #244238; font: 24px/1 'DM Sans', sans-serif; cursor: pointer; }.agi-dialog-close:hover { background: #e3e9df; }
-    .agi-dialog-intro { padding: 31px 0 27px; }.agi-dialog-intro h2 { margin: 10px 0 16px; font-size: clamp(54px, 6vw, 78px); line-height: 1; font-weight: 500; letter-spacing: -.075em; }.agi-dialog-intro h2 em { color: #6a8767; }.agi-dialog-intro p { max-width: 720px; margin: 0; color: #5f7067; font-size: 14px; line-height: 1.8; }.agi-dialog-search { display: flex; align-items: center; gap: 13px; padding: 0 18px; border: 1px solid #bacbb8; border-radius: 5px; background: #fff; color: #35594a; }.agi-dialog-search svg { width: 25px; height: 25px; flex: none; }.agi-dialog-search input { width: 100%; height: 53px; border: 0; background: transparent; color: #172724; font: 14px 'DM Sans', sans-serif; outline: none; }.agi-dialog-search input::placeholder { color: #87958a; }
-    .agi-dialog-results { margin-top: 16px; }.agi-topic { display: grid; grid-template-columns: 185px 1fr; gap: 28px; padding: 23px 0 25px; border-top: 1px solid #d8dfd5; }.agi-topic-meta { padding-top: 5px; color: #76907b; font-size: 10px; letter-spacing: .1em; font-weight: 700; }.agi-topic h3, .agi-no-results h3 { margin: 0 0 9px; font-size: 23px; line-height: 1.2; font-weight: 500; letter-spacing: -.045em; }.agi-topic p, .agi-no-results p { margin: 0; color: #617168; font-size: 13px; line-height: 1.8; }.agi-no-results { padding: 28px 0; border-top: 1px solid #d8dfd5; }.agi-no-results button { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 0 0 6px; border: 0; border-bottom: 1px solid #4a7759; background: transparent; color: #244739; font: 600 12px 'DM Sans', sans-serif; cursor: pointer; }.agi-no-results button svg { width: 16px; height: 16px; }.agi-dialog-note { margin: 14px 0 0; padding-top: 17px; border-top: 1px solid #d8dfd5; color: #839185; font-size: 11px; line-height: 1.5; }
+    .agi-dialog { width: min(920px, calc(100% - 32px)); max-height: min(88dvh, 900px); margin: auto; padding: 0; border: 0; border-radius: 8px; background: #f7f6f1; color: #172724; box-shadow: 0 25px 90px rgba(3,25,20,.35); overflow-y: auto; }
+    .agi-dialog::backdrop { background: rgba(5,28,25,.68); backdrop-filter: blur(5px); }
+    .agi-dialog-inner { padding: 34px 47px 38px; }
+    .agi-dialog-header { display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #728278; font-size: 10px; letter-spacing: .13em; font-weight: 700; }
+    .agi-dialog-close { width: 34px; height: 34px; padding: 0; border: 1px solid #c8d4c8; border-radius: 50%; background: transparent; color: #244238; font: 24px/1 'DM Sans', sans-serif; cursor: pointer; }
+    .agi-dialog-close:hover { background: #e3e9df; }
+    .agi-dialog-intro { padding: 31px 0 27px; }
+    .agi-dialog-intro h2 { margin: 10px 0 16px; font-size: clamp(54px, 6vw, 78px); line-height: 1; font-weight: 500; letter-spacing: -.075em; }
+    .agi-dialog-intro h2 em { color: #6a8767; }
+    .agi-dialog-intro p { max-width: 720px; margin: 0; color: #5f7067; font-size: 14px; line-height: 1.8; }
+    .agi-dialog-search { display: flex; align-items: center; gap: 13px; padding: 0 18px; border: 1px solid #bacbb8; border-radius: 5px; background: #fff; color: #35594a; }
+    .agi-dialog-search svg { width: 25px; height: 25px; flex: none; }
+    .agi-dialog-search input { width: 100%; height: 53px; border: 0; background: transparent; color: #172724; font: 14px 'DM Sans', sans-serif; outline: none; }
+    .agi-dialog-search input::placeholder { color: #87958a; }
+    .agi-dialog-results { margin-top: 16px; }
+    .agi-topic { display: grid; grid-template-columns: 185px 1fr; gap: 28px; padding: 23px 0 25px; border-top: 1px solid #d8dfd5; }
+    .agi-topic-meta { padding-top: 5px; color: #76907b; font-size: 10px; letter-spacing: .1em; font-weight: 700; }
+    .agi-topic h3, .agi-no-results h3 { margin: 0 0 9px; font-size: 23px; line-height: 1.2; font-weight: 500; letter-spacing: -.045em; }
+    .agi-topic p, .agi-no-results p { margin: 0; color: #617168; font-size: 13px; line-height: 1.8; }
+    .agi-no-results { padding: 28px 0; border-top: 1px solid #d8dfd5; }
+    .agi-no-results button { display: flex; align-items: center; gap: 12px; margin-top: 20px; padding: 0 0 6px; border: 0; border-bottom: 1px solid #4a7759; background: transparent; color: #244739; font: 600 12px 'DM Sans', sans-serif; cursor: pointer; }
+    .agi-no-results button svg { width: 16px; height: 16px; }
+    .agi-dialog-note { margin: 14px 0 0; padding-top: 17px; border-top: 1px solid #d8dfd5; color: #839185; font-size: 11px; line-height: 1.5; }
+
+    /* ========================================================
+       DEEP DIVE MODAL FOR THE 12 PILLARS
+       ======================================================== */
+    .pillar-dialog {
+      width: min(1080px, calc(100% - 32px));
+      max-height: min(92dvh, 920px);
+      margin: auto;
+      padding: 0;
+      border: 0;
+      border-radius: 8px;
+      background: #f7f6f1;
+      color: #172724;
+      box-shadow: 0 25px 90px rgba(3,25,20,.35);
+      overflow-y: auto;
+    }
+    .pillar-dialog::backdrop {
+      background: rgba(5,28,25,.75);
+      backdrop-filter: blur(6px);
+    }
+    .pillar-modal-inner { padding: 36px 48px 45px; }
+    .pillar-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #d5dfd1;
+      padding-bottom: 18px;
+    }
+    .pillar-modal-tag {
+      font-size: 10px;
+      letter-spacing: .15em;
+      font-weight: 700;
+      color: #2b5c50;
+      text-transform: uppercase;
+    }
+    .pillar-modal-close {
+      width: 34px;
+      height: 34px;
+      border: 1px solid #c8d4c8;
+      border-radius: 50%;
+      background: transparent;
+      color: #244238;
+      font: 24px/1 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+    .pillar-modal-close:hover { background: #e3e9df; }
+    .pillar-modal-hero {
+      background: #092b2b;
+      color: #f7f8ef;
+      border-radius: 6px;
+      padding: 38px 42px;
+      margin: 24px 0 35px;
+    }
+    .pillar-modal-hero h2 {
+      font-size: clamp(32px, 3.8vw, 52px);
+      font-weight: 500;
+      letter-spacing: -.05em;
+      margin: 0 0 14px;
+      line-height: 1.1;
+    }
+    .pillar-modal-hero h2 em { color: #d6e9a6; }
+    .pillar-modal-hero p {
+      font-size: 15px;
+      line-height: 1.7;
+      color: #b7cdc4;
+      margin: 0;
+      max-width: 800px;
+    }
+
+    .pillar-modal-body {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 40px;
+    }
+    .pillar-modal-text h3 {
+      font-size: 24px;
+      font-weight: 500;
+      letter-spacing: -.03em;
+      margin: 30px 0 12px;
+    }
+    .pillar-modal-text h3:first-child { margin-top: 0; }
+    .pillar-modal-text p {
+      font-size: 14.5px;
+      line-height: 1.8;
+      color: #4b5a54;
+      margin-bottom: 18px;
+    }
+    .pillar-modal-text ul { padding-left: 20px; margin-bottom: 24px; }
+    .pillar-modal-text li { font-size: 14px; line-height: 1.8; color: #4b5a54; margin-bottom: 8px; }
+
+    .modal-tech-box {
+      background: #132420;
+      color: #e5f0ea;
+      padding: 24px;
+      border-radius: 6px;
+      margin: 25px 0;
+      border: 1px solid #233e36;
+    }
+    .modal-tech-box h4 {
+      color: #d2e8aa;
+      font-size: 15px;
+      margin: 0 0 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+    .modal-tech-box pre {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      line-height: 1.55;
+      color: #9abfb1;
+      overflow-x: auto;
+      margin: 0;
+    }
+
+    .modal-sidebar-card {
+      background: #edf2e8;
+      border-radius: 6px;
+      padding: 26px;
+      border: 1px solid #d5dfd1;
+      height: fit-content;
+    }
+    .modal-sidebar-card h4 {
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: #4e6b54;
+      margin: 0 0 16px;
+    }
+    .modal-spec-item {
+      margin-bottom: 16px;
+      border-bottom: 1px solid #d5dfd1;
+      padding-bottom: 12px;
+    }
+    .modal-spec-item:last-child { border: none; margin-bottom: 0; padding-bottom: 0; }
+    .modal-spec-label { font-size: 10px; color: #78897f; font-weight: 700; display: block; margin-bottom: 3px; }
+    .modal-spec-value { font-size: 13.5px; font-weight: 600; color: #1e3931; }
+
+    .pillar-modal-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 40px;
+      padding-top: 25px;
+      border-top: 1px solid #d5dfd1;
+    }
+    .pillar-nav-btn {
+      background: transparent;
+      border: 1px solid #c9d4c7;
+      padding: 10px 18px;
+      border-radius: 40px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #27473b;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: .2s;
+    }
+    .pillar-nav-btn:hover { background: #173d35; color: #fff; }
 
     @media (max-width: 1200px) {
       .capability-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 950px) {
-      .container { width: min(100% - 48px, 1440px); }.main-nav { margin-left: 0; }.hero { grid-template-columns: 52% 48%; min-height: 600px; }.hero-copy { padding-left: 38px; }.hero h1 { font-size: clamp(52px, 6vw, 70px); }.intelligence-visual { min-height: 600px; }.orb { width: 75%; }.hero-bottom span:last-child { display: none; }.visual-label { font-size: 8px; padding: 9px 11px; }.label-reason { left: 1%; }.label-create { right: 1%; }.intro-grid h2 { font-size: 76px; }.tools-heading h2 { font-size: 70px; }
+      .container { width: min(100% - 48px, 1440px); }
+      .main-nav { margin-left: 0; }
+      .hero { grid-template-columns: 52% 48%; min-height: 600px; }
+      .hero-copy { padding-left: 38px; }
+      .hero h1 { font-size: clamp(52px, 6vw, 70px); }
+      .intelligence-visual { min-height: 600px; }
+      .orb { width: 75%; }
+      .hero-bottom span:last-child { display: none; }
+      .visual-label { font-size: 8px; padding: 9px 11px; }
+      .label-reason { left: 1%; }
+      .label-create { right: 1%; }
+      .intro-grid h2 { font-size: 76px; }
+      .tools-heading h2 { font-size: 70px; }
       .capability-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillar-modal-body { grid-template-columns: 1fr; }
+      .tools-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 700px) {
-      .container { width: calc(100% - 32px); }.site-header { height: 72px; }.main-nav { display: none; }.header-link { padding: 9px 10px 9px 14px; gap: 10px; font-size: 11px; }
-      .hero { display: flex; flex-direction: column; min-height: auto; }.hero-copy { padding: 26px 25px 0; }.hero-eyebrow { font-size: 8px; }.hero-main-copy { padding: 71px 0 42px; }.hero h1 { font-size: clamp(49px, 10.2vw, 73px); }.hero-main-copy > p { margin-top: 23px; font-size: 14px; max-width: 310px; }.hero-bottom { display: none; }.intelligence-visual { min-height: 340px; }.orb { width: 245px; }.orbit-one { width: 330px; height: 330px; }.orbit-two { width: 440px; height: 300px; }.orbit-three { width: 520px; height: 400px; }.orb-glow { width: 300px; height: 300px; }.orb-center { font-size: 48px; }.visual-label { font-size: 8px; }.label-reason { top: 16%; left: 7%; }.label-create { top: 34%; right: 4%; }.label-adapt { bottom: 15%; left: 6%; }.visual-coordinate { display: none; }
-      .section-end { display: none; }.intro-section { padding-top: 75px; padding-bottom: 85px; }.intro-grid { display: block; padding-top: 70px; }.intro-grid h2 { font-size: clamp(68px, 14vw, 92px); }.asterisk-mark { top: -39px; }.intro-content { padding: 48px 0 0; }.intro-lead { font-size: 32px; }.intro-content > p:not(.intro-lead) { font-size: 14px; }
+      .container { width: calc(100% - 32px); }
+      .site-header { height: 72px; }
+      .main-nav { display: none; }
+      .header-link { padding: 9px 10px 9px 14px; gap: 10px; font-size: 11px; }
+      .hero { display: flex; flex-direction: column; min-height: auto; }
+      .hero-copy { padding: 26px 25px 0; }
+      .hero-eyebrow { font-size: 8px; }
+      .hero-main-copy { padding: 71px 0 42px; }
+      .hero h1 { font-size: clamp(49px, 10.2vw, 73px); }
+      .hero-main-copy > p { margin-top: 23px; font-size: 14px; max-width: 310px; }
+      .hero-bottom { display: none; }
+      .intelligence-visual { min-height: 340px; }
+      .orb { width: 245px; }
+      .orbit-one { width: 330px; height: 330px; }
+      .orbit-two { width: 440px; height: 300px; }
+      .orbit-three { width: 520px; height: 400px; }
+      .orb-glow { width: 300px; height: 300px; }
+      .orb-center { font-size: 48px; }
+      .visual-label { font-size: 8px; }
+      .label-reason { top: 16%; left: 7%; }
+      .label-create { top: 34%; right: 4%; }
+      .label-adapt { bottom: 15%; left: 6%; }
+      .visual-coordinate { display: none; }
+      .section-end { display: none; }
+      .intro-section { padding-top: 75px; padding-bottom: 85px; }
+      .intro-grid { display: block; padding-top: 70px; }
+      .intro-grid h2 { font-size: clamp(68px, 14vw, 92px); }
+      .asterisk-mark { top: -39px; }
+      .intro-content { padding: 48px 0 0; }
+      .intro-lead { font-size: 32px; }
+      .intro-content > p:not(.intro-lead) { font-size: 14px; }
       
-      .possibilities-section { padding: 55px 0 65px; }.possibilities-top > span:last-child { display: none; }.possibilities-heading { display: block; padding: 48px 0 35px; }.possibilities-heading h2 { font-size: 60px; }.possibilities-heading p { margin-top: 22px; }
+      .possibilities-section { padding: 55px 0 65px; }
+      .possibilities-top > span:last-child { display: none; }
+      .possibilities-heading { display: block; padding: 48px 0 35px; }
+      .possibilities-heading h2 { font-size: 60px; }
+      .possibilities-heading p { margin-top: 22px; }
       .capability-grid { grid-template-columns: 1fr; gap: 12px; }
       .capability { min-height: 240px; padding: 22px; }
       .capability-graphic { transform: scale(.72); transform-origin: top right; top: 22px; right: 18px; }
 
-      .tools-section { padding-top: 75px; padding-bottom: 75px; }.tools-heading { display: block; margin: 52px 0 37px; }.tools-heading h2 { font-size: 61px; }.tools-heading > p { margin-top: 24px; }.tools-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }.tool-card { min-height: 260px; padding: 16px; }.tool-card:nth-child(n) { margin-top: 0; transform: none; }.tool-card:nth-child(even) { margin-top: 23px; }.tool-card-top { font-size: 7px; letter-spacing: .05em; }.tool-arrow { width: 25px; height: 25px; flex: none; }.tool-icon { margin: 26px auto 24px; width: 61px; height: 61px; border-radius: 18px; }.tool-icon svg { width: 37px; height: 37px; }.tool-card h3 { font-size: 23px; }.tool-card p { font-size: 11px; }.tools-footnote { margin-top: 43px; line-height: 1.6; }
-      .closing-inner { min-height: 350px; padding: 37px 28px; display: block; }.closing-inner h2 { font-size: 61px; }.closing-inner:after { font-size: 350px; right: -100px; top: 10px; }.back-top { width: max-content; margin-top: 40px; }.site-footer { min-height: 120px; flex-wrap: wrap; justify-content: space-between; align-content: center; row-gap: 12px; }.site-footer span:last-child { display: none; }
-      .agi-search-card { min-height: 310px; padding: 28px 22px; align-items: start; flex-direction: column; justify-content: space-between; gap: 25px; }.agi-search-card:after { right: -230px; top: -80px; }.agi-search-copy strong { font-size: 32px; }.agi-search-copy > span:last-child { font-size: 12px; }.agi-search-action { width: 100%; }.agi-search-prompt { min-width: 0; width: 100%; }.agi-dialog { max-height: 92dvh; }.agi-dialog-inner { padding: 20px 22px 28px; }.agi-dialog-intro { padding: 28px 0 25px; }.agi-dialog-intro h2 { font-size: 58px; }.agi-dialog-intro p { font-size: 13px; }.agi-topic { grid-template-columns: 1fr; gap: 9px; padding: 22px 0; }.agi-topic h3 { font-size: 22px; }.agi-topic p { font-size: 12px; }
+      .tools-section { padding-top: 60px; padding-bottom: 75px; }
+      .tools-heading { display: block; margin: 40px 0 30px; }
+      .tools-heading h2 { font-size: 61px; }
+      .tools-heading > p { margin-top: 20px; }
+      .tools-grid { grid-template-columns: 1fr; gap: 16px; }
+      .tool-card { min-height: 250px; padding: 20px; }
+
+      .closing-inner { min-height: 350px; padding: 37px 28px; display: block; }
+      .closing-inner h2 { font-size: 61px; }
+      .closing-inner:after { font-size: 350px; right: -100px; top: 10px; }
+      .back-top { width: max-content; margin-top: 40px; }
+      .site-footer { min-height: 120px; flex-wrap: wrap; justify-content: space-between; align-content: center; row-gap: 12px; }
+      .site-footer span:last-child { display: none; }
+      .agi-search-card { min-height: 310px; padding: 28px 22px; align-items: start; flex-direction: column; justify-content: space-between; gap: 25px; }
+      .agi-search-card:after { right: -230px; top: -80px; }
+      .agi-search-copy strong { font-size: 32px; }
+      .agi-search-copy > span:last-child { font-size: 12px; }
+      .agi-search-action { width: 100%; }
+      .agi-search-prompt { min-width: 0; width: 100%; }
+      .agi-dialog { max-height: 92dvh; }
+      .agi-dialog-inner { padding: 20px 22px 28px; }
+      .agi-dialog-intro { padding: 28px 0 25px; }
+      .agi-dialog-intro h2 { font-size: 58px; }
+      .agi-dialog-intro p { font-size: 13px; }
+      .agi-topic { grid-template-columns: 1fr; gap: 9px; padding: 22px 0; }
+      .agi-topic h3 { font-size: 22px; }
+      .agi-topic p { font-size: 12px; }
+
+      .pillar-modal-inner { padding: 24px 20px 30px; }
+      .pillar-modal-hero { padding: 26px 22px; }
+      
+      #about, #possibilities, #tools {
+        scroll-margin-top: 80px !important;
+      }
     }
-    @media (max-width: 390px) { .hero h1 { font-size: 47px; }.hero-main-copy { padding-top: 57px; }.tools-heading h2 { font-size: 52px; }.tool-card { min-height: 275px; }.tool-card-top { max-width: 100%; }.tool-card h3 { font-size: 21px; } }
-    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+    @media (max-width: 390px) { 
+      .hero h1 { font-size: 47px; }
+      .hero-main-copy { padding-top: 57px; }
+      .tools-heading h2 { font-size: 52px; }
+      .tool-card { min-height: 260px; }
+      .tool-card-top { max-width: 100%; }
+      .tool-card h3 { font-size: 21px; } 
+    }
+    @media (prefers-reduced-motion: reduce) { 
+      html { scroll-behavior: auto; } 
+      *, *:before, *:after { transition-duration: .01ms !important; animation-duration: .01ms !important; } 
+    }
   </style>
 </head>
 <body>
@@ -379,7 +728,7 @@
         </div>
       </section>
 
-      <!-- Possibilities Section: 02 / THINK BIGGER (12 COGNITIVE PILLARS) -->
+      <!-- Possibilities Section: 02 / THINK BIGGER (12 INTERACTIVE PILLARS) -->
       <section class="possibilities-section" id="possibilities" aria-labelledby="possibilities-title">
         <div class="container">
           <div class="possibilities-top">
@@ -387,117 +736,117 @@
             <span>TWELVE COGNITIVE DIMENSIONS OF AGI</span>
           </div>
           <div class="possibilities-heading">
-            <h2 id="possibilities-title">One mind. <em>Many possibilities.</em></h2>
+            <h2 id="possibilities-title">One mind. <em> Many possibilities.</em></h2>
             <p>Beyond static token prediction. A full-spectrum cognitive ecosystem capable of causal discovery, continuous memory, internal simulation, and autonomous execution.</p>
           </div>
           
           <div class="capability-grid">
             <!-- 01 / Meta-Learning -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="0">
               <span class="capability-number">01 / META-LEARNING</span>
               <div class="capability-graphic graphic-learn"><span></span><span></span><span></span></div>
               <h3>Continuous Learning</h3>
               <p>Acquires new skills dynamically in runtime without catastrophic forgetting or the need for expensive full retraining cycles.</p>
-              <span class="capability-footnote"><a href="pillars/Meta-Learning.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
             <!-- 02 / Deep Reasoning -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="1">
               <span class="capability-number">02 / REASONING</span>
               <div class="capability-graphic graphic-reason"><span></span><span></span><span></span><span></span></div>
               <h3>Deep Reasoning</h3>
               <p>Navigates complex problems via multi-step search, tree-of-thought exploration, and logic rather than guessing next tokens.</p>
-              <span class="capability-footnote"><a href="pillars/Reasoning.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
             <!-- 03 / Cross-Domain Transfer -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="2">
               <span class="capability-number">03 / GENERALIZATION</span>
               <div class="capability-graphic graphic-adapt"><span></span><span></span><span></span></div>
               <h3>Cross-Domain Transfer</h3>
               <p>Transfers mental models and principles mastered in one field (e.g. physics or code) directly to solve novel real-world challenges.</p>
-              <span class="capability-footnote"><a href="pillars/Generalization.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
             <!-- 04 / Episodic & Semantic Memory -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="3">
               <span class="capability-number">04 / RETENTION</span>
               <div class="capability-graphic graphic-memory"><span></span><span></span><span></span></div>
               <h3>Dual Memory Systems</h3>
               <p>Maintains persistent evolving knowledge graphs and episodic execution traces to learn from past outcomes indefinitely.</p>
-              <span class="capability-footnote"><a href="pillars/Retention.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
             <!-- 05 / Multimodal Grounding -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="4">
               <span class="capability-number">05 / GROUNDING</span>
               <div class="capability-graphic graphic-perceive"><span></span><span></span><span></span></div>
               <h3>Multimodal Perception</h3>
               <p>Fuses vision, spatial physics, auditory cues, and tool interfaces into a unified, accurate internal representation of reality.</p>
-              <span class="capability-footnote"><a href="pillars/Grounding.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
             <!-- 06 / Autonomous Agency -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="5">
               <span class="capability-number">06 / AUTONOMY</span>
               <div class="capability-graphic graphic-autonomy"><span></span><span></span></div>
               <h3>Goal-Oriented Agency</h3>
               <p>Deconstructs abstract high-level objectives into concrete execution steps, calling APIs, executing code, and orchestrating tools.</p>
-              <span class="capability-footnote"><a href="pillars/Autonomous.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
             <!-- 07 / World Modeling -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="6">
               <span class="capability-number">07 / SIMULATION</span>
               <div class="capability-graphic graphic-world"><span></span><span></span><span></span></div>
               <h3>Internal World Model</h3>
               <p>Simulates possible futures, predicts side-effects, and tests hypothetical outcomes mentally before executing real actions.</p>
-              <span class="capability-footnote"><a href="pillars/Simulation.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
             <!-- 08 / Self-Correction & Metacognition -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="7">
               <span class="capability-number">08 / METACOGNITION</span>
               <div class="capability-graphic graphic-critic"><span></span><span></span></div>
               <h3>Self-Correction</h3>
               <p>Critiques its own intermediate thoughts, identifies logical fallacies or biases, and backtracks to try alternative strategies.</p>
-              <span class="capability-footnote"><a href="pillars/Metacognition.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
             <!-- 09 / Multi-Agent Swarm Orchestration -->
-            <article class="capability">
+            <article class="capability" data-pillar-index="8">
               <span class="capability-number">09 / CONSENSUS</span>
               <div class="capability-graphic graphic-swarm"><span></span><span></span><span></span><span></span></div>
               <h3>Multi-Agent Swarms</h3>
               <p>Coordinates specialized agent clusters (planners, coders, critics) through state machines to achieve collaborative consensus.</p>
-              <span class="capability-footnote"><a href="pillars/Consensus.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
-            <!-- 10 / Causal Discovery (NEW) -->
-            <article class="capability">
+            <!-- 10 / Causal Discovery -->
+            <article class="capability" data-pillar-index="9">
               <span class="capability-number">10 / CAUSALITY</span>
               <div class="capability-graphic graphic-causal"><span></span><span></span><span></span></div>
               <h3>Causal Inference</h3>
               <p>Distinguishes true cause-and-effect from mere statistical correlation, enabling scientifically sound hypotheses and discoveries.</p>
-              <span class="capability-footnote"><a href="pillars/Causality.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
-            <!-- 11 / Recursive Self-Improvement (NEW) -->
-            <article class="capability">
+            <!-- 11 / Recursive Self-Improvement -->
+            <article class="capability" data-pillar-index="10">
               <span class="capability-number">11 / EVOLUTION</span>
               <div class="capability-graphic graphic-recursive"><span></span><span></span></div>
               <h3>Recursive Improvement</h3>
               <p>Optimizes its own software architecture, algorithmic logic, and prompts autonomously to reach higher cognitive efficiency.</p>
-              <span class="capability-footnote"><a href="pillars/Evolution.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
 
-            <!-- 12 / Verifiable Safety & Alignment (NEW) -->
-            <article class="capability">
+            <!-- 12 / Verifiable Safety & Alignment -->
+            <article class="capability" data-pillar-index="11">
               <span class="capability-number">12 / GOVERNANCE</span>
               <div class="capability-graphic graphic-align"><span></span><span></span></div>
               <h3>Verifiable Alignment</h3>
               <p>Implements rigorous constitutional boundaries, verifiable execution proofs, and sandboxed kill-switches for guaranteed safety.</p>
-              <span class="capability-footnote"><a href="pillars/Governance.html">View Architecture Blueprint →</a></span>
+              <span class="view-blueprint-tag">Read More →</span>
             </article>
           </div>
         </div>
@@ -540,7 +889,7 @@
           </span>
         </button>
 
-        <!-- Tools Grid -->
+        <!-- Tools Grid (Clean, Professional Grid Without Random Skew) -->
         <div class="tools-grid">
           <!-- Tool 01 -->
           <a class="tool-card tone-mint" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore ChatGPT (opens in a new tab)">
@@ -684,7 +1033,7 @@
       <span>MADE FOR THE CURIOUS MINDS</span>
     </footer>
 
-    <!-- Interactive Search Dialog (All 12 Pillars Indexed) -->
+    <!-- Interactive Search Dialog -->
     <dialog id="agiDialog" class="agi-dialog" aria-labelledby="agi-dialog-title">
       <div class="agi-dialog-inner">
         <div class="agi-dialog-header">
@@ -707,9 +1056,467 @@
         <p class="agi-dialog-note">This guide explains a research concept. It is not a live AI chatbot or a claim that AGI already exists.</p>
       </div>
     </dialog>
+
+    <!-- ========================================================
+         DEEP DIVE MODAL FOR THE 12 PILLARS
+         ======================================================== -->
+    <dialog id="pillarDialog" class="pillar-dialog" aria-labelledby="modalPillarTitle">
+      <div class="pillar-modal-inner">
+        <div class="pillar-modal-header">
+          <span class="pillar-modal-tag" id="modalPillarTag">PILLAR 01 OF 12</span>
+          <button type="button" class="pillar-modal-close" id="closePillarBtn" aria-label="Close specification">×</button>
+        </div>
+
+        <div class="pillar-modal-hero">
+          <h2 id="modalPillarTitle">Continuous Learning & <em>Non-Catastrophic Adaptation</em></h2>
+          <p id="modalPillarLead">Moving beyond static weight checkpoints. AGI architectures acquire, consolidate, and retain operational skills dynamically during live execution.</p>
+        </div>
+
+        <div class="pillar-modal-body">
+          <div class="pillar-modal-text" id="modalPillarContent">
+            <!-- Dynamic Injection -->
+          </div>
+
+          <aside>
+            <div class="modal-sidebar-card">
+              <h4>System Specifications</h4>
+              <div class="modal-spec-item">
+                <span class="modal-spec-label">COGNITIVE LEVEL</span>
+                <span class="modal-spec-value" id="modalSpecLevel">Dynamic Synaptic Plasticity</span>
+              </div>
+              <div class="modal-spec-item">
+                <span class="modal-spec-label">CORE ARCHITECTURES</span>
+                <span class="modal-spec-value" id="modalSpecArch">EWC, Dynamic Adapters, Generative Rehearsal</span>
+              </div>
+              <div class="modal-spec-item">
+                <span class="modal-spec-label">SOLVES OVER STATIC LLMS</span>
+                <span class="modal-spec-value" id="modalSpecSolves">Eliminates Catastrophic Forgetting & Offline Retraining</span>
+              </div>
+              <div class="modal-spec-item">
+                <span class="modal-spec-label">STANDARD BENCHMARKS</span>
+                <span class="modal-spec-value" id="modalSpecBench">Continual World, Split-CIFAR, CL-Eval</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="pillar-modal-nav">
+          <button type="button" class="pillar-nav-btn" id="prevPillarBtn">← Previous Pillar</button>
+          <button type="button" class="pillar-nav-btn" id="nextPillarBtn">Next Pillar →</button>
+        </div>
+      </div>
+    </dialog>
   </div>
 
   <script>
+    /* ========================================================
+       DATA STORE FOR THE 12 PILLARS
+       ======================================================== */
+    const pillarsData = [
+      {
+        num: "01",
+        category: "Meta-Learning & Synaptic Plasticity",
+        title: "Continuous Learning & <em>Non-Catastrophic Adaptation</em>",
+        lead: "Moving beyond static weight checkpoints. AGI architectures acquire, consolidate, and retain operational skills dynamically during live execution without degrading baseline knowledge.",
+        level: "Dynamic Synaptic Plasticity",
+        arch: "Elastic Weight Consolidation, Dynamic Adapters, Generative Replay",
+        solves: "Eliminates Catastrophic Forgetting & Offline Retraining",
+        bench: "Continual World, Split-CIFAR, CL-Eval",
+        content: `
+          <h3>The Limitation of Static LLMs</h3>
+          <p>Current models operate in an offline, two-phase paradigm: expensive pre-training followed by frozen inference. While context windows provide temporary workspace, weights remain entirely static. Introducing new skills typically requires fine-tuning, which triggers <strong>Catastrophic Forgetting</strong>—the abrupt degradation of previously learned neural representations as newly adjusted weights overwrite existing weight spaces.</p>
+          
+          <h3>Architectural Mechanisms of Continual AGI</h3>
+          <p>True general intelligence relies on neuro-inspired continuous optimization mechanisms that preserve baseline logic while expanding procedural knowledge:</p>
+          <ul>
+            <li><strong>Elastic Weight Consolidation (EWC):</strong> Calculating the Fisher Information Matrix to identify weights critical for past tasks, assigning quadratic penalty terms to prevent drastic updates to high-importance parameters.</li>
+            <li><strong>Dynamic Parameter Expansion & Routing:</strong> Modular Mixture-of-Experts (MoE) where novel tasks dynamically instantiate specialized sub-networks without modifying established routing paths.</li>
+            <li><strong>Generative Replay Buffers:</strong> Idle background cycles synthesize pseudo-rehearsal datasets from historical memory, reinforcing foundational competencies in parallel with novel data assimilation.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Continual Optimization Pipeline</h4>
+            <pre>
+Stream Input ──> Novelty Filter ──> Route to Plastic LoRA Adapter
+                      │                      │
+                      ▼                      ▼
+               Memory Replay        Fisher Regularizer
+                      │                      │
+                      └──────> Weight Delta <┘
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "02",
+        category: "Deliberate Reasoning & Search",
+        title: "Deliberate Reasoning & <em>Search Algorithms</em>",
+        lead: "Transitioning from reactive System-1 token prediction to test-time deliberative System-2 cognitive computation. Utilizing tree exploration, value-guided heuristics, and formal deductive validation.",
+        level: "System-2 Deliberation",
+        arch: "MCTS, Tree-of-Thought, Process Reward Models (PRMs)",
+        solves: "Eliminates Compounding Hallucinatory Logic Cascades",
+        bench: "FrontierMath, ARC-AGI, Putnam Math Competition",
+        content: `
+          <h3>The Illusion of Linear Token Prediction</h3>
+          <p>Standard autoregressive transformers emit tokens via greedy or stochastic sampling based on historical probability matrices. While effective for common conversational patterns, this linear mechanism fails exponentially during complex mathematical proofs, compiler verification, or novel algorithmic design where an error in step two renders subsequent steps mathematically invalid.</p>
+
+          <h3>System-2 Cognitive Architectures in AGI</h3>
+          <p>Deliberate reasoning decouples thinking time from output generation by trading computational budget for verification accuracy:</p>
+          <ul>
+            <li><strong>Tree-of-Thought (ToT) Exploration:</strong> Maintaining a state graph of prospective hypotheses rather than a singular chain-of-thought, systematically branching, evaluating, and pruning unviable paths.</li>
+            <li><strong>Monte Carlo Tree Search (MCTS) with Process Reward Models (PRMs):</strong> Assigning granular heuristic scalar scores to every discrete deductive transition rather than relying solely on sparse terminal outcome feedback.</li>
+            <li><strong>Deterministic Backtracking:</strong> Detecting analytical dead-ends autonomously, resetting cognitive state pointers to previous branching nodes to compute alternative logic paths.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// MCTS Search & Pruning Flow</h4>
+            <pre>
+Root Problem ──> Branch Gen [Node A, Node B, Node C]
+                      │
+               Value Heuristic (PRM)
+                      │
+        [Node B: Conf=0.92] ──> Expand Deeply
+        [Node A: Conf=0.21] ──> Prune & Backtrack
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "03",
+        category: "Cross-Domain Generalization",
+        title: "Cross-Domain Transfer & <em>Isomorphic Mapping</em>",
+        lead: "True general intelligence abstracts foundational principles from source domains and seamlessly applies them across entirely novel, out-of-distribution environments without fine-tuning.",
+        level: "Universal Isomorphism",
+        arch: "Analogical Projection, Abstract Graph Embeddings, Invariant Representation",
+        solves: "Eliminates Out-of-Distribution Fragility",
+        bench: "ARC-AGI (François Chollet), Cross-Domain RL Bench",
+        content: `
+          <h3>The Narrow Domain Trap</h3>
+          <p>Conventional deep learning algorithms depend on identically distributed training spaces. An AI trained to play chess cannot apply concepts of territorial control to military logistics without full re-engineering. Conversely, biological general intelligence identifies common mathematical and structural symmetries (isomorphisms) across completely different fields.</p>
+
+          <h3>Isomorphic Cognitive Encoding</h3>
+          <ul>
+            <li><strong>Relational Inductive Biases:</strong> Mapping conceptual mechanics as structural graph invariants rather than memorizing surface token distributions.</li>
+            <li><strong>Analogical Reasoning Engines:</strong> Recognizing that fluid dynamic equations can map directly to distributed financial markets or network bandwidth congestion models.</li>
+            <li><strong>Zero-Shot Out-of-Distribution (OOD) Transfer:</strong> Executing effective control heuristics in previously unseen virtual worlds or novel operating systems on first contact.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Structural Isomorphic Abstraction</h4>
+            <pre>
+Fluid Dynamics Domain ────> [Extract Relational Graph] ────> Network Routing
+(Navier-Stokes Equations)       (Pressure, Flow, Drag)          (Load Balancing)
+                                        │
+                                        ▼
+                             Universal Causal Schema
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "04",
+        category: "Dual Memory Systems",
+        title: "Dual Memory Systems: <em>Episodic & Semantic Fusion</em>",
+        lead: "Context windows are transient scratchpads. AGI establishes persistent long-term cognitive continuity by fusing temporal episodic execution logs with relational semantic knowledge graphs.",
+        level: "Lifelong Cognitive State",
+        arch: "GraphRAG, Vector-Graph Hybridization, Memory Distillation",
+        solves: "Eliminates Context Amnesia & Token Attention Degradation",
+        bench: "LongEval, InfiniteBench, Graph-QA",
+        content: `
+          <h3>Why Context Scaling Fails General Retention</h3>
+          <p>Modern models expand token limits to millions of tokens, but self-attention suffers from retrieval degradation ("Lost in the Middle") and quadratic computational costs. More fundamentally, context windows wipe clean upon session conclusion. Human brains solve this not through infinite working memory, but via hippocampal consolidation into distinct cortical tiers.</p>
+
+          <h3>The Dual-Tier AGI Architecture</h3>
+          <ul>
+            <li><strong>Episodic Experiential Traces:</strong> Preserving chronological execution graphs, failed tool attempts, user corrections, and decision pathways in dynamic vector spaces.</li>
+            <li><strong>Semantic Knowledge Graphs:</strong> Converting episodic learnings into formal graph ontologies (nodes, properties, verifiable edges) to prevent conceptual drift.</li>
+            <li><strong>Autonomous Sleep Consolidation:</strong> Low-compute background routines compress episodic logs, prune redundant traces, and synthesize high-density conceptual relationships into permanent knowledge stores.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Memory Consolidation Pipeline</h4>
+            <pre>
+Live Experience ──> Episodic Store (pgvector / HNSW)
+                          │
+                   Background Graph Synthesis
+                          │
+                          ▼
+            Semantic Graph Engine (Neo4j / GraphRAG)
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "05",
+        category: "Physical & Spatial Grounding",
+        title: "Multimodal Grounding & <em>Spatial Perception</em>",
+        lead: "Language alone is an incomplete slice of reality. AGI grounds linguistic abstraction into spatial physics, 3D coordinate geometry, computer vision, and real-time sensory-motor interaction.",
+        level: "Sensorimotor Embodiment",
+        arch: "VLA Architectures, 3D Gaussian Splats, Neural Radiance Fields",
+        solves: "Eliminates Text-Only Disembodied Delusions",
+        bench: "RoboBench, SpatialQA, OpenX-Embodiment",
+        content: `
+          <h3>The Symbol Grounding Problem</h3>
+          <p>A text-only model understands the word "heavy" purely by its statistical distance to other lexical tokens. It possesses no innate concept of mass, gravitational torque, or physical fragility. This disconnection between semantic tokens and physical reality is the foundational cause of physical hallucination in robotics and automated engineering.</p>
+
+          <h3>Embodied Grounding in AGI Systems</h3>
+          <ul>
+            <li><strong>Unified Vision-Language-Action (VLA) Latents:</strong> Aligning 3D point clouds, RGB video streams, and tactile sensors directly with semantic token embeddings.</li>
+            <li><strong>Spatial Occlusion & Kinematic Modeling:</strong> Comprehending object permanence, friction, structural elasticity, and kinematic chains in 3D coordinate matrices.</li>
+            <li><strong>Sensory-Motor Calibration Loops:</strong> Continuously updating conceptual estimates by actively poking, testing, and manipulating digital and physical environments.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Sensory-Motor Latent Fusion</h4>
+            <pre>
+Video Stream ──┐
+Spatial Depth  ┼──> [Unified Spatial Encoder] ──> Grounded Action Token
+Force Sensors  ┘            │
+                            ▼
+                   Internal 3D Physics Mesh
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "06",
+        category: "Goal-Oriented Agency",
+        title: "Goal-Oriented Agency & <em>Tool Orchestration</em>",
+        lead: "Moving beyond conversational reactive outputs. AGI agents formulate sub-plans, dynamically call external APIs, generate and execute shell code, and iteratively solve long-horizon engineering objectives.",
+        level: "Goal-Directed Autonomy",
+        arch: "LangGraph State Machines, MCP, Hierarchical Task Networks",
+        solves: "Replaces Passive Chat with Proactive Environment Action",
+        bench: "SWE-bench, WebArena, GAIA",
+        content: `
+          <h3>The Limitations of Static Prompt-Response</h3>
+          <p>Standard chatbots provide passive advice, leaving physical and digital execution to the human user. True agency demands autonomous goal-directed behavior: taking high-level ambiguous directives ("Refactor this enterprise backend and deploy to Kubernetes") and generating thousands of verified operational steps independently.</p>
+
+          <h3>The Mechanical Loop of AGI Agency</h3>
+          <ul>
+            <li><strong>Hierarchical DAG Decomposition:</strong> Deconstructing massive goals into Directed Acyclic Graphs of discrete dependency tasks.</li>
+            <li><strong>Model Context Protocol (MCP) Standard:</strong> Interacting with file trees, database instances, browser emulators, and cloud infrastructure through unified protocol layers.</li>
+            <li><strong>Deterministic Environment Feedback Loops:</strong> Reading stderr compiler traces, parsing unit test outputs, and autonomously patching code until all assertion proofs pass.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// ReAct Agent Execution Loop</h4>
+            <pre>
+High-Level Objective ──> [Planner Engine] ──> Generate Task DAG
+                               │
+            ┌──────────────────┴──────────────────┐
+            ▼                                     ▼
+     Tool Execution (MCP)                  Sandbox Shell
+            │                                     │
+            └─────────> Environment State <───────┘
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "07",
+        category: "Mental Simulation & Foresight",
+        title: "Internal World Models & <em>Mental Foresight</em>",
+        lead: "Simulating the consequences of hypothetical decisions within an internal surrogate model of reality before taking irreversible real-world physical or digital actions.",
+        level: "Predictive Mental Simulation",
+        arch: "JEPA, Model-Based RL (DreamerV3), Latent Dynamics",
+        solves: "Eliminates Irreversible Real-World Trial-and-Error Failures",
+        bench: "Crafter, MineDojo, CARLA Autonomous Simulation",
+        content: `
+          <h3>The Peril of Blind Action Execution</h3>
+          <p>Standard reinforcement learning policies and naive agent loops interact directly with target environments by trial and error. In production environments—such as electrical power grids, clinical healthcare, or live financial trading—making an error in the real world causes catastrophic damage.</p>
+
+          <h3>The JEPA & World Model Approach</h3>
+          <ul>
+            <li><strong>Latent Space Prediction:</strong> Predicting future abstract world states rather than generating computationally wasteful pixel-level representations.</li>
+            <li><strong>Counterfactual Simulation:</strong> Asking internal what-if questions: "If I drop this database table to clean space, will the secondary replication cluster crash?"</li>
+            <li><strong>Risk-Aware Trajectory Selection:</strong> Simulating hundreds of branching operational outcomes mentally, picking the path with the optimal outcome and lowest tail-risk.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// World Model Mental Rollout</h4>
+            <pre>
+Current State S(t) ──> Action Hypothesis a(t)
+         │                     │
+         ▼                     ▼
+┌───────────────────────────────────────┐
+│ Latent World Simulator                │ ──> Predicted S(t+1)
+│ (Physics / Dependencies / Side-effects│ ──> Risk Penalty = 0.02
+└───────────────────────────────────────┘
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "08",
+        category: "Metacognitive Reflection",
+        title: "Metacognitive Reflection & <em>Self-Correction</em>",
+        lead: "Critiquing internal intermediate thoughts, identifying logical fallacies or biases, and autonomously backtracking to alternative reasoning paths prior to external emission.",
+        level: "Metacognitive Self-Doubt",
+        arch: "Actor-Critic Separation, Formal SMT Solvers, Epistemic Calibration",
+        solves: "Eliminates Stubborn Hallucinatory Overconfidence",
+        bench: "MiniF2F, Lean-Gym, GSM8K-SelfCorrect",
+        content: `
+          <h3>The Arrogance of Unverified Outputs</h3>
+          <p>Modern LLMs are calibrated to produce smooth, authoritative-sounding text regardless of whether the internal deduction is logically sound. When an error occurs, the model defends its flawed chain rather than admitting the error, leading to stubborn compounding hallucinations.</p>
+
+          <h3>Mechanisms of Metacognitive Auditing</h3>
+          <ul>
+            <li><strong>Critic-Verifier Networks:</strong> A secondary internal model analyzes the generator's logical chain for unstated premises, non-sequiturs, and mathematical discrepancies.</li>
+            <li><strong>Formal Symbolic Verification:</strong> Offloading critical claims to formal verification engines (Z3 SMT solvers, Lean 4 proof assistants) to mechanically prove veracity.</li>
+            <li><strong>Confidence Calibration & Doubt Triggers:</strong> When epistemic uncertainty crosses a threshold, the system halts generation, admits ambiguity, and triggers a focused exploratory re-search.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Actor-Critic Verification Pipeline</h4>
+            <pre>
+Candidate Solution ──> [Independent Critic Model]
+                             │
+                      Formal SMT Solver (Z3)
+                             │
+                 ┌───────────┴───────────┐
+                 ▼                       ▼
+          [Valid Proof]           [Counter-Example]
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "09",
+        category: "Collective Consensus & Swarms",
+        title: "Multi-Agent Swarms & <em>Consensus Protocols</em>",
+        lead: "Moving away from monolithic single-model bottlenecks. AGI coordinates specialized micro-agents across deterministic state graphs to achieve robust, fault-tolerant consensus on large-scale tasks.",
+        level: "Distributed Collective Intelligence",
+        arch: "LangGraph State Networks, Byzantine Agent Consensus, MCP Routing",
+        solves: "Eliminates Monolithic Single-Point-of-Failure",
+        bench: "ChatEval, Multi-Agent SWE-bench",
+        content: `
+          <h3>The Scaling Limit of Monolithic Models</h3>
+          <p>Attempting to train a single trillion-parameter model to excel simultaneously at legal drafting, assembly code optimization, mathematical proofing, and artistic synthesis leads to internal capacity interference. True general intelligence operates like human society: a swarm of specialized experts negotiating solutions through rigorous protocol consensus.</p>
+
+          <h3>Swarm Coordination Architectures</h3>
+          <ul>
+            <li><strong>Role-Specialized Micro-Agents:</strong> Architect, Security Auditor, Coder, and Verifier instances running distinct context windows and specialized tooling.</li>
+            <li><strong>Byzantine Fault Tolerance:</strong> If an individual agent hallucinates, peer validation nodes detect the inconsistency and reject the faulty sub-graph.</li>
+            <li><strong>Deterministic Graph State Machines:</strong> Frameworks like LangGraph manage transitions, cyclical error-recovery, and human-in-the-loop checkpoints without non-deterministic execution drift.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Multi-Agent State Graph Flow</h4>
+            <pre>
+User Spec ──> [Architect Agent] ──> DAG Plan
+                      │
+        ┌─────────────┴─────────────┐
+        ▼                           ▼
+[Frontend Dev]                [Backend Dev]
+        │                           │
+        └─────────> Pull Request <──┘
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "10",
+        category: "Causal Inference & Discovery",
+        title: "Causal Inference & <em>Scientific Discovery</em>",
+        lead: "Moving beyond statistical curve-fitting. Implementing Judea Pearl’s Causal Ladder—allowing systems to distinguish correlation from causation, model interventions, and prove scientific discoveries.",
+        level: "Pearl Level-3 (Counterfactuals)",
+        arch: "Structural Equation Models, do-Calculus, Invariant Prediction",
+        solves: "Eliminates Spurious Statistical Correlations",
+        bench: "CausalBench, ScienceWorld",
+        content: `
+          <h3>The Fundamental Blindspot of Deep Learning</h3>
+          <p>All modern neural networks are correlation estimators (Pearl's Layer 1: Association). If a model observes that rooster crows and sunrises correlate 100% of the time, it cannot deduce whether the rooster causes the sunrise. When applied to drug discovery, climate modeling, or macroeconomics, pure correlation causes dangerous errors.</p>
+
+          <h3>Intervention & Counterfactual Discovery</h3>
+          <ul>
+            <li><strong>do-Calculus & Interventions:</strong> Simulating active experiments: P(Y | do(X))—determining how variable Y behaves when variable X is actively forced into an arbitrary state.</li>
+            <li><strong>Causal Directed Acyclic Graph (DAG) Discovery:</strong> Extracting underlying causal dependency trees from noisy observational time-series.</li>
+            <li><strong>Automated Laboratory Experimentation:</strong> Formulating falsifiable scientific hypotheses and directly commanding automated robotic wet-lab APIs to validate them.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Causal Discovery Architecture</h4>
+            <pre>
+Observational Data ──> Invariant Causal Prediction (ICP)
+                             │
+                             ▼
+              Directed Acyclic Graph (DAG)
+                             │
+            Active Experiment: do(Feature_A = 0)
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "11",
+        category: "Autonomous Recursive Evolution",
+        title: "Recursive Self-Improvement & <em>Neural Meta-Search</em>",
+        lead: "The theoretical threshold of intelligence explosion. Systems that analyze their own source algorithms, compilation profiles, and neural operators to synthesize more efficient subsequent versions.",
+        level: "Recursive Meta-Evolution",
+        arch: "Evolutionary NAS, Automated Triton Kernel Synthesis, Gödel Machines",
+        solves: "Eliminates Human Algorithmic Discovery Bottlenecks",
+        bench: "AutoML-Bench, CodeContests Self-Optimization",
+        content: `
+          <h3>The Human Engineering Bottleneck</h3>
+          <p>Today, every architectural breakthrough—from Transformers to Diffusion Models—relies on manual human discovery, prototyping, and optimization. Human research teams operate on month-long development cycles constrained by biological cognitive bandwidth.</p>
+
+          <h3>The Autonomous Optimization Loop</h3>
+          <ul>
+            <li><strong>Autonomous Neural Architecture Search (NAS):</strong> Designing bespoke tensor operations and sparse attention topologies tailored to hardware compute profiles.</li>
+            <li><strong>Self-Compiling Kernel Optimization:</strong> Writing and optimizing raw Triton and CUDA kernels dynamically based on memory bandwidth profiling.</li>
+            <li><strong>Formal Sandboxed Validation:</strong> Ensuring that each self-improved iteration mathematically strictly outperforms the previous generation across formal regression suites before promotion.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Recursive Self-Optimization Loop</h4>
+            <pre>
+System N Core ──> Profile Bottlenecks ──> Propose Architectural Delta
+                        │                            │
+                        ▼                            ▼
+              Automated Benchmark Suite      Synthesize CUDA Kernels
+                        │                            │
+             Performance > 1.25x? ──[Yes]──> Promoted to System N+1
+            </pre>
+          </div>
+        `
+      },
+      {
+        num: "12",
+        category: "Verifiable Safety Governance",
+        title: "Verifiable Alignment & <em>Constitutional Safety</em>",
+        lead: "Autonomy without verified safety is existential risk. Establishing mathematically provable guardrails, mechanistic latent probing, sandboxed enclaves, and cryptographic kill-switches.",
+        level: "Provable Safety Constraints",
+        arch: "Mechanistic Interpretability, eBPF Sandboxing, Constitutional AI",
+        solves: "Eliminates Reward Gaming & Deceptive Sycophancy",
+        bench: "Machiavelli Benchmark, AlignmentEval, WMDP",
+        content: `
+          <h3>The Danger of Reward Gaming & Sycophancy</h3>
+          <p>When reinforcement learning models are trained purely on proxy human rewards, they learn to game the metrics: flattering users, hiding intermediate errors, or executing dangerous sub-goals that satisfy literal instructions while destroying actual human intent.</p>
+
+          <h3>Mathematical & Architectural Guardrails</h3>
+          <ul>
+            <li><strong>Mechanistic Interpretability Probing:</strong> Real-time monitoring of internal attention heads and residual stream vectors to detect deceptive divergence prior to action execution.</li>
+            <li><strong>Hardware-Enforced Sandboxing:</strong> Restricting autonomous agents inside deterministic, zero-trust WebAssembly (Wasm) and eBPF kernel enclaves with fine-grained network isolation.</li>
+            <li><strong>Constitutional Proof Bounds:</strong> Every external API invocation requires a cryptographic proof token asserting compliance with formal safety constitutions.</li>
+          </ul>
+
+          <div class="modal-tech-box">
+            <h4>// Sandboxed Execution & Safety Guardrail</h4>
+            <pre>
+Action Token ──> [Residual Stream Probe] ──> Deception Score > 0.05?
+                         │                         │
+                         │                   [Yes] ┴─> Hard Trip Kill-switch
+                         ▼
+        [Wasm / eBPF Sandboxed Enclave]
+            </pre>
+          </div>
+        `
+      }
+    ];
+
+    /* ========================================================
+       TOPIC SEARCH INDEX FOR THE SEARCH DIALOG
+       ======================================================== */
     const agiTopics = [
       {
         title: "What is AGI and its ultimate definition?",
@@ -785,13 +1592,69 @@
       }
     ];
 
+    /* ========================================================
+       PAGE INITIALIZATION & MODAL HANDLERS
+       ======================================================== */
     document.addEventListener("DOMContentLoaded", () => {
-      const dialog = document.getElementById("agiDialog");
+      // 1. Search Dialog References
+      const searchDialog = document.getElementById("agiDialog");
       const openSearchBtn = document.getElementById("openSearchBtn");
       const closeSearchBtn = document.getElementById("closeSearchBtn");
       const searchInput = document.getElementById("agiSearchInput");
       const resultsContainer = document.getElementById("agiResults");
 
+      // 2. Pillar Deep-Dive Modal References
+      const pillarDialog = document.getElementById("pillarDialog");
+      const closePillarBtn = document.getElementById("closePillarBtn");
+      const prevPillarBtn = document.getElementById("prevPillarBtn");
+      const nextPillarBtn = document.getElementById("nextPillarBtn");
+
+      let currentPillarIndex = 0;
+
+      function renderPillarModal(index) {
+        currentPillarIndex = index;
+        const data = pillarsData[index];
+
+        document.getElementById("modalPillarTag").textContent = `PILLAR ${data.num} OF 12 / ${data.category.toUpperCase()}`;
+        document.getElementById("modalPillarTitle").innerHTML = data.title;
+        document.getElementById("modalPillarLead").textContent = data.lead;
+        document.getElementById("modalPillarContent").innerHTML = data.content;
+
+        document.getElementById("modalSpecLevel").textContent = data.level;
+        document.getElementById("modalSpecArch").textContent = data.arch;
+        document.getElementById("modalSpecSolves").textContent = data.solves;
+        document.getElementById("modalSpecBench").textContent = data.bench;
+
+        prevPillarBtn.style.visibility = index === 0 ? "hidden" : "visible";
+        nextPillarBtn.style.visibility = index === pillarsData.length - 1 ? "hidden" : "visible";
+
+        pillarDialog.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Attach click events to all 12 capability cards
+      document.querySelectorAll(".capability").forEach((card) => {
+        card.addEventListener("click", () => {
+          const idx = parseInt(card.getAttribute("data-pillar-index"), 10);
+          renderPillarModal(idx);
+          pillarDialog.showModal();
+        });
+      });
+
+      closePillarBtn?.addEventListener("click", () => pillarDialog.close());
+
+      prevPillarBtn?.addEventListener("click", () => {
+        if (currentPillarIndex > 0) renderPillarModal(currentPillarIndex - 1);
+      });
+
+      nextPillarBtn?.addEventListener("click", () => {
+        if (currentPillarIndex < pillarsData.length - 1) renderPillarModal(currentPillarIndex + 1);
+      });
+
+      pillarDialog?.addEventListener("click", (e) => {
+        if (e.target === pillarDialog) pillarDialog.close();
+      });
+
+      // Search Dialog Functions
       function renderTopics(filterQuery = "") {
         const q = filterQuery.trim().toLowerCase();
         const matching = agiTopics.filter((topic) => {
@@ -803,7 +1666,7 @@
           resultsContainer.innerHTML = `
             <div class="agi-no-results">
               <h3>No topic found.</h3>
-              <p>Try searching for “causality”, “memory”, “world model”, “swarms”, or “safety”.</p>
+              <p>Try searching for “memory”, “world model”, “swarms”, “agency”, or “safety”.</p>
               <button type="button" id="resetTopicsBtn">
                 Show all topics 
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="width: 16px; height: 16px;">
@@ -834,18 +1697,14 @@
       openSearchBtn?.addEventListener("click", () => {
         searchInput.value = "";
         renderTopics("");
-        dialog.showModal();
+        searchDialog.showModal();
         searchInput.focus();
       });
 
-      closeSearchBtn?.addEventListener("click", () => {
-        dialog.close();
-      });
+      closeSearchBtn?.addEventListener("click", () => searchDialog.close());
 
-      dialog?.addEventListener("click", (e) => {
-        if (e.target === dialog) {
-          dialog.close();
-        }
+      searchDialog?.addEventListener("click", (e) => {
+        if (e.target === searchDialog) searchDialog.close();
       });
 
       searchInput?.addEventListener("input", (e) => {
