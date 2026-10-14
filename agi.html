@@ -33,7 +33,7 @@
     .container { width: min(100% - 96px, 1440px); margin-inline: auto; }
     em { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
 
-    /* Fix: Smooth scroll target offsets taaki header ke pichhe content na chupe */
+    /* Fix: Smooth scroll target offsets */
     #about, #possibilities, #tools {
       scroll-margin-top: 110px !important;
     }
@@ -232,7 +232,7 @@
     .graphic-align span:nth-child(2) { width: 32px; height: 32px; top: 26.5px; right: 31.5px; background: #cce7c5; transform: rotate(45deg); border: 1.5px dashed #234b3e; }
 
     /* ========================================================
-       TOOLS SECTION (FIXED: Clean Uniform Grid, No Overlapping)
+       TOOLS SECTION (Clean Uniform Grid, No Overlapping)
        ======================================================== */
     .tools-section { 
       padding-top: 80px; 
@@ -262,8 +262,8 @@
       display: flex; 
       flex-direction: column; 
       position: relative; 
-      margin-top: 0 !important;       /* Overlapping margin removed */
-      transform: none !important;     /* Awkward rotation removed */
+      margin-top: 0 !important;
+      transform: none !important;
       transition: transform .25s ease, box-shadow .25s ease; 
       border: 1px solid rgba(0, 0, 0, 0.05);
     }
@@ -300,8 +300,17 @@
     .closing-inner h2 em { color: #cfe6aa; }
     .back-top { position: relative; z-index: 1; display: flex; align-items: center; gap: 22px; border-bottom: 1px solid #a8c8b9; padding-bottom: 9px; font-size: 12px; font-weight: 600; white-space: nowrap; }
     .back-top svg { width: 17px; height: 17px; }
-    .site-footer { min-height: 100px; display: flex; align-items: center; justify-content: space-between; gap: 20px; color: #869389; font-size: 9px; }
-    .footer-brand { color: #233c33; font-size: 24px; letter-spacing: -.08em; font-weight: 700; text-transform: none; }
+
+    /* Updated Footer */
+    .site-footer { 
+      min-height: 100px; 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      gap: 20px; 
+      color: #869389; 
+      font-size: 9px; 
+    }
 
     /* Search Dialog */
     .agi-search-card { width: 100%; min-height: 235px; margin-bottom: 23px; padding: 34px 39px; border: 0; border-radius: 5px; background: radial-gradient(circle at 76% 35%, #315f53 0%, #1e493e 34%, #173d35 69%); color: #f6f8ec; display: flex; align-items: end; justify-content: space-between; gap: 35px; text-align: left; font: inherit; cursor: pointer; overflow: hidden; position: relative; transition: transform .25s, box-shadow .25s; }
@@ -736,7 +745,7 @@
             <span>TWELVE COGNITIVE DIMENSIONS OF AGI</span>
           </div>
           <div class="possibilities-heading">
-            <h2 id="possibilities-title">One mind. <em> Many possibilities.</em></h2>
+            <h2 id="possibilities-title">One architecture. <em>Total general intelligence.</em></h2>
             <p>Beyond static token prediction. A full-spectrum cognitive ecosystem capable of causal discovery, continuous memory, internal simulation, and autonomous execution.</p>
           </div>
           
@@ -747,7 +756,7 @@
               <div class="capability-graphic graphic-learn"><span></span><span></span><span></span></div>
               <h3>Continuous Learning</h3>
               <p>Acquires new skills dynamically in runtime without catastrophic forgetting or the need for expensive full retraining cycles.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 02 / Deep Reasoning -->
@@ -756,7 +765,7 @@
               <div class="capability-graphic graphic-reason"><span></span><span></span><span></span><span></span></div>
               <h3>Deep Reasoning</h3>
               <p>Navigates complex problems via multi-step search, tree-of-thought exploration, and logic rather than guessing next tokens.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 03 / Cross-Domain Transfer -->
@@ -765,7 +774,7 @@
               <div class="capability-graphic graphic-adapt"><span></span><span></span><span></span></div>
               <h3>Cross-Domain Transfer</h3>
               <p>Transfers mental models and principles mastered in one field (e.g. physics or code) directly to solve novel real-world challenges.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 04 / Episodic & Semantic Memory -->
@@ -774,7 +783,7 @@
               <div class="capability-graphic graphic-memory"><span></span><span></span><span></span></div>
               <h3>Dual Memory Systems</h3>
               <p>Maintains persistent evolving knowledge graphs and episodic execution traces to learn from past outcomes indefinitely.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 05 / Multimodal Grounding -->
@@ -783,7 +792,7 @@
               <div class="capability-graphic graphic-perceive"><span></span><span></span><span></span></div>
               <h3>Multimodal Perception</h3>
               <p>Fuses vision, spatial physics, auditory cues, and tool interfaces into a unified, accurate internal representation of reality.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 06 / Autonomous Agency -->
@@ -792,7 +801,7 @@
               <div class="capability-graphic graphic-autonomy"><span></span><span></span></div>
               <h3>Goal-Oriented Agency</h3>
               <p>Deconstructs abstract high-level objectives into concrete execution steps, calling APIs, executing code, and orchestrating tools.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 07 / World Modeling -->
@@ -801,7 +810,7 @@
               <div class="capability-graphic graphic-world"><span></span><span></span><span></span></div>
               <h3>Internal World Model</h3>
               <p>Simulates possible futures, predicts side-effects, and tests hypothetical outcomes mentally before executing real actions.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 08 / Self-Correction & Metacognition -->
@@ -810,7 +819,7 @@
               <div class="capability-graphic graphic-critic"><span></span><span></span></div>
               <h3>Self-Correction</h3>
               <p>Critiques its own intermediate thoughts, identifies logical fallacies or biases, and backtracks to try alternative strategies.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 09 / Multi-Agent Swarm Orchestration -->
@@ -819,7 +828,7 @@
               <div class="capability-graphic graphic-swarm"><span></span><span></span><span></span><span></span></div>
               <h3>Multi-Agent Swarms</h3>
               <p>Coordinates specialized agent clusters (planners, coders, critics) through state machines to achieve collaborative consensus.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 10 / Causal Discovery -->
@@ -828,7 +837,7 @@
               <div class="capability-graphic graphic-causal"><span></span><span></span><span></span></div>
               <h3>Causal Inference</h3>
               <p>Distinguishes true cause-and-effect from mere statistical correlation, enabling scientifically sound hypotheses and discoveries.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 11 / Recursive Self-Improvement -->
@@ -837,7 +846,7 @@
               <div class="capability-graphic graphic-recursive"><span></span><span></span></div>
               <h3>Recursive Improvement</h3>
               <p>Optimizes its own software architecture, algorithmic logic, and prompts autonomously to reach higher cognitive efficiency.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
 
             <!-- 12 / Verifiable Safety & Alignment -->
@@ -846,7 +855,7 @@
               <div class="capability-graphic graphic-align"><span></span><span></span></div>
               <h3>Verifiable Alignment</h3>
               <p>Implements rigorous constitutional boundaries, verifiable execution proofs, and sandboxed kill-switches for guaranteed safety.</p>
-              <span class="view-blueprint-tag">Read More →</span>
+              <span class="view-blueprint-tag">View Architecture Blueprint →</span>
             </article>
           </div>
         </div>
@@ -1026,9 +1035,24 @@
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer with Portfolio Brand Logo (Replaced future.) -->
     <footer class="site-footer container">
-      <a href="#top" class="footer-brand">future<span>.</span></a>
+      <a href="index.html" class="portfolio-brand">
+        <img src="AE.png" alt="Akbarhusain Logo" class="logo-img" onerror="this.style.display='none'; document.getElementById('footer-fallback-svg').style.display='block';" />
+        
+        <svg id="footer-fallback-svg" style="display: none; width: 44px; height: 44px;" viewBox="0 0 106.334746 72.098088" xmlns="http://www.w3.org/2000/svg">
+          <g transform="translate(-8.705710,81.000000) scale(0.100000,-0.100000)" fill="#2f6f6f" stroke="none">
+            <path d="M309 473 c-106 -186 -199 -348 -207 -361 l-15 -23 68 3 69 3 171 298 c95 165 175 300 179 300 3 1 43 -63 89 -143 l83 -145 114 -3 115 -2 28 50 c15 27 27 52 27 55 0 2 -48 6 -107 7 l-108 3 -85 148 -84 147 -72 0 -72 0 -193 -337z" />
+            <path d="M710 804 c0 -3 12 -28 28 -55 l27 -49 163 2 162 3 30 53 30 52 -220 0 c-121 0 -220 -3 -220 -6z" />
+            <path d="M500 365 c-39 -69 -70 -130 -68 -137 2 -7 19 -41 38 -75 l35 -63 277 0 277 0 -32 55 -31 55 -223 0 -224 0 48 88 47 89 -29 56 c-17 31 -33 57 -36 57 -4 0 -39 -56 -79 -125z" />
+          </g>
+        </svg>
+
+        <div class="brand-text">
+          <span class="brand-name">Akbarhusain</span>
+          <span class="brand-role">AI ENGINEER</span>
+        </div>
+      </a>
       <span>AN EXPLORATION OF INTELLIGENCE &amp; POSSIBILITY</span>
       <span>MADE FOR THE CURIOUS MINDS</span>
     </footer>
@@ -1596,14 +1620,46 @@ Action Token ──> [Residual Stream Probe] ──> Deception Score > 0.05?
        PAGE INITIALIZATION & MODAL HANDLERS
        ======================================================== */
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Search Dialog References
+      // 1. Auto-clean URL agar page hash ke sath load ho (#possibilities, #about, #tools hide ho jayega)
+      if (window.location.hash) {
+        const initialTarget = document.querySelector(window.location.hash);
+        if (initialTarget) {
+          setTimeout(() => {
+            initialTarget.scrollIntoView({ behavior: "smooth" });
+            history.replaceState(null, document.title, window.location.pathname);
+          }, 60);
+        }
+      }
+
+      // 2. Click handler: Smooth scroll perform hoga lekin URL bar me #hash bilkul add nahi hoga
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          const targetId = this.getAttribute("href");
+          if (targetId === "#" || targetId === "#top") {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            history.replaceState(null, document.title, window.location.pathname);
+            return;
+          }
+
+          const targetEl = document.querySelector(targetId);
+          if (targetEl) {
+            e.preventDefault();
+            targetEl.scrollIntoView({ behavior: "smooth" });
+            // Clean URL maintain rakho (hamesha sirf /agi hi dikhega)
+            history.replaceState(null, document.title, window.location.pathname);
+          }
+        });
+      });
+
+      // 3. Search Dialog References
       const searchDialog = document.getElementById("agiDialog");
       const openSearchBtn = document.getElementById("openSearchBtn");
       const closeSearchBtn = document.getElementById("closeSearchBtn");
       const searchInput = document.getElementById("agiSearchInput");
       const resultsContainer = document.getElementById("agiResults");
 
-      // 2. Pillar Deep-Dive Modal References
+      // 4. Pillar Deep-Dive Modal References
       const pillarDialog = document.getElementById("pillarDialog");
       const closePillarBtn = document.getElementById("closePillarBtn");
       const prevPillarBtn = document.getElementById("prevPillarBtn");
