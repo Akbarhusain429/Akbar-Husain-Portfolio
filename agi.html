@@ -597,6 +597,7 @@
     }
     .pillar-nav-btn:hover { background: #173d35; color: #fff; }
 
+    /* Responsive Queries */
     @media (max-width: 1200px) {
       .capability-grid { grid-template-columns: repeat(3, 1fr); }
       .tools-grid { grid-template-columns: repeat(3, 1fr); }
@@ -616,11 +617,16 @@
       .intro-grid h2 { font-size: 76px; }
       .tools-heading h2 { font-size: 70px; }
       .capability-grid { grid-template-columns: repeat(2, 1fr); }
+      
+      /* Tablet View: Stagger & Tilts for 2-column layout */
       .tools-grid { 
         grid-template-columns: repeat(2, 1fr); 
-        row-gap: 30px;
+        column-gap: 22px;
+        row-gap: 40px;
       }
-      .tool-card:nth-child(n) { transform: none !important; }
+      .tool-card:nth-child(odd) { transform: rotate(-1.5deg) translateY(-8px); }
+      .tool-card:nth-child(even) { transform: rotate(1.5deg) translateY(12px); }
+
       .pillar-modal-body { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
@@ -665,15 +671,30 @@
       .capability { min-height: 240px; padding: 22px; }
       .capability-graphic { transform: scale(.72); transform-origin: top right; top: 22px; right: 18px; }
 
-      .tools-section { padding-top: 60px; padding-bottom: 75px; }
+      .tools-section { padding-top: 60px; padding-bottom: 85px; }
       .tools-heading { display: block; margin: 40px 0 30px; }
       .tools-heading h2 { font-size: 61px; }
       .tools-heading > p { margin-top: 20px; }
+
+      /* Mobile: Retains Organic Alternating Tilts & Shifts without breaking width */
       .tools-grid { 
         grid-template-columns: 1fr; 
-        gap: 20px; 
+        row-gap: 32px; 
+        padding-inline: 8px; /* space for tilts */
       }
-      .tool-card { min-height: 250px; padding: 20px; transform: none !important; }
+      .tool-card { 
+        min-height: 250px; 
+        padding: 22px; 
+      }
+      .tool-card:nth-child(odd) { 
+        transform: rotate(-1.4deg) translateX(-4px) !important; 
+      }
+      .tool-card:nth-child(even) { 
+        transform: rotate(1.4deg) translateX(4px) !important; 
+      }
+      .tool-card:hover {
+        transform: translateY(-6px) rotate(0deg) !important;
+      }
 
       .closing-inner { min-height: 350px; padding: 37px 28px; display: block; }
       .closing-inner h2 { font-size: 61px; }
@@ -707,7 +728,7 @@
       .hero h1 { font-size: 47px; }
       .hero-main-copy { padding-top: 57px; }
       .tools-heading h2 { font-size: 52px; }
-      .tool-card { min-height: 260px; }
+      .tool-card { min-height: 250px; }
       .tool-card-top { max-width: 100%; }
       .tool-card h3 { font-size: 21px; } 
     }
@@ -837,7 +858,7 @@
             <span>TWELVE COGNITIVE DIMENSIONS OF AGI</span>
           </div>
           <div class="possibilities-heading">
-            <h2 id="possibilities-title">One mind. <em>Many possibilities.</em></h2>
+            <h2 id="possibilities-title">One mind. <em> Many <br> possibilities.</em></h2>
             <p>Beyond static token prediction. A full-spectrum cognitive ecosystem capable of causal discovery, continuous memory, internal simulation, and autonomous execution.</p>
           </div>
           
@@ -1181,11 +1202,30 @@
               <p>Orchestrate cyclic multi-agent systems and stateful tool loops.</p>
             </div>
           </a>
-          
+
           <!-- Tool 11 -->
+          <a class="tool-card tone-rose" href="https://v0.dev/" target="_blank" rel="noopener noreferrer" aria-label="Explore v0 by Vercel (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>11 / GENERATIVE UI</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="10" y="10" width="28" height="28" rx="4" /><path d="M10 20h28M20 20v18" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>v0 by Vercel</h3>
+              <p>Turn natural language ideas into production-ready React components.</p>
+            </div>
+          </a>
+
+          <!-- Tool 12 -->
           <a class="tool-card tone-indigo" href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" aria-label="Explore GitHub Copilot (opens in a new tab)">
             <div class="tool-card-top">
-              <span>11 / PAIR PROGRAMMING</span>
+              <span>12 / PAIR PROGRAMMING</span>
               <span class="tool-arrow">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
               </span>
