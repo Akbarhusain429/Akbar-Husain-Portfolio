@@ -33,7 +33,7 @@
     .container { width: min(100% - 96px, 1440px); margin-inline: auto; }
     em { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; }
 
-    /* Fix: Smooth scroll target offsets */
+    /* Fix: Smooth scroll target offsets taaki header ke pichhe content na chupe */
     #about, #possibilities, #tools {
       scroll-margin-top: 110px !important;
     }
@@ -232,7 +232,7 @@
     .graphic-align span:nth-child(2) { width: 32px; height: 32px; top: 26.5px; right: 31.5px; background: #cce7c5; transform: rotate(45deg); border: 1.5px dashed #234b3e; }
 
     /* ========================================================
-       TOOLS SECTION (Clean Uniform Grid, No Overlapping)
+       TOOLS SECTION (EXPANDED TO 12 TOOLS IN 4x3 GRID)
        ======================================================== */
     .tools-section { 
       padding-top: 80px; 
@@ -251,13 +251,13 @@
     
     .tools-grid { 
       display: grid; 
-      grid-template-columns: repeat(3, 1fr); 
-      gap: 24px; 
+      grid-template-columns: repeat(4, 1fr); 
+      gap: 18px; 
       align-items: stretch; 
     }
     .tool-card { 
-      min-height: 310px; 
-      padding: 24px 26px 26px; 
+      min-height: 295px; 
+      padding: 22px 24px 24px; 
       border-radius: 8px; 
       display: flex; 
       flex-direction: column; 
@@ -272,22 +272,29 @@
       box-shadow: 0 16px 32px rgba(38, 64, 45, .12) !important; 
     }
 
+    /* 12 Aesthetic Pastel Tones for Tools */
     .tone-mint { background: #e1eee6; }
     .tone-peach { background: #f1e6dd; }
     .tone-blue { background: #e1eaf0; }
     .tone-lavender { background: #e9e5f1; }
     .tone-yellow { background: #f1edda; }
     .tone-pink { background: #f0e2e3; }
+    .tone-slate { background: #e2e8ea; }
+    .tone-sage { background: #e4ebe2; }
+    .tone-rose { background: #f4e5e7; }
+    .tone-teal { background: #dff0ed; }
+    .tone-amber { background: #f3ebdb; }
+    .tone-indigo { background: #e5e6f3; }
 
-    .tool-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #65766a; font-size: 9px; }
-    .tool-arrow { width: 29px; height: 29px; border: 1px solid rgba(33, 58, 45, .25); border-radius: 50%; display: grid; place-items: center; transition: background .2s, color .2s; }
-    .tool-arrow svg { width: 14px; height: 14px; }
+    .tool-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #65766a; font-size: 8.5px; font-weight: 700; letter-spacing: .08em; }
+    .tool-arrow { width: 28px; height: 28px; border: 1px solid rgba(33, 58, 45, .25); border-radius: 50%; display: grid; place-items: center; transition: background .2s, color .2s; }
+    .tool-arrow svg { width: 13px; height: 13px; }
     .tool-card:hover .tool-arrow { background: #1c3a31; color: #fff; }
-    .tool-icon { width: 76px; height: 76px; margin: 30px auto 25px; border: 1px solid rgba(33, 58, 45, .19); border-radius: 22px; display: grid; place-items: center; color: #254a3a; background: rgba(255,255,255,.35); }
-    .tool-icon svg { width: 44px; height: 44px; }
+    .tool-icon { width: 68px; height: 68px; margin: 24px auto 20px; border: 1px solid rgba(33, 58, 45, .18); border-radius: 20px; display: grid; place-items: center; color: #254a3a; background: rgba(255,255,255,.38); }
+    .tool-icon svg { width: 38px; height: 38px; }
     .tool-card-bottom { margin-top: auto; }
-    .tool-card h3 { font-weight: 500; font-size: 26px; line-height: 1; letter-spacing: -.055em; margin: 0 0 10px; }
-    .tool-card p { font-size: 12px; line-height: 1.6; color: #65736a; margin: 0; max-width: 260px; }
+    .tool-card h3 { font-weight: 500; font-size: 23px; line-height: 1; letter-spacing: -.05em; margin: 0 0 9px; }
+    .tool-card p { font-size: 11.5px; line-height: 1.6; color: #65736a; margin: 0; max-width: 250px; }
     .tools-footnote { margin: 48px 0 0; color: #839184; font-size: 10px; letter-spacing: .035em; }
     .tools-footnote span { color: #6f916b; font-size: 17px; vertical-align: -2px; margin-right: 8px; }
 
@@ -515,6 +522,7 @@
 
     @media (max-width: 1200px) {
       .capability-grid { grid-template-columns: repeat(3, 1fr); }
+      .tools-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 950px) {
       .container { width: min(100% - 48px, 1440px); }
@@ -531,8 +539,8 @@
       .intro-grid h2 { font-size: 76px; }
       .tools-heading h2 { font-size: 70px; }
       .capability-grid { grid-template-columns: repeat(2, 1fr); }
-      .pillar-modal-body { grid-template-columns: 1fr; }
       .tools-grid { grid-template-columns: repeat(2, 1fr); }
+      .pillar-modal-body { grid-template-columns: 1fr; }
     }
     @media (max-width: 700px) {
       .container { width: calc(100% - 32px); }
@@ -745,7 +753,7 @@
             <span>TWELVE COGNITIVE DIMENSIONS OF AGI</span>
           </div>
           <div class="possibilities-heading">
-            <h2 id="possibilities-title">One mind. <em>Many possibilities.</em></h2>
+            <h2 id="possibilities-title">One architecture. <em>Total general intelligence.</em></h2>
             <p>Beyond static token prediction. A full-spectrum cognitive ecosystem capable of causal discovery, continuous memory, internal simulation, and autonomous execution.</p>
           </div>
           
@@ -861,7 +869,7 @@
         </div>
       </section>
 
-      <!-- Tools Section -->
+      <!-- Tools Section (Expanded to 12 Industry Tools) -->
       <section class="tools-section container" id="tools" aria-labelledby="tools-title">
         <div class="section-heading-row">
           <span class="section-index">03 / START EXPLORING</span>
@@ -873,7 +881,7 @@
             <span class="overline">A CURATED STARTING POINT</span>
             <h2 id="tools-title">Curious? <em>Start here.</em></h2>
           </div>
-          <p>AGI may be the horizon, but today’s AI tools are already changing how we think, make, and discover. Pick a direction and explore.</p>
+          <p>AGI may be the horizon, but today’s AI tools are already changing how we think, build, and orchestrate systems. Explore the ecosystem.</p>
         </div>
 
         <!-- Interactive AGI Search Trigger Card -->
@@ -898,9 +906,9 @@
           </span>
         </button>
 
-        <!-- Tools Grid (Clean, Professional Grid Without Random Skew) -->
+        <!-- Tools Grid (12 Balanced Cards: 4 Columns on Desktop) -->
         <div class="tools-grid">
-          <!-- Tool 01 -->
+          <!-- Tool 01: ChatGPT -->
           <a class="tool-card tone-mint" href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore ChatGPT (opens in a new tab)">
             <div class="tool-card-top">
               <span>01 / CONVERSATION</span>
@@ -915,14 +923,14 @@
             </div>
             <div class="tool-card-bottom">
               <h3>ChatGPT</h3>
-              <p>Think out loud, learn something new, and get ideas moving.</p>
+              <p>Think out loud, learn concepts, and get ideas moving in conversational flow.</p>
             </div>
           </a>
 
-          <!-- Tool 02 -->
+          <!-- Tool 02: Claude -->
           <a class="tool-card tone-peach" href="https://claude.ai/" target="_blank" rel="noopener noreferrer" aria-label="Explore Claude (opens in a new tab)">
             <div class="tool-card-top">
-              <span>02 / WRITING &amp; REASONING</span>
+              <span>02 / REASONING</span>
               <span class="tool-arrow">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
               </span>
@@ -934,11 +942,11 @@
             </div>
             <div class="tool-card-bottom">
               <h3>Claude</h3>
-              <p>A thoughtful partner for writing, analysis, and complex tasks.</p>
+              <p>A thoughtful cognitive partner for complex writing, synthesis, and deep logic.</p>
             </div>
           </a>
 
-          <!-- Tool 03 -->
+          <!-- Tool 03: Perplexity -->
           <a class="tool-card tone-blue" href="https://www.perplexity.ai/" target="_blank" rel="noopener noreferrer" aria-label="Explore Perplexity (opens in a new tab)">
             <div class="tool-card-top">
               <span>03 / DISCOVERY</span>
@@ -953,14 +961,14 @@
             </div>
             <div class="tool-card-bottom">
               <h3>Perplexity</h3>
-              <p>Explore questions with answers grounded in sources.</p>
+              <p>Synthesize answers across the live web, grounded in real-time verified sources.</p>
             </div>
           </a>
 
-          <!-- Tool 04 -->
+          <!-- Tool 04: Gemini -->
           <a class="tool-card tone-lavender" href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Gemini (opens in a new tab)">
             <div class="tool-card-top">
-              <span>04 / EVERYDAY ASSISTANCE</span>
+              <span>04 / MULTIMODAL</span>
               <span class="tool-arrow">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
               </span>
@@ -972,14 +980,14 @@
             </div>
             <div class="tool-card-bottom">
               <h3>Gemini</h3>
-              <p>Create, plan, and get help across different kinds of work.</p>
+              <p>Process massive multimodal contexts spanning text, video, code, and live audio.</p>
             </div>
           </a>
 
-          <!-- Tool 05 -->
+          <!-- Tool 05: Midjourney -->
           <a class="tool-card tone-yellow" href="https://www.midjourney.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Midjourney (opens in a new tab)">
             <div class="tool-card-top">
-              <span>05 / IMAGE MAKING</span>
+              <span>05 / VISUAL WORLDS</span>
               <span class="tool-arrow">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
               </span>
@@ -991,14 +999,14 @@
             </div>
             <div class="tool-card-bottom">
               <h3>Midjourney</h3>
-              <p>Turn a creative prompt into expressive visual worlds.</p>
+              <p>Transform conceptual text prompts into photorealistic and artistic imagery.</p>
             </div>
           </a>
 
-          <!-- Tool 06 -->
+          <!-- Tool 06: Runway -->
           <a class="tool-card tone-pink" href="https://runwayml.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Runway (opens in a new tab)">
             <div class="tool-card-top">
-              <span>06 / VIDEO MAKING</span>
+              <span>06 / GENERATIVE VIDEO</span>
               <span class="tool-arrow">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
               </span>
@@ -1010,7 +1018,102 @@
             </div>
             <div class="tool-card-bottom">
               <h3>Runway</h3>
-              <p>Experiment with AI-powered filmmaking and motion.</p>
+              <p>Pioneer AI-powered motion design, world simulation, and video synthesis.</p>
+            </div>
+          </a>
+
+          <!-- Tool 07: Cursor AI (NEW) -->
+          <a class="tool-card tone-slate" href="https://www.cursor.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore Cursor (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>07 / AI CODE EDITOR</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M14 16l8 8-8 8M24 32h10" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>Cursor</h3>
+              <p>Next-gen AI code editor with full-repository comprehension and semantic edits.</p>
+            </div>
+          </a>
+
+          <!-- Tool 08: ElevenLabs (NEW) -->
+          <a class="tool-card tone-sage" href="https://elevenlabs.io/" target="_blank" rel="noopener noreferrer" aria-label="Explore ElevenLabs (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>08 / VOICE INTELLIGENCE</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 21v6M18 15v18M24 9v30M30 15v18M36 21v6" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>ElevenLabs</h3>
+              <p>State-of-the-art voice synthesis, expressive cloning, and low-latency audio agents.</p>
+            </div>
+          </a>
+
+          <!-- Tool 09: Hugging Face (NEW) -->
+          <a class="tool-card tone-amber" href="https://huggingface.co/" target="_blank" rel="noopener noreferrer" aria-label="Explore Hugging Face (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>09 / OPEN-SOURCE MODELS</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="24" cy="24" r="16" /><path d="M17 21h.01M31 21h.01M17 28c2 3 5 4 7 4s5-1 7-4" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>Hugging Face</h3>
+              <p>The global hub for collaborative open-source weights, datasets, and ML spaces.</p>
+            </div>
+          </a>
+
+          <!-- Tool 10: LangChain / LangGraph (NEW) -->
+          <a class="tool-card tone-teal" href="https://www.langchain.com/" target="_blank" rel="noopener noreferrer" aria-label="Explore LangChain (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>10 / AGENT ORCHESTRATION</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="16" cy="16" r="6" /><circle cx="32" cy="16" r="6" /><circle cx="24" cy="32" r="6" /><path d="m20 19 4 7 4-7M19 16h10" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>LangGraph</h3>
+              <p>Build cyclic multi-agent workflows, state machines, and autonomous tool loops.</p>
+            </div>
+          </a>
+
+          <!-- Tool 12: GitHub Copilot (NEW) -->
+          <a class="tool-card tone-indigo" href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" aria-label="Explore Copilot (opens in a new tab)">
+            <div class="tool-card-top">
+              <span>12 / PAIR PROGRAMMER</span>
+              <span class="tool-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 19 19 5M8 5h11v11" /></svg>
+              </span>
+            </div>
+            <div class="tool-icon">
+              <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M16 26c-3 0-6-3-6-8 0-6 7-8 14-8s14 2 14 8c0 5-3 8-6 8M18 24v4M30 24v4M18 34h12" />
+              </svg>
+            </div>
+            <div class="tool-card-bottom">
+              <h3>GitHub Copilot</h3>
+              <p>Autonomous background code completion, test generation, and pull-request analysis.</p>
             </div>
           </a>
         </div>
@@ -1620,7 +1723,7 @@ Action Token ──> [Residual Stream Probe] ──> Deception Score > 0.05?
        PAGE INITIALIZATION & MODAL HANDLERS
        ======================================================== */
     document.addEventListener("DOMContentLoaded", () => {
-      // 1. Auto-clean URL agar page hash ke sath load ho (#possibilities, #about, #tools hide ho jayega)
+      // 1. Auto-clean URL agar page hash ke sath load ho
       if (window.location.hash) {
         const initialTarget = document.querySelector(window.location.hash);
         if (initialTarget) {
